@@ -3,7 +3,7 @@
 [![Web Dev](https://img.shields.io/badge/Web%20Dev-CS5610-blue.svg)]()	[![Mean](https://img.shields.io/badge/Node-7.2.1-blue.svg)]()	[![npm (scoped)](https://img.shields.io/badge/npm-3.10.9-blue.svg)]()	[![mongodb](https://img.shields.io/badge/MongoDB-3.4.4-blue.svg)]()		[![Express](https://img.shields.io/badge/Express-4.15.2-blue.svg)]()	[![Angular](https://img.shields.io/badge/Angular-4.0.0-blue.svg)]()
 
 
-#### ABOUT ME
+### ABOUT ME
 
 My name is Aly Akhtar. I am a graduate student at Northeastern University. I am majoring in Computer Science. I am done with 2 semesters at NEU and have succesfully completed the following courses:
 
@@ -15,7 +15,7 @@ My name is Aly Akhtar. I am a graduate student at Northeastern University. I am 
 I did my undergrad from Jamia Millia Islamia, New Delhi, India in Computer Engineering. My favourite programming Language is Python. I like playing and following Soccer. 
 
 
-##### PROJECTS
+#### PROJECTS
 
 Following is a list of my projects, which are all available on my [Github](https://github.com/alyakhtar) account:- 
 
@@ -30,12 +30,12 @@ Following is a list of my projects, which are all available on my [Github](https
 * [remote Database Metadata extraction](https://github.com/alyakhtar/MetGeomi)
 * [E-Commerce Website](https://github.com/alyakhtar/iBUY)
 
-#### PURPOSE
+### PURPOSE
 
 This repository contains the code for the assignments and the project for the course Web Development - Summer 1, 2017.
 
 #### SOME USEFUL LINKS
 
-1. [ENVIRONMENT](http://akhtar-aly-webdev.herokuapp.com/)
-2. [ASSIGNMENT]()
-3. [PROJECT]()
+* [ENVIRONMENT](http://akhtar-aly-webdev.herokuapp.com/)
+* [ASSIGNMENT]()
+* [PROJECT]()
