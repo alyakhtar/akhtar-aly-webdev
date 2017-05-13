@@ -37,5 +37,5 @@ This repository contains the code for the assignments and the project for the co
 #### SOME USEFUL LINKS
 
 * [ENVIRONMENT](http://akhtar-aly-webdev.herokuapp.com/)
-* [ASSIGNMENT]()
-* [PROJECT]()
+* [ASSIGNMENT](http://akhtar-aly-webdev.herokuapp.com/assignment/index.html)
+* [PROJECT](http://akhtar-aly-webdev.herokuapp.com/project/index.html)
