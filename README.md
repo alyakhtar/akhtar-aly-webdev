@@ -19,15 +19,15 @@ I did my undergrad from Jamia Millia Islamia, New Delhi, India in Computer Engin
 
 Following is a list of my projects, which are all available on my [Github](https://github.com/alyakhtar) account:- 
 
-* [Yelp Data Analyisis using Deep Learining](https://github.com/alyakhtar/husky)
+* [Yelp Data Analysis using Deep Learning](https://github.com/alyakhtar/husky)
 * [Web Search Engine](https://github.com/alyakhtar/white-mountains)
-* [Katastrophe - A CLI for craling and downloading torrents](https://github.com/alyakhtar/Katastrophe)
+* [Katastrophe - A CLI for crawling and downloading torrents](https://github.com/alyakhtar/Katastrophe)
 * [My Personal Webpage](http://alyakhtar.com)
 * [Prediction and Analysis of Pollution Levels in Delhi](https://github.com/alyakhtar/AQI-Delhi)
 * [Cricket Match Outcome Prediction System](https://github.com/alyakhtar/WinTheMatch)
 * [Game sharing and Renting portal](https://github.com/alyakhtar/Console-Wars)
 * [Fetch MAC and IP of devices in a Network](https://github.com/alyakhtar/WifiStinson)
-* [remote Database Metadata extraction](https://github.com/alyakhtar/MetGeomi)
+* [Remote Database Metadata extraction](https://github.com/alyakhtar/MetGeomi)
 * [E-Commerce Website](https://github.com/alyakhtar/iBUY)
 
 ### PURPOSE
