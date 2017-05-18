@@ -1,6 +1,7 @@
 body {
   padding-top: 50px;
   padding-bottom: 30px;
+  background-color: rgb(238,238,238); 
 }
 
 .theme-dropdown .dropdown-menu {
@@ -15,4 +16,12 @@ body {
 
 .theme-showcase .navbar .container {
   width: auto;
+}
+
+div.container.text-center{
+	padding-top: 5%;
+}
+
+div.container.text-center.hidden-lg{
+	padding-top: 35%;
 }

@@ -10,105 +10,37 @@
     <link href="../css/style.css" rel="stylesheet">
 </head>
     <nav class="navbar navbar-fixed-top navbar-inverse">
-        <div class="row container-fluid">
-            <div class="col-sm-4 hidden-xs">
-                <div class="navbar-text pull-left">
-                    <a href="../widget/widget-list.html">
-                        <span class="glyphicon glyphicon-chevron-left"></span></a>
-                </div>
-                <div class="navbar-text pull-right">
-                    <a href="">
-                        <span class="glyphicon glyphicon-plus"></span></a>
-                </div>
-                <div class="navbar-header">
-                    <a class="navbar-brand" href="">Widgets</a>
-                </div>
+        <div class="container-fluid">
+            <div class="navbar-text pull-left">
+                <a href="../widget/widget-list.html">
+                    <span class="glyphicon glyphicon-chevron-left"></span></a>
             </div>
-            <div class="col-xs-12 col-sm-8 pull-right">
-                <div class="navbar-text pull-left hidden-md hidden-lg hidden-sm">
-                    <a href="../widget/widget-list.html">
-                        <span class="glyphicon glyphicon-chevron-left"></span></a>
-                </div>
-                <div class="navbar-text pull-right">
-                    <a href="../widget/widget-list.html">
-                        <span class="glyphicon glyphicon-ok"></span></a>
-                </div>
-                <div class="navbar-header">
-                    <a class="navbar-brand" href="#">Widget Edit</a>
-                </div>
+            <div class="navbar-text pull-right">
+                <a href="../widget/widget-list.html">
+                    <span class="glyphicon glyphicon-ok"></span></a>
+            </div>
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">Widget Edit</a>
             </div>
         </div>
     </nav>
     <div class="container-fluid">
-        <div class="row">
-            <div class="col-sm-4 hidden-xs page-divide2 gap">
-                <div class="container-fluid">
-                    <div>
-                        <div class="drag-n-edit2">
-                                <a href="widget-heading.html">
-                                    <span class="glyphicon glyphicon-cog"></span>
-                                </a>
-                                <span class="glyphicon glyphicon-align-justify"></span>
-                        </div>
-                        <h1>GIZMODO</h1>
-                    </div>
-                    <div>
-                        <div class="drag-n-edit2">
-                                <a href="widget-heading.html">
-                                    <span class="glyphicon glyphicon-cog"></span>
-                                </a>
-                                <span class="glyphicon glyphicon-align-justify"></span>
-                        </div>
-                        <h3>Cristiano Ronaldo first to reach 100 European goals</h3>
-                    </div>
-                    <div class="article">
-                        <div class="drag-n-edit2">
-                            <a href="widget-image.html">
-                                <span class="glyphicon glyphicon-cog"></span>
-                            </a>
-                            <span class="glyphicon glyphicon-align-justify"></span>
-                        </div>
-                        <img src="http://images.performgroup.com/di/library/goal_uk/44/53/cristiano-ronaldo_1v1eee3hpclft13hcwdk791jtk.jpg?t=-1953967056&w=940" width="100%">
-                    </div>
-                    <div>
-                        <div class="drag-n-edit2">
-                                <a href="widget-heading.html">
-                                    <span class="glyphicon glyphicon-cog"></span>
-                                </a>
-                                <span class="glyphicon glyphicon-align-justify"></span>
-                        </div>
-                        <h3>Cristiano Ronaldo reaches 400 Goals for Real Madrid F.C.</h3>
-                    </div>
-                    <div class="article">
-                        <div class="drag-n-edit2">
-                            <a href="widget-youtube.html">
-                                <span class="glyphicon glyphicon-cog"></span>
-                            </a>
-                            <span class="glyphicon glyphicon-align-justify"></span>
-                        </div>
-                        <iframe width="100%" height="315" src="https://www.youtube.com/embed/fGAfIpVcKgw" frameborder="0" allowfullscreen></iframe>
-                    </div>
-                </div>
+        <form>
+            <div class="form-group">
+                <label for="name ">Name</label>
+                <input type="input" class="form-control" id="name" placeholder="Widget Name" value="">
+                <label for="text">Text</label>
+                <input class="form-control" id="text" type="text" placeholder="Text" value="">
+                <label for="url">URL</label>
+                <input class="form-control" id="url" type="url" placeholder="URL" value="http://images.performgroup.com/di/library/goal_uk/44/53/cristiano-ronaldo_1v1eee3hpclft13hcwdk791jtk.jpg?t=-1953967056&w=940">
+                <label for="width">Width</label>
+                <input class="form-control" id="width" type="text" name="width" value="100%">
+                <label for="upload">Upload</label>
+                <input class="form-control" type="file" name="upload" >
+                <a href="widget-list.html" class="btn btn-primary btn-block">Upload</a>
+                <a href="widget-list.html" class="btn btn-danger btn-block">Delete</a>
             </div>
-            <div class="col-xs-12 col-sm-8 pull-right ">
-                <form>
-                    <div class="form-group">
-                        <label for="name ">Name</label>
-                        <input type="input" class="form-control" id="name" placeholder="Widget Name" value="">
-                        <label for="text">Text</label>
-                        <input class="form-control" id="text" type="text" placeholder="Text" value="">
-                        <label for="url">URL</label>
-                        <input class="form-control" id="url" type="url" placeholder="URL" value="http://images.performgroup.com/di/library/goal_uk/44/53/cristiano-ronaldo_1v1eee3hpclft13hcwdk791jtk.jpg?t=-1953967056&w=940">
-                        <label for="width">Width</label>
-                        <input class="form-control" id="width" type="text" name="width" value="100%">
-                        <label for="upload">Upload</label>
-                        <input class="form-control" type="file" name="upload" >
-                        <a href="widget-list.html" class="btn btn-primary btn-block">Upload</a>
-                        <a href="widget-list.html" class="btn btn-danger btn-block">Delete</a>
-                    </div>
-                </form>
-            </div>
-        </div>
+        </form>
     </div>
     <nav class="navbar navbar-fixed-bottom navbar-inverse">
         <div class="container-fluid">
