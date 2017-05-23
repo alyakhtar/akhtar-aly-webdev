@@ -1,89 +1,27 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="WebAppMaker">
 
 <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-route.min.js"></script>
+    <script src="app.js"></script>
+    <script src="views/user/controllers/login.controller.view.js"></script>
+    <script src="views/user/controllers/profile.controller.view.js"></script>
+    <script src="views/user/controllers/register.controller.view.js"></script>
+    <script src="services/user.service.client.js"></script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1" user-scalable=no">
     <title>Assignment Home Page</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="css/theme.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 
 <body">
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <button type="button" 
-                        class="navbar-toggle collapsed" 
-                        data-toggle="collapse" 
-                        data-target="#navbar" 
-                        aria-expanded="false" 
-                        aria-controls="navbar">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="">Assignment Home Page</a>
-            </div>
-            <div id="navbar" class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li class="active"><a href="#">Home</a></li>
-                    <li><a href="user/login.html">Login</a></li>
-                    <li><a href="user/register.html">Register</a></li>
-                    <li><a href="user/profile.html">Profile</a></li>
-                </ul>
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a href="">Logout</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-    <div class="jumbotron">
-        <div class="container text-center hidden-xs">
-            <h1>Hello, world!</h1>
-            <p>This is the homepage for my assignment.</p>
-            <a href="website/website-list.html" class="btn btn-primary">View Your Websites</a>
-        </div>
-        <div class="container text-center hidden-lg">
-            <h1>Hello, world!</h1>
-            <p>This is the homepage for my assignment.</p>
-            <a href="website/website-list.html" class="btn btn-primary">View Your Websites</a>
-        </div>
-    </div>
-    <hr>
-    <nav class="navbar navbar-inverse navbar-fixed-bottom">
-        <div class="container-fluid">
-            <div id="navbar" class="">
-                <ul class="nav navbar-nav hidden-xs hidden-sm">
-                    <li><a href="https://github.com/alyakhtar">
-                        <i class="fa fa-github-alt" aria-hidden="true"></i>
-                    </a></li>
-                    <li><a href="https://facebook.com/aly.akhtar">
-                        <i class="fa fa-facebook" aria-hidden="true"></i>
-                    </a></li>
-                    <li><a href="https://linkedin.com/in/alyakhtar">
-                        <i class="fa fa-linkedin" aria-hidden="true"></i>
-                    </a></li>
-                    <li><a href="https://plus.google.com/u/0/107606269766161843220">
-                        <i class="fa fa-google-plus" aria-hidden="true"></i>
-                    </a></li>
-                    <li><a href="mailto:akhtar.a@husky.neu.edu">
-                        <i class="fa fa-envelope" aria-hidden="true"></i>
-                    </a></li>
-                    <li><a href="https://www.instagram.com/aly.akhtar/">
-                        <i class="fa fa-instagram" aria-hidden="true"></i>
-                    </a></li>
-                </ul>
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a>&copy; 2017 Aly Akhtar</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-    </div>
+    
+    <div ng-view></div>
 
     <!-- Bootstrap core JavaScript
     ================================================== -->

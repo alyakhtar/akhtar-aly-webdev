@@ -1,0 +1,55 @@
+<nav class="navbar navbar-fixed-top bg-primary">
+    <div class="container-fluid">
+        <div class="navbar-text pull-right">
+            <a href="#"><span class="glyphicon glyphicon-ok"></span></a>
+        </div>
+        <div class="navbar-header">
+            <a class="navbar-brand" href="">Profile</a>
+        </div>
+    </div>
+</nav>
+<div class="container-fluid">
+    <form>
+        <div class="form-group">
+            <label  for="username">Username</label>
+            <input  ng-model="model.user.username"
+                    type="text" 
+                    class="form-control" 
+                    id="username" 
+                    placeholder="Username">
+
+            <label  for="email">Email address</label>
+            <input  type="email" 
+                    class="form-control" 
+                    id="email" 
+                    placeholder="alice@wonderland.com">
+
+            <label  for="first-name">First Name</label>
+            <input  ng-model="model.user.firstName"
+                    type="text" 
+                    class="form-control" 
+                    id="first-name" 
+                    placeholder="Alice" 
+                    value="Aly">
+
+            <label  for="last-name">Last Name</label>
+            <input  ng-model="model.user.lastName"
+                    type="text" 
+                    class="form-control" 
+                    id="last-name" 
+                    placeholder="Wonderland" 
+                    value="Akhtar">
+            <a  class="btn btn-primary btn-block" 
+                href="../website/website-list.html">Websites</a>
+            <a  class="btn btn-danger btn-block" 
+                href="#!/">Logout</a>
+        </div>
+    </form>
+</div>
+<nav class="navbar navbar-fixed-bottom bg-primary">
+    <div class="container-fluid">
+        <div class="navbar-text pull-right">
+            <a><span class="glyphicon glyphicon-user"></span></a>
+        </div>
+    </div>
+</nav>
