@@ -35,7 +35,7 @@
         <li class="list-group-item borderless" ng-repeat="page in model.pages">
             <div class="row">
                 <div class="col-lg-5 col-md-8 col-xs-11">
-                    <a href="../widget/widget-list.html">
+                    <a href="#!/profile/{{model.userId}}/website/{{model.websiteId}}/page/{{page._id}}/widget">
                         {{page.name}}
                     </a>
                 </div>
@@ -46,7 +46,7 @@
                     2/2/2017
                 </div>
                 <div class="col-xs-1">
-                    <a href="page-edit.html">
+                    <a href="#!/profile/{{model.userId}}/website/{{model.websiteId}}/page/{{page._id}}">
                         <span class="glyphicon glyphicon-cog pull-right"></span>
                     </a>
                 </div>

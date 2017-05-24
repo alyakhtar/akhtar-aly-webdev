@@ -43,5 +43,15 @@
                 controller: 'pageListController',
                 controllerAs: 'model'
             })
+            .when('/profile/:userId/website/:websiteId/page/new', {
+                templateUrl: 'views/page/templates/page-new.view.client.html',
+                controller: 'pageNewController',
+                controllerAs: 'model'
+            })
+            .when('/profile/:userId/website/:websiteId/page/:pageId', {
+                templateUrl: 'views/page/templates/page-edit.view.client.html',
+                controller: 'pageEditController',
+                controllerAs: 'model'
+            })
     }
 })();

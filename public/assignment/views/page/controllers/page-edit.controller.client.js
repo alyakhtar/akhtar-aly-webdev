@@ -1,17 +1,20 @@
 (function() {
     angular
         .module('WebAppMaker')
-        .controller('websiteEditController', websiteEditController);
+        .controller('pageEditController', pageEditController);
 
-    function websiteEditController($location, $routeParams, websiteService) {
+    function pageEditController($location, $routeParams, pageService) {
 
         var model = this;
 
         var websiteId = $routeParams['websiteId'];
         var userId = $routeParams['userId'];
+        var pageId = $routeParams['pageId'];
         model.userId = userId;
+        model.websiteId = websiteId;
 
-        model.website = websiteService.findWebsiteById(websiteId);
-        model.websites = websiteService.findWebsitesByUser(userId);
+        model.pages = pageService.findPagesByWebsiteId(websiteId);
+        model.page = pageService.findPageById(pageId);
+
     }
 })();
