@@ -12,9 +12,12 @@
         ];
 
         var api = {
+            createUser: createUser,
             findUserById: findUserById,
+            findUserByUsername: findUserByUsername,
             findUserByCredentials: findUserByCredentials,
-            findUserByUsername: findUserByUsername
+            updateUser: updateUser,
+            deleteUser: deleteUser
         };
         return api;
 
@@ -45,6 +48,18 @@
                 }
             }
             return null;
+        }
+
+        function createUser(user){
+
+        }
+
+        function updateUser(userId, user){
+
+        }
+
+        function deleteUser(userId){
+            
         }
     }
 })();

@@ -23,5 +23,25 @@
                 controller: 'profileController',
                 controllerAs: 'model'
             })
+            .when('/profile/:userId/website', {
+                templateUrl: 'views/website/templates/website-list.view.client.html',
+                controller: 'websiteListController',
+                controllerAs: 'model'
+            })
+            .when('/profile/:userId/website/new', {
+                templateUrl: 'views/website/templates/website-new.view.client.html',
+                controller: 'websiteNewController',
+                controllerAs: 'model'
+            })
+            .when('/profile/:userId/website/:websiteId', {
+                templateUrl: 'views/website/templates/website-edit.view.client.html',
+                controller: 'websiteEditController',
+                controllerAs: 'model'
+            })
+            .when('/profile/:userId/website/:websiteId/page', {
+                templateUrl: 'views/page/templates/page-list.view.client.html',
+                controller: 'pageListController',
+                controllerAs: 'model'
+            })
     }
 })();
