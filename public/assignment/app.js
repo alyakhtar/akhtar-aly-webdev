@@ -53,5 +53,20 @@
                 controller: 'pageEditController',
                 controllerAs: 'model'
             })
+            .when('/profile/:userId/website/:websiteId/page/:pageId/widget', {
+                templateUrl: 'views/widget/templates/widget-list.view.client.html',
+                controller: 'widgetListController',
+                controllerAs: 'model'
+            })
+            .when('/profile/:userId/website/:websiteId/page/:pageId/widget/new', {
+                templateUrl: 'views/widget/templates/widget-choose.view.client.html',
+                controller: 'pageNewController',
+                controllerAs: 'model'
+            })
+            .when('/profile/:userId/website/:websiteId/page/:pageId/widget/:widgetId', {
+                templateUrl: 'views/widget/templates/widget-edit.view.client.html',
+                controller: 'pageEditController',
+                controllerAs: 'model'
+            })
     }
 })();
