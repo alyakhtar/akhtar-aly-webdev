@@ -38,15 +38,25 @@
         }
 
         function createPage(websiteId, page){
-
+            lastId = pages[pages.length - 1]._id;
+            id = parseInt(lastId) + '111' + '';
+            page._id = id;
+            page.websiteId = websiteId;
+            pages.push(page);
         }
 
         function updatePage(pageId, page){
-
+            for(var w in pages){
+                if(pages[w]._id === pageId){
+                    pages[w] = page;
+                }
+            }
         }
 
         function deletePage(pageId){
-            
+            var page = findPageById(pageId);
+            var index = pages.indexOf(page);
+            pages.splice(index,1);
         }
     }
 })();

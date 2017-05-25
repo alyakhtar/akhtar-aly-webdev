@@ -11,7 +11,7 @@
             var found = userService.findUserByCredentials(username, password);
 
             if (found !== null) {
-                $location.url('/profile/' + found._id);
+                $location.url('/user/' + found._id);
             } else {
                 if (!username || ! password){
                     model.message = "Please enter username and password!";

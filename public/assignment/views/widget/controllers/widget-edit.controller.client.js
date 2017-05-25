@@ -1,9 +1,9 @@
 (function() {
     angular
         .module('WebAppMaker')
-        .controller('pageEditController', pageEditController);
+        .controller('widgetEditController', widgetEditController);
 
-    function pageEditController($location, $routeParams, pageService) {
+    function widgetEditController($location, $routeParams, pageService) {
 
         var model = this;
 
@@ -12,6 +12,7 @@
         var pageId = $routeParams['pageId'];
         model.userId = userId;
         model.websiteId = websiteId;
+        model.pageId = pageId;
 
         model.pages = pageService.findPagesByWebsiteId(websiteId);
         model.page = pageService.findPageById(pageId);

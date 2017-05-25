@@ -15,9 +15,14 @@
 				if (password === vpassword){
 					var user = userService.findUserByUsername(username)
 					if (user === null){
-						// var found = userService.findUserByCredentials(username, password);
-						// $location.url('/profile/' + found._id);
-						model.message = "User Created"
+						var newUser = {
+							username: username,
+							password: password,
+							_id: userService.getId()
+						}
+
+						userService.createUser(newUser);
+						$location.url('/user/'+ newUser._id);
 					} else{
 						model.message = 'User Already Exists!!';
 					}

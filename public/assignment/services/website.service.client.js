@@ -42,15 +42,25 @@
         }
 
         function createWebsite(userId, website){
-
+            lastId = websites[websites.length - 1]._id;
+            id = parseInt(lastId) + '111' + '';
+            website._id = id;
+            website.developerId = userId;
+            websites.push(website);
         }
 
         function updateWebsite(websiteId, website){
-
-        }
+            for(var w in websites){
+                if(websites[w]._id === websiteId){
+                    websites[w] = website;
+                }
+            }
+        }   
 
         function deleteWebsite(websiteId){
-            
+            var website = findWebsiteById(websiteId);
+            var index = websites.indexOf(website);
+            websites.splice(index,1);
         }
     }
 })();

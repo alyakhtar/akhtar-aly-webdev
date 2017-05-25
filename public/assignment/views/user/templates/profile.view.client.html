@@ -1,7 +1,8 @@
 <nav class="navbar navbar-fixed-top bg-primary">
     <div class="container-fluid">
         <div class="navbar-text pull-right">
-            <a href=""><span class="glyphicon glyphicon-ok"></span></a>
+            <a ng-click="model.update(model.user)">
+                <span class="glyphicon glyphicon-ok"></span></a>
         </div>
         <div class="navbar-header">
             <a class="navbar-brand">Profile</a>
@@ -9,6 +10,10 @@
     </div>
 </nav>
 <div class="container-fluid">
+    <div    ng-show="model.message" 
+            class="alert alert-success">
+                {{model.message}}
+    </div>
     <form>
         <div class="form-group">
             <label  for="username">Username</label>
@@ -20,6 +25,7 @@
 
             <label  for="email">Email address</label>
             <input  type="email" 
+                    ng-model="model.user.email"
                     class="form-control" 
                     id="email" 
                     placeholder="alice@wonderland.com">
@@ -40,7 +46,7 @@
                     placeholder="Wonderland" 
                     value="Akhtar">
             <a  class="btn btn-primary btn-block" 
-                href="#!/profile/{{model.user._id}}/website">Websites</a>
+                href="#!/user/{{model.user._id}}/website">Websites</a>
             <a  class="btn btn-danger btn-block" 
                 href="#!/">Logout</a>
         </div>

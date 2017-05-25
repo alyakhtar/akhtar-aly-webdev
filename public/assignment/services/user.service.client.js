@@ -4,6 +4,7 @@
         .factory('userService', userService);
 
     function userService() {
+
         var users = [
             { _id: "123", username: "alice", password: "alice", firstName: "Alice", lastName: "Wonder", email:"" },
             { _id: "234", username: "bob", password: "bob", firstName: "Bob", lastName: "Marley", email:"" },
@@ -17,9 +18,15 @@
             findUserByUsername: findUserByUsername,
             findUserByCredentials: findUserByCredentials,
             updateUser: updateUser,
-            deleteUser: deleteUser
+            deleteUser: deleteUser,
+            getId: getId
         };
         return api;
+
+        function getId(){
+            id = users[users.length - 1]._id;
+            return parseInt(id) + 111 + '';
+        }
 
         function findUserById(userId) {
             for (var u in users) {
@@ -51,11 +58,16 @@
         }
 
         function createUser(user){
-
+            users.push(user);
         }
 
-        function updateUser(userId, user){
-
+        function updateUser(userId, userUp){
+            for (var u in users){
+                var user = users[u];
+                if (user._id === userId){
+                    users[u] = userUp;
+                }
+            }
         }
 
         function deleteUser(userId){

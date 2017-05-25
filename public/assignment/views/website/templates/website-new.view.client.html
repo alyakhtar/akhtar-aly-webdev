@@ -2,11 +2,11 @@
     <div class="row container-fluid">
         <div class="col-sm-4 hidden-xs">
             <div class="navbar-text pull-left">
-                <a href="#!/profile/{{model.userId}}/website">
+                <a href="#!/user/{{model.userId}}/website">
                     <span class="glyphicon glyphicon-chevron-left"></span></a>
             </div>
             <div class="navbar-text pull-right">
-                <a href="#!/profile/{{model.userId}}/website/new">
+                <a href="#!/user/{{model.userId}}/website/new">
                     <span class="glyphicon glyphicon-plus"></span></a>
             </div>
             <div class="navbar-header">
@@ -15,12 +15,13 @@
         </div>
         <div class="col-xs-12 col-sm-8 pull-right">
             <div class="navbar-text pull-left hidden-md hidden-lg hidden-sm">
-                <a href="#!/profile/{{model.userId}}/website">
+                <a href="#!/user/{{model.userId}}/website">
                     <span class="glyphicon glyphicon-chevron-left"></span></a>
             </div>
             <div class="navbar-text pull-right">
-                <a href="">
-                    <span class="glyphicon glyphicon-ok"></span></a>
+                <a ng-click="model.createWebsite(website)">
+                    <span class="glyphicon glyphicon-ok"></span>
+                </a>
             </div>
             <div class="navbar-header">
                 <a class="navbar-brand">New Website</a>
@@ -36,8 +37,8 @@
                     Name
                 </li>
                 <li class="list-group-item borderless" ng-repeat="website in model.websites">
-                    <a href="#!/profile/{{model.userId}}/website/{{website._id}}/page">{{website.name}}</a>
-                    <a href="#!/profile/{{model.userId}}/website/{{website._id}}">
+                    <a href="#!/user/{{model.userId}}/website/{{website._id}}/page">{{website.name}}</a>
+                    <a href="#!/user/{{model.userId}}/website/{{website._id}}">
                         <span class="glyphicon glyphicon-cog pull-right"></span>
                     </a>
                 </li>
@@ -46,10 +47,20 @@
         <div class="col-xs-12 col-sm-8 pull-right ">
             <form>
                 <div class="form-group">
-                    <label for="name ">Name</label>
-                    <input type="text" class="form-control" id="name" placeholder="Name">
-                    <label for="description ">Description</label>
-                    <textarea class="form-control" type="text" rows="5" id="description" placeholder="Description "></textarea>
+                    <label  for="name ">Name</label>
+                    <input  ng-model="website.name"
+                            type="text" 
+                            class="form-control" 
+                            id="name" 
+                            placeholder="Name">
+                    <label  for="description ">Description</label>
+                    <textarea   ng-model="website.description"
+                                class="form-control" 
+                                type="text" 
+                                rows="5" 
+                                id="description" 
+                                placeholder="Description">
+                    </textarea>
                 </div>
             </form>
         </div>
@@ -58,7 +69,7 @@
 <nav class="navbar navbar-fixed-bottom bg-primary ">
     <div class="container-fluid">
         <div class="navbar-text pull-right">
-            <a href="#!/profile/{{model.userId}}"><span class="glyphicon glyphicon-user"></span></a>
+            <a href="#!/user/{{model.userId}}"><span class="glyphicon glyphicon-user"></span></a>
         </div>
     </div>
 </nav>
