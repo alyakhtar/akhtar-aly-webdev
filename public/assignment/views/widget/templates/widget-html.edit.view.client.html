@@ -1,0 +1,21 @@
+<div class="form-group">
+    <label  for="name ">Name</label>
+    <input  ng-model="model.widget.name"
+            type="text" 
+            class="form-control" 
+            id="name" 
+            placeholder="Widget Name">
+
+    <label  for="text">Text</label>
+    <textarea   ng-model="model.widget.text"
+                class="form-control" 
+                id="text" 
+                type="text" 
+                placeholder="Text">
+    </textarea>
+
+    <a  ng-click="model.deleteWidget()" 
+        class="btn btn-danger btn-block">
+        Delete
+    </a>
+</div>

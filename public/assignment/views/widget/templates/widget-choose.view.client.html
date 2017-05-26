@@ -5,7 +5,7 @@
                 <span class="glyphicon glyphicon-chevron-left"></span></a>
         </div>
         <div class="navbar-text pull-right">
-            <a href="">
+            <a  href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget">
                 <span class="glyphicon glyphicon-ok"></span></a>
         </div>
         <div class="navbar-header">
@@ -19,13 +19,13 @@
             Widgets
         </li>
         <li class="list-group-item borderless">
-            <a href="widget-heading.html">Header</a>
+            <a ng-click="model.createWidget('HEADING')" href="">Header</a>
         </li>
         <li class="list-group-item borderless">
             <a href="">Label</a>
         </li>
         <li class="list-group-item borderless">
-            <a href="">HTML</a>
+            <a ng-click="model.createWidget('HTML')" href="">HTML</a>
         </li>
         <li class="list-group-item borderless">
             <a href="">Text Input</a>
@@ -34,10 +34,10 @@
             <a href="">Button</a>
         </li>
         <li class="list-group-item borderless">
-            <a href="widget-image.html">Image</a>
+            <a ng-click="model.createWidget('IMAGE')" href="">Image</a>
         </li>
         <li class="list-group-item borderless">
-            <a href="widget-youtube.html">YouTube</a>
+            <a ng-click="model.createWidget('YOUTUBE')" href="">YouTube</a>
         </li>
         <li class="list-group-item borderless">
             <a href="">Data Table</a>

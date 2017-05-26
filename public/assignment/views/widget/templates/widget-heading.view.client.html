@@ -1,41 +1,8 @@
-<nav class="navbar navbar-fixed-top navbar-inverse">
-    <div class="container-fluid">
-        <div class="navbar-text pull-left">
-            <a href="../widget/widget-list.html">
-                <span class="glyphicon glyphicon-chevron-left"></span></a>
-        </div>
-        <div class="navbar-text pull-right">
-            <a href="../widget/widget-list.html">
-                <span class="glyphicon glyphicon-ok"></span></a>
-        </div>
-        <div class="navbar-header">
-            <a class="navbar-brand" href="#">Widget Edit</a>
-        </div>
-    </div>
-</nav>
-<div class="container-fluid">
-    <form>
-        <div class="form-group">
-            <label for="name ">Name</label>
-            <input type="text" class="form-control" id="name" placeholder="Widget Name" value="">
-            <label for="text">Text</label>
-            <input class="form-control" id="text" type="text" placeholder="Text" value="Cristiano Ronaldo reaches 400 goals for Real Madrid F.C.">
-            <label for="size">Size</label>
-            <select type="text" id="size" class="form-control">
-                <option>1 (X-Large)</option>
-                <option>2 (Large)</option>
-                <option>3 (Medium)</option>
-                <option>4 (Small)</option>
-                <option>5 (Smallest)</option>
-            </select>
-            <a href="widget-list.html" class="btn btn-danger btn-block">Delete</a>
-        </div>
-    </form>
+<div ng-switch="widget.size">
+    <h1 ng-switch-when="1">{{widget.text}}</h1>
+    <h2 ng-switch-when="2">{{widget.text}}</h2>
+    <h3 ng-switch-when="3">{{widget.text}}</h3>
+    <h4 ng-switch-when="4">{{widget.text}}</h4>
+    <h5 ng-switch-when="5">{{widget.text}}</h5>
+    <h6 ng-switch-when="6">{{widget.text}}</h6>
 </div>
-<nav class="navbar navbar-fixed-bottom navbar-inverse">
-    <div class="container-fluid">
-        <div class="navbar-text pull-right">
-            <a href="../user/profile.html"><span class="glyphicon glyphicon-user"></span></a>
-        </div>
-    </div>
-</nav>

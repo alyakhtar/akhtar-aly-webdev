@@ -1,15 +1,32 @@
-<!-- <div ng-switch="widget.size"> -->
-	<!-- <h1 ng-switch-when="1">{{widget.text}}</h1>
-	<h2 ng-switch-when="2">{{widget.text}}</h2>
-	<h3 ng-switch-when="3">{{widget.text}}</h3>
-	<h4 ng-switch-when="4">{{widget.text}}</h4>
-	<h5 ng-switch-when="5">{{widget.text}}</h5>
-	<h6 ng-switch-when="6">{{widget.text}}</h6> -->
-<!-- </div> -->
+<div class="form-group">
+    <label  for="name ">Name</label>
+    <input  ng-model="model.widget.name"
+            type="text" 
+            class="form-control" 
+            id="name" 
+            placeholder="Widget Name">
 
-<h1 ng-if="widget.size == 1">{{widget.text}}</h1>
-<h2 ng-if="widget.size == 2">{{widget.text}}</h2>
-<h3 ng-if="widget.size == 3">{{widget.text}}</h3>
-<h4 ng-if="widget.size == 4">{{widget.text}}</h4>
-<h5 ng-if="widget.size == 5">{{widget.text}}</h5>
-<h6 ng-if="widget.size == 6">{{widget.text}}</h6>
+    <label  for="text">Text</label>
+    <input  ng-model="model.widget.text"
+            class="form-control" 
+            id="text" 
+            type="text" 
+            placeholder="Text">
+
+    <label for="size">Size</label>
+    <select 
+            ng-model="model.widget.size"
+            type="text" 
+            id="size" 
+            class="form-control">
+        <option value="1">1 (X-Large)</option>
+        <option value="2">2 (Large)</option>
+        <option value="3">3 (Medium)</option>
+        <option value="4">4 (Small)</option>
+        <option value="5">5 (Smallest)</option>
+    </select>
+    <a  ng-click="model.deleteWidget()" 
+        class="btn btn-danger btn-block">
+        Delete
+    </a>
+</div>

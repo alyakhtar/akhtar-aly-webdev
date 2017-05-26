@@ -43,7 +43,7 @@
 
         function createWebsite(userId, website){
             lastId = websites[websites.length - 1]._id;
-            id = parseInt(lastId) + '111' + '';
+            id = parseInt(lastId) + 111 + '';
             website._id = id;
             website.developerId = userId;
             websites.push(website);

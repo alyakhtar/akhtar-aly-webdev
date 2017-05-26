@@ -39,7 +39,7 @@
 
         function createPage(websiteId, page){
             lastId = pages[pages.length - 1]._id;
-            id = parseInt(lastId) + '111' + '';
+            id = parseInt(lastId) + 111 + '';
             page._id = id;
             page.websiteId = websiteId;
             pages.push(page);

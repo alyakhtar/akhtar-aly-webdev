@@ -16,6 +16,7 @@
 
         model.trustYoutubeUrl = trustYoutubeUrl;
         model.trustHTMLText = trustHTMLText;
+        model.widgetUrl = widgetUrl;
 
         model.widgets = widgetService.findWidgetsByPageId(pageId);
 
@@ -27,9 +28,14 @@
             return $sce.trustAsResourceUrl(baseUrl);
         }
 
-
         function trustHTMLText(text){
             return $sce.trustAsHtml(text);
         }
+
+        function widgetUrl(widget){
+            var url = 'views/widget/templates/widget-'+widget.widgetType.toLowerCase()+'.view.client.html';
+            return url;
+        }
+
     }
 })();
