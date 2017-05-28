@@ -7,16 +7,21 @@
 
         var model = this;
 
+        model.createWidget = createWidget;
+        
         var userId = $routeParams['userId'];
         var websiteId = $routeParams['websiteId'];
         var pageId = $routeParams['pageId'];
-        model.userId = userId;
-        model.websiteId = websiteId;
-        model.pageId = pageId;
-        model.createWidget = createWidget;
         
-        model.widget = widgetService.findWidgetsByPageId(websiteId);
+        function init(){
+            model.userId = userId;
+            model.websiteId = websiteId;
+            model.pageId = pageId;
+            model.widget = widgetService.findWidgetsByPageId(websiteId);
+        }
 
+        init();
+        
         function createWidget(widgetType){
             var newWidget = {
                 widgetType: widgetType

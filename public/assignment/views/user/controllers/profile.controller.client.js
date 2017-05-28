@@ -7,16 +7,26 @@
 
         var model = this;
 
+        model.updateUser = updateUser;
+        model.deleteUser = deleteUser;
+
         var userId = $routeParams['userId'];
 
-        model.update = update;
+        function init(){
+            model.user = userService.findUserById(userId);
+        }
 
-        model.user = userService.findUserById(userId);
-
-        function update(user){
+        init();
+        
+        function updateUser(user){
         	userService.updateUser(userId,user);
             model.message = 'Profile Updated!';
         	$location.url('/user/'+userId);
+        }
+
+        function deleteUser(userId){
+            userService.deleteUser(userId);
+            $location.url('/');
         }
     }
 })();

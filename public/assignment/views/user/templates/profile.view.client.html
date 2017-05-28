@@ -1,7 +1,7 @@
 <nav class="navbar navbar-fixed-top bg-primary">
     <div class="container-fluid">
         <div class="navbar-text pull-right">
-            <a ng-click="model.update(model.user)">
+            <a ng-click="model.updateUser(model.user)">
                 <span class="glyphicon glyphicon-ok"></span></a>
         </div>
         <div class="navbar-header">
@@ -55,7 +55,7 @@
 <nav class="navbar navbar-fixed-bottom bg-primary">
     <div class="container-fluid">
         <div class="navbar-text pull-right">
-            <a><span class="glyphicon glyphicon-user"></span></a>
+            <a ng-click="model.deleteUser(model.user._id)"><span class="glyphicon glyphicon-trash"></span></a>
         </div>
     </div>
 </nav>

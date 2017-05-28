@@ -7,12 +7,15 @@
 
         var model = this;
 
-        var userId = $routeParams['userId'];
-        model.userId = userId;
-
         model.createWebsite = createWebsite;
+
+        var userId = $routeParams['userId'];
         
-        model.websites = websiteService.findWebsitesByUser(userId);
+        function init(){
+            model.userId = userId;
+            model.websites = websiteService.findWebsitesByUser(userId);
+        }
+        init();
     	
     	function createWebsite(website){
     		websiteService.createWebsite(userId,website);

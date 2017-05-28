@@ -71,7 +71,9 @@
         }
 
         function deleteUser(userId){
-            
+            var user = findUserById(userId);
+            var index = users.indexOf(user);
+            users.splice(index,1);
         }
     }
 })();

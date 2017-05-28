@@ -7,20 +7,24 @@
 
         var model = this;
 
+        model.editWidgetUrl = editWidgetUrl;
+        model.updateWidget = updateWidget;
+        model.deleteWidget = deleteWidget;
+        
         var websiteId = $routeParams['websiteId'];
         var userId = $routeParams['userId'];
         var pageId = $routeParams['pageId'];
         var widgetId = $routeParams['widgetId'];
-        model.userId = userId;
-        model.websiteId = websiteId;
-        model.pageId = pageId;
-        model.widgetId = widgetId;
-        model.editWidgetUrl = editWidgetUrl;
-        model.updateWidget = updateWidget;
-        model.deleteWidget = deleteWidget;
 
-        model.widget = widgetService.findWidgetById(widgetId);
-        
+        function init(){
+            model.userId = userId;
+            model.websiteId = websiteId;
+            model.pageId = pageId;
+            model.widgetId = widgetId;
+            model.widget = widgetService.findWidgetById(widgetId);
+        }
+
+        init();
 
         function editWidgetUrl(widget){
             var url = 'views/widget/templates/widget-'+widget.widgetType.toLowerCase()+'.edit.view.client.html';

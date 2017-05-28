@@ -7,16 +7,22 @@
 
         var model = this;
 
-        var websiteId = $routeParams['websiteId'];
-        var userId = $routeParams['userId'];
-        var pageId = $routeParams['pageId'];
-        model.userId = userId;
-        model.websiteId = websiteId;
         model.updatePage = updatePage;
         model.deletePage = deletePage;
 
-        model.pages = pageService.findPagesByWebsiteId(websiteId);
-        model.page = pageService.findPageById(pageId);
+        var websiteId = $routeParams['websiteId'];
+        var userId = $routeParams['userId'];
+        var pageId = $routeParams['pageId'];
+
+        function init(){
+            model.userId = userId;
+            model.websiteId = websiteId;
+            model.pageId = pageId;
+            model.pages = pageService.findPagesByWebsiteId(websiteId);
+            model.page = pageService.findPageById(pageId);
+        }
+
+        init();
 
         function updatePage(page){
             page._id = pageId;

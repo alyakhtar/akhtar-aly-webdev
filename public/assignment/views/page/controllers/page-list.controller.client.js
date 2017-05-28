@@ -9,9 +9,14 @@
 
         var userId = $routeParams['userId'];
         var websiteId = $routeParams['websiteId'];
-        model.userId = userId;
-        model.websiteId = websiteId;
 
-        model.pages = pageService.findPagesByWebsiteId(websiteId);
+
+        function init(){
+            model.userId = userId;
+            model.websiteId = websiteId;
+            model.pages = pageService.findPagesByWebsiteId(websiteId);
+        }
+
+        init();
     }
 })();

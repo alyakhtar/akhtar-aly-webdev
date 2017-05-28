@@ -7,19 +7,24 @@
 
         var model = this;
 
-        var userId = $routeParams['userId'];
-        var websiteId = $routeParams['websiteId'];
-        var pageId = $routeParams['pageId'];
-        model.userId = userId;
-        model.websiteId = websiteId;
-        model.pageId = pageId;
-
         model.trustYoutubeUrl = trustYoutubeUrl;
         model.trustHTMLText = trustHTMLText;
         model.widgetUrl = widgetUrl;
+        
+        var userId = $routeParams['userId'];
+        var websiteId = $routeParams['websiteId'];
+        var pageId = $routeParams['pageId'];
 
-        model.widgets = widgetService.findWidgetsByPageId(pageId);
 
+        function init(){
+            model.userId = userId;
+            model.websiteId = websiteId;
+            model.pageId = pageId;
+            model.widgets = widgetService.findWidgetsByPageId(pageId);
+        }
+
+        init();
+        
         function trustYoutubeUrl(url){
             var baseUrl = "https://www.youtube.com/embed/";
             var splitUrl = url.split('/');

@@ -6,14 +6,19 @@
     function pageNewController($location, $routeParams, pageService) {
 
         var model = this;
+        
+        model.createPage = createPage;
 
         var userId = $routeParams['userId'];
         var websiteId = $routeParams['websiteId'];
-        model.userId = userId;
-        model.websiteId = websiteId;
-        model.createPage = createPage;
         
-        model.pages = pageService.findPagesByWebsiteId(websiteId);
+        function init(){
+            model.userId = userId;
+            model.websiteId = websiteId;
+            model.pages = pageService.findPagesByWebsiteId(websiteId);
+        }
+
+        init();
 
         function createPage(page){
             pageService.createPage(websiteId,page);

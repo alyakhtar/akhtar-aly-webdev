@@ -24,6 +24,10 @@ span.glyphicon.glyphicon-user{
 }
 
 span.glyphicon.glyphicon-plus{
+    color: white;
+}
+
+span.glyphicon.glyphicon-trash{
 	color: white;
 }
 
