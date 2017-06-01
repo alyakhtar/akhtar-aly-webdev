@@ -25,7 +25,6 @@
                     });
         }
         
-
         function findUserByCredentials(username, password) {
             var url = '/api/user?username='+username+'&password='+password;
             return $http
@@ -47,15 +46,6 @@
         }
 
         function createUser(user){
-            // if (users.length > 0){
-            //     id = users[users.length - 1]._id;
-            // } else{
-            //     id = 0;
-            // }
-
-            // id = parseInt(id) + 111 + '';
-            // user._id = id
-            // users.push(user);
             var url = '/api/user';
             return $http
                     .post(url,user)

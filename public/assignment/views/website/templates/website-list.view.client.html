@@ -15,7 +15,7 @@
 </nav>
 <div class="container-fluid">
     <ul class="list-group">
-        <li class="list-group-item active borderless">
+        <li ng-hide="model.message" class="list-group-item active borderless">
             <div class="row">
                 <div class="col-lg-5 col-md-8 col-xs-11">
                     Name
@@ -31,6 +31,9 @@
                 </div>
             </div>
         </li>
+        <div ng-show="model.message" class="alert alert-info">
+            {{model.message}}
+        </div>
         <li class="list-group-item borderless" ng-repeat="website in model.websites">
             <div class="row nowrapping">
                 <div class="col-lg-5 col-md-8 col-xs-11">

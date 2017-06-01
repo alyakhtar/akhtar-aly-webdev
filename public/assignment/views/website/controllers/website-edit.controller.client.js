@@ -15,21 +15,44 @@
 
         function init(){
             model.userId = userId;
-            model.website = websiteService.findWebsiteById(websiteId);
-            model.websites = websiteService.findWebsitesByUser(userId);
+            model.websiteId = websiteId;
+            websiteService
+                .findWebsiteById(websiteId)
+                .then(currentWebsite);
+            websiteService
+                .findWebsitesByUser(userId)
+                .then(renderWebsites)
         }
         init();
+
+        function currentWebsite(website){
+            model.website = website;
+        }
 
         function updateWebsite(website){
             website._id = websiteId;
             website.developerId = userId;
-            websiteService.updateWebsite(websiteId,website);
-            $location.url('/user/'+userId+'/website');
+            websiteService
+                .updateWebsite(websiteId,website)
+                .then(function(){
+                    $location.url('/user/'+userId+'/website');
+                });
         }
 
         function deleteWebsite(websiteId){
-            websiteService.deleteWebsite(websiteId);
-            $location.url('/user/'+userId+'/website');
+            websiteService
+                .deleteWebsite(websiteId)
+                .then(function(){
+                    $location.url('/user/'+userId+'/website');
+                });
+        }
+
+        function renderWebsites(websites){
+            if(websites.length < 1){
+                model.message = 'USER HAS NOT CREATED ANY WEBSITE!!!';
+            }else{
+                model.websites = websites; 
+            }
         }
     }
 })();

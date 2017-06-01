@@ -32,7 +32,7 @@
     <div class="row">
         <div class="col-sm-4 hidden-xs page-divide">
             <ul class="list-group">
-                <li class="list-group-item borderless active">
+                <li ng-hide="model.message" class="list-group-item borderless active">
                     Name
                 </li>
                 <li class="list-group-item borderless" ng-repeat="website in model.websites">
@@ -42,6 +42,9 @@
                     </a>
                 </li>
             </ul>
+            <div ng-show="model.message" class="alert alert-info">
+                {{model.message}}
+            </div>
         </div>
         <div class="col-xs-12 col-sm-8 pull-right ">
             <form>

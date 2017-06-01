@@ -3,7 +3,7 @@
         .module('WebAppMaker')
         .factory('websiteService', websiteService);
 
-    function websiteService() {
+    function websiteService($http) {
         var websites = [
           { "_id": "123", "name": "Facebook",    "developerId": "456", "description": "Lorem" },
           { "_id": "234", "name": "Tweeter",     "developerId": "456", "description": "Lorem" },
@@ -24,43 +24,45 @@
         return api;
 
         function findWebsiteById(websiteId) {
-            for (var u in websites) {
-                if (websites[u]._id === websiteId)
-                    return websites[u];
-            }
+            var url = '/api/website/'+websiteId;
+            return $http
+                    .get(url)
+                    .then(function(response){
+                        var website = response.data;
+                        return website;
+                    }); 
         }
 
         function findWebsitesByUser(userId){
-            var websiteList = [];
-            for (var u in websites){
-                var website = websites[u];
-                if (website.developerId === userId){
-                    websiteList.push(website)
-                }
-            }
-            return websiteList;
+            var url = '/api/user/'+userId+'/website';
+            return $http
+                    .get(url)
+                    .then(function(response){
+                        var websites = response.data;
+                        return websites;
+                    });
         }
 
         function createWebsite(userId, website){
-            lastId = websites[websites.length - 1]._id;
-            id = parseInt(lastId) + 111 + '';
-            website._id = id;
-            website.developerId = userId;
-            websites.push(website);
+            var url = '/api/user/'+userId+'/website';
+            return $http
+                    .post(url,website)
+                    .then(function(response){
+                        var website = response.data;
+                        return website;
+                    });
         }
 
         function updateWebsite(websiteId, website){
-            for(var w in websites){
-                if(websites[w]._id === websiteId){
-                    websites[w] = website;
-                }
-            }
+            var url = '/api/website/'+websiteId;
+            return $http
+                    .put(url,website);
         }   
 
         function deleteWebsite(websiteId){
-            var website = findWebsiteById(websiteId);
-            var index = websites.indexOf(website);
-            websites.splice(index,1);
+            var url = '/api/website/'+websiteId;
+            return $http
+                    .delete(url);
         }
     }
 })();
