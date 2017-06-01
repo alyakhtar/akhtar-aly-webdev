@@ -1,5 +1,5 @@
 {
-  "name": "web-dev",
+  "name": "akhtar-aly-webdev",
   "version": "1.0.0",
   "description": "Web Dev at Northeastern University",
   "main": "server.js",
@@ -14,5 +14,25 @@
     "start": "node server.js"
   },
   "author": "Jose G. Annunziato",
-  "license": "ISC"
+  "license": "ISC",
+  "directories": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alyakhtar/akhtar-aly-webdev.git"
+  },
+  "keywords": [
+    "Node",
+    "Express",
+    "Angular",
+    "Javascript",
+    "HTML",
+    "CSS",
+    "Bootstrap"
+  ],
+  "bugs": {
+    "url": "https://github.com/alyakhtar/akhtar-aly-webdev/issues"
+  },
+  "homepage": "https://github.com/alyakhtar/akhtar-aly-webdev#readme"
 }

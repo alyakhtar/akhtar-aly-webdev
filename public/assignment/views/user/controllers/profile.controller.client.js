@@ -13,20 +13,36 @@
         var userId = $routeParams['userId'];
 
         function init(){
-            model.user = userService.findUserById(userId);
+            userService
+                .findUserById(userId)
+                .then(renderData, handleError);
         }
-
         init();
         
         function updateUser(user){
-        	userService.updateUser(userId,user);
-            model.message = 'Profile Updated!';
-        	$location.url('/user/'+userId);
+        	userService
+                .updateUser(user._id,user)
+                .then(function(){
+                    model.message = 'Profile Updated!';
+                });
         }
 
         function deleteUser(userId){
-            userService.deleteUser(userId);
-            $location.url('/');
+            userService
+                .deleteUser(userId)
+                .then(function(){
+                    $location.url('/');
+                }, function () {
+                    model.error = "Unable to unregister you";
+                });
+        }
+
+        function renderData(user){
+            model.user = user;
+        }
+
+        function handleError(){
+            model.message = 'User Profile not found';
         }
     }
 })();

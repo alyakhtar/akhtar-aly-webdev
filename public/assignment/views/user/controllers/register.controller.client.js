@@ -13,24 +13,27 @@
 				model.message = 'Please enter username and password';
 			} else{
 				if (password === vpassword){
-					var user = userService.findUserByUsername(username)
-					if (user === null){
-						var newUser = {
-							username: username,
-							password: password,
-							_id: userService.getId()
-						}
-
-						userService.createUser(newUser);
-						$location.url('/user/'+ newUser._id);
-					} else{
-						model.message = 'User Already Exists!!';
-					}
+					userService
+						.findUserByUsername(username)
+						.then(
+							function(){
+								model.message = 'User Already Exists!!';
+							},
+							function(){
+							var newUser = {
+								username: username,
+								password: password,
+							}
+							userService
+								.createUser(newUser)
+								.then(function(user){
+									$location.url('/user/'+ user._id);
+								});	
+						});
 				} else{
 					model.message = 'Passwords do not match';
 				}
 			}
 		}
-
 	}
 })();

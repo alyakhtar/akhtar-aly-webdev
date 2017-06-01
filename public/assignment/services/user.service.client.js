@@ -3,14 +3,7 @@
         .module('WebAppMaker')
         .factory('userService', userService);
 
-    function userService() {
-
-        var users = [
-            { _id: "123", username: "alice", password: "alice", firstName: "Alice", lastName: "Wonder", email:"" },
-            { _id: "234", username: "bob", password: "bob", firstName: "Bob", lastName: "Marley", email:"" },
-            { _id: "345", username: "charly", password: "charly", firstName: "Charly", lastName: "Garcia", email:"" },
-            { _id: "456", username: "jannunzi", password: "jannunzi", firstName: "Jose", lastName: "Annunzi", email:"" }
-        ];
+    function userService($http) {
 
         var api = {
             createUser: createUser,
@@ -19,61 +12,77 @@
             findUserByCredentials: findUserByCredentials,
             updateUser: updateUser,
             deleteUser: deleteUser,
-            getId: getId
         };
         return api;
 
-        function getId(){
-            id = users[users.length - 1]._id;
-            return parseInt(id) + 111 + '';
-        }
-
         function findUserById(userId) {
-            for (var u in users) {
-                if (users[u]._id === userId)
-                    return users[u];
-            }
-            return null;
+            var url = '/api/user/'+userId;
+            return $http
+                    .get(url)
+                    .then(function(response){
+                        var user = response.data;
+                        return user;
+                    });
         }
+        
 
         function findUserByCredentials(username, password) {
-            for (var u in users) {
-                var user = users[u];
-                if (user.username === username &&
-                    user.password === password) {
-                    return user;
-                }
-            }
-            return null;
+            var url = '/api/user?username='+username+'&password='+password;
+            return $http
+                    .get(url)
+                    .then(function(response){
+                        var user = response.data;
+                        return user;
+                    });
         }
 
         function findUserByUsername(username){
-            for (var u in users){
-                var user = users[u];
-                if (user.username === username){
-                    return user;
-                }
-            }
-            return null;
+            var url = '/api/user?username='+username;
+            return $http
+                    .get(url)
+                    .then(function(response){
+                        var user = response.data;
+                        return user;
+                    });
         }
 
         function createUser(user){
-            users.push(user);
+            // if (users.length > 0){
+            //     id = users[users.length - 1]._id;
+            // } else{
+            //     id = 0;
+            // }
+
+            // id = parseInt(id) + 111 + '';
+            // user._id = id
+            // users.push(user);
+            var url = '/api/user';
+            return $http
+                    .post(url,user)
+                    .then(function(response){
+                        var user = response.data;
+                        return user;
+                    });
         }
 
         function updateUser(userId, userUp){
-            for (var u in users){
-                var user = users[u];
-                if (user._id === userId){
-                    users[u] = userUp;
-                }
-            }
+            var url = '/api/user/'+userId;
+            return $http
+                    .put(url,userUp)
+                    .then(function(response){
+                        var user = response.data;
+                        return user;
+                    });
         }
 
         function deleteUser(userId){
-            var user = findUserById(userId);
-            var index = users.indexOf(user);
-            users.splice(index,1);
+            var url = '/api/user/'+userId;
+            return $http
+                    .delete(url)
+                    .then(function(response){
+                        var user = response.data;
+                        return user;
+                    });
         }
     }
 })();

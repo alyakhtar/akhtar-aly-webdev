@@ -39,6 +39,11 @@ a.navbar-brand{
 	color: white;
 }
 
+.nowrapping{
+    white-space: nowrap;
+    display: flex;
+}
+
 .page-divide {
     border-color: darkgray;
     position: absolute;
