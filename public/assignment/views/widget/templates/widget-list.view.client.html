@@ -25,6 +25,9 @@
         </div>
         <div ng-include="model.widgetUrl(widget)"></div>
     </div>
+    <div ng-show="model.message" class="alert alert-info text-center">
+        {{model.message}}
+    </div>
 </div>
 
 <nav class="navbar navbar-inverse navbar-fixed-bottom">

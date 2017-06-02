@@ -20,7 +20,9 @@
             model.userId = userId;
             model.websiteId = websiteId;
             model.pageId = pageId;
-            model.widgets = widgetService.findWidgetsByPageId(pageId);
+            widgetService
+                .findWidgetsByPageId(pageId)
+                .then(renderWidgets);
         }
 
         init();
@@ -40,6 +42,14 @@
         function widgetUrl(widget){
             var url = 'views/widget/templates/widget-'+widget.widgetType.toLowerCase()+'.view.client.html';
             return url;
+        }
+
+        function renderWidgets(widgets){
+            if(widgets.length < 1){
+                model.message = 'USER HAS NOT CREATED ANY WIDGETS!!!';
+            }else{
+                model.widgets = widgets; 
+            }
         }
 
     }

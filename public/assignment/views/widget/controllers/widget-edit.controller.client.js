@@ -21,24 +21,38 @@
             model.websiteId = websiteId;
             model.pageId = pageId;
             model.widgetId = widgetId;
-            model.widget = widgetService.findWidgetById(widgetId);
+            widgetService
+                .findWidgetById(widgetId)
+                .then(currentWidget);
         }
-
         init();
 
         function editWidgetUrl(widget){
-            var url = 'views/widget/templates/widget-'+widget.widgetType.toLowerCase()+'.edit.view.client.html';
-            return url + '';
+            if(typeof widget !== 'undefined'){
+                var widgetType = widget.widgetType.toLowerCase();
+                var url = 'views/widget/templates/widget-'+widgetType+'.edit.view.client.html';
+                return url + '';
+            }
         }
 
         function updateWidget(widget){
-            widgetService.updateWidget(widgetId,widget);
-            $location.url('/user/'+userId+'/website/'+websiteId+'/page/'+pageId+'/widget');
+            widgetService
+                .updateWidget(widgetId,widget)
+                .then(function(){
+                    $location.url('/user/'+userId+'/website/'+websiteId+'/page/'+pageId+'/widget');
+                })
         }
 
         function deleteWidget(){
-            widgetService.deleteWidget(widgetId);
-            $location.url('/user/'+userId+'/website/'+websiteId+'/page/'+pageId+'/widget');
+            widgetService
+                .deleteWidget(widgetId)
+                .then(function(){
+                    $location.url('/user/'+userId+'/website/'+websiteId+'/page/'+pageId+'/widget');
+                })
+        }
+
+        function currentWidget(widget){
+            model.widget = widget; 
         }
     }
 })();

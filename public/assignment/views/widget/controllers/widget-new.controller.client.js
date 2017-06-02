@@ -17,17 +17,26 @@
             model.userId = userId;
             model.websiteId = websiteId;
             model.pageId = pageId;
-            model.widget = widgetService.findWidgetsByPageId(websiteId);
+            widgetService
+                .findWidgetsByPageId(websiteId)
+                .then(currentWidget);
         }
-
         init();
         
         function createWidget(widgetType){
             var newWidget = {
                 widgetType: widgetType
             }
-            var id = widgetService.createWidget(model.pageId,newWidget);
-            $location.url('/user/'+model.userId+'/website/'+model.websiteId+'/page/'+model.pageId+'/widget/'+id);
+            // var id = widgetService.createWidget(model.pageId,newWidget);
+            widgetService
+                .createWidget(model.pageId,newWidget)
+                .then(function(widget){
+                    $location.url('/user/'+model.userId+'/website/'+model.websiteId+'/page/'+model.pageId+'/widget/'+widget._id);
+                });
+        }
+
+        function currentWidget(widget){
+            model.widget = widget;
         }
     }
 })();
