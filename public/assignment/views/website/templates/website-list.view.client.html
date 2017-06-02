@@ -37,15 +37,15 @@
         <li class="list-group-item borderless" ng-repeat="website in model.websites">
             <div class="row nowrapping">
                 <div class="col-lg-5 col-md-8 col-xs-11">
-                    <a href="#!/user/{{model.userId}}/website/{{website._id}}/page">
+                    <a ng-click="model.updateAccessed(website)" href="">
                         {{website.name}}
                     </a>
                 </div>
                 <div class="col-lg-3 visible-lg">
-                    1/1/2017
+                    {{website.created | date}}
                 </div>
                 <div class="col-md-3 hidden-sm hidden-xs">
-                    2/2/2017
+                    {{website.accessed | date}}
                 </div>
                 <div class="col-xs-1">
                     <a href="#!/user/{{model.userId}}/website/{{website._id}}">

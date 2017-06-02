@@ -3,12 +3,14 @@
         .module('WebAppMaker')
         .controller('websiteListController', websiteListController);
 
-    function websiteListController($routeParams, websiteService) {
+    function websiteListController($location, $routeParams, websiteService) {
 
         var model = this;
 
         var userId = $routeParams['userId'];
         model.userId = userId;
+
+        model.updateAccessed = updateAccessed;
 
         function init(){
 	        websiteService
@@ -23,6 +25,16 @@
             }else{
                 model.websites = websites; 
             }
+        }
+
+        function updateAccessed(website){
+            var accessed = (new Date());
+            website.accessed = accessed;
+            websiteService
+                    .updateWebsite(website._id,website)
+                    .then(function(){
+                        $location.url('/user/'+userId+'/website/'+website._id+'/page');
+                    })
         }
     }
 })();

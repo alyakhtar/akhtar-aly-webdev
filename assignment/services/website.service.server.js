@@ -28,6 +28,17 @@ function findAllWebsitesForUser(req, res){
     res.json(websiteList);
 }
 
+function findWebsiteById(req, res){
+    var websiteId = req.params['websiteId'];
+    for(var w in websites){
+        if(websites[w]._id === websiteId){
+            res.json(websites[w]);
+            return;
+        }
+    }
+    res.sendStatus(404);
+}
+
 function createWebsite(req, res){
     var userId = req.params['userId'];
     var website = req.body;
@@ -37,17 +48,6 @@ function createWebsite(req, res){
     website.developerId = userId;
     websites.push(website);
     res.json(website)
-}
-
-function findWebsiteById(req, res){
-    var websiteId = req.params['websiteId'];
-    for(var w in websites){
-        if(websites[w]._id === websiteId){
-            res.json(websites[w]);
-            return;
-        }
-    }
-    res.sendStaus(404);
 }
 
 function updateWebsite(req, res){
@@ -60,7 +60,7 @@ function updateWebsite(req, res){
             return;
         }
     }
-    res.json(404);
+    res.sendStatus(404);
 }
 
 function deleteWebsite(req, res){
