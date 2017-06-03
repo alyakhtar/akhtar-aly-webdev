@@ -16,14 +16,16 @@
 </nav>
 
 <div class="container-fluid">
-    <div class="wd-widget" ng-repeat="widget in model.widgets">
-        <div class="drag-n-edit">
-            <a href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget/{{widget._id}}">
-                <span class="glyphicon glyphicon-cog"></span>
-            </a>
-            <span class="glyphicon glyphicon-align-justify"></span>
+    <div wbdv-sortable>
+        <div class="wd-widget" ng-repeat="widget in model.widgets">
+            <div class="drag-n-edit">
+                <a href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget/{{widget._id}}">
+                    <span class="glyphicon glyphicon-cog"></span>
+                </a>
+                <span class="glyphicon glyphicon-align-justify"></span>
+            </div>
+            <div ng-include="model.widgetUrl(widget)"></div>
         </div>
-        <div ng-include="model.widgetUrl(widget)"></div>
     </div>
     <div ng-show="model.message" class="alert alert-info text-center">
         {{model.message}}
