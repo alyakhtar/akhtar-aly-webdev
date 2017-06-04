@@ -10,6 +10,7 @@
         model.trustYoutubeUrl = trustYoutubeUrl;
         model.trustHTMLText = trustHTMLText;
         model.widgetUrl = widgetUrl;
+        model.updatePosition = updatePosition;
         
         var userId = $routeParams['userId'];
         var websiteId = $routeParams['websiteId'];
@@ -50,6 +51,11 @@
             }else{
                 model.widgets = widgets; 
             }
+        }
+
+        function updatePosition(start, end){
+            widgetService
+                .updatePosition(start,end,pageId);
         }
 
     }

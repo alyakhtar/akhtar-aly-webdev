@@ -11,6 +11,7 @@
             findWidgetsByPageId: findWidgetsByPageId,
             updateWidget: updateWidget,
             deleteWidget: deleteWidget,
+            updatePosition: updatePosition
         };
         return api;
 
@@ -63,6 +64,12 @@
                         var widget = response.data;
                         return widget;
                     });
+        }
+
+        function updatePosition(index1,index2,pageId){
+            var url = '/page/'+pageId+'/widget?initial='+index1+'&final='+index2;
+            return $http
+                    .put(url);
         }
     }
 })();
