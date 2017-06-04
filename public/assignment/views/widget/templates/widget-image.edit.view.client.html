@@ -27,28 +27,25 @@
                 class="form-control" 
                 id="width" 
                 type="text" 
-                name="width">
+                placeholder="width">
 
         <label  for="imageUpload">Upload</label>
         <input  name="myFile"
                 type="file"
                 id="imageUpload"
                 class="form-control">
-        <input  name="width"
-                value="{{model.widget.width}}" 
-                style="display: none">
         <input  name="userId"
                 value="{{model.userId}}"
-                style="display: none">
+                class="hidden">
         <input  name="websiteId"
                 value="{{model.websiteId}}"
-                style="display: none"/>
+                class="hidden"/>
         <input  name="pageId"
                 value="{{model.pageId}}"
-                style="display: none">
+                class="hidden">
         <input  name="widgetId"
                 value="{{model.widget._id}}"
-                style="display: none">
+                class="hidden">
         <button type="submit"
                 class="btn btn-block btn-primary">
                     Upload Image

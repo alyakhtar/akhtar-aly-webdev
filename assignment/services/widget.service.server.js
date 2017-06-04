@@ -116,8 +116,9 @@ function uploadImage(req, res){
     var destination   = myFile.destination;
     var size          = myFile.size;
     var mimetype      = myFile.mimetype;
-
+    
     widget = getWidget(widgetId);
+    widget.width = '100%';
     widget.url = req.protocol + '://' + req.get('host') + "/uploads/" + myFile.filename;
 
     var callbackUrl   = "/assignment/#!/user/"+userId+"/website/"+websiteId+'/page/'+pageId+'/widget/'+widgetId;
