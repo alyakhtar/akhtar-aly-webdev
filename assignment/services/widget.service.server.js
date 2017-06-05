@@ -110,7 +110,7 @@ function uploadImage(req, res){
     var websiteId = req.body.websiteId;
     var pageId = req.body.pageId;
 
-    var originalname  = myFile.originalname;
+    // var originalname  = myFile.originalname;
     var filename      = myFile.filename;
     var path          = myFile.path;
     var destination   = myFile.destination;
@@ -119,7 +119,7 @@ function uploadImage(req, res){
     
     widget = getWidget(widgetId);
     widget.width = '100%';
-    widget.url = req.protocol + '://' + req.get('host') + "/uploads/" + myFile.filename;
+    widget.url = req.protocol + '://' + req.get('host') + "/uploads/" + filename;
 
     var callbackUrl   = "/assignment/#!/user/"+userId+"/website/"+websiteId+'/page/'+pageId+'/widget/'+widgetId;
 
