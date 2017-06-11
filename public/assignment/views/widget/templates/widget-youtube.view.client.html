@@ -1,14 +1,7 @@
-<iframe width="{{widget.width}}" 
-        height="315"
-        ng-src="{{model.trustYoutubeUrl(widget.url)}}"
-        frameborder="0" 
-        allowfullscreen
-        class="visible-xs">
-</iframe>
-<iframe width="{{widget.width}}" 
-        height="500"
-        ng-src="{{model.trustYoutubeUrl(widget.url)}}" 
-        frameborder="0" 
-        allowfullscreen
-        class="hidden-xs">
-</iframe>
+<div class="youtube-widget">
+        <iframe width="{{widget.width}}"
+                ng-src="{{model.trustYoutubeUrl(widget.url)}}"
+                frameborder="0" 
+                allowfullscreen>
+        </iframe>
+</div>

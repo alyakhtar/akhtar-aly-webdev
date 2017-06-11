@@ -20,7 +20,7 @@
         init();
 
         function getTeamDetails(){
-            var urlBase = "http://api.sportradar.us/nfl-ot1/teams/"+teamId+"/profile.json?api_key="+key;
+            var urlBase = "https://api.sportradar.us/nfl-ot1/teams/"+teamId+"/profile.json?api_key="+key;
             $http
                 .get(urlBase)
                 .then(function(response){
