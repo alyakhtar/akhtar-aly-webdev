@@ -1,0 +1,82 @@
+<link rel="stylesheet" type="text/css" href="assets/css/team-info.css">
+<nav class="navbar navbar-fixed-top navbar-transparent">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <ul class="navbar-brand">
+                <a href="#!/" class="home">
+                    <span class="glyphicon glyphicon-home"></span>
+                </a>
+            </ul>
+       </div>
+    </div>
+</nav>
+<div>
+    <h1 class="text-center">{{model.name}}</h1>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-10 col-sm-offset-1">
+            <div class="col-md-4 col-sm-6" ng-repeat="player in model.players">
+                <div class="card-container">
+                    <div class="card">
+                        <div class="front">
+                            <div class="cover">
+                                <img src="http://www.killthecablebill.com/images/cancelcable/nfl-4-1.jpg" />
+                            </div>
+                            <div class="user">
+                                <img class="img-circle" ng-src="{{model.image}}" />
+                            </div>
+                            <div class="content">
+                                <div class="main">
+                                    <h3 class="name">{{player.name}}</h3>
+                                    <p class="profession">{{player.position}}</p>
+                                    <p class="text-center">Birth Date: {{player.birth_date}}</p>
+                                </div>
+                                <div class="footer"></div>
+                            </div>
+                        </div>
+                        <div class="back">
+                            <div class="content">
+                                <div class="main">
+                                    <br><br>
+                                    <h4><b>Height:</b> {{player.height}}</h4>
+                                    <h4><b>Weight:</b> {{player.weight}}</h4>
+                                    <h4><b>Birthplace:</b>{{player.birth_place}}</h4>
+                                    <h4><b>College:</b> {{player.college}}</h4>
+                                    <h4><b>High School:</b> {{player.high_school}}</h4>
+                                    <h4><b>College Conference:</b> {{player.college_conf}}</h4>
+                                    <h4><b>Rookie Year:</b>{{player.rookie_year}}</h4>
+                                    <h4 ng-show="player.draft" class="text-center"><b>Draft</b></h4>
+                                    <div    ng-show="player.draft" 
+                                            class="stats-container" >
+                                        <div class="stats">
+                                            <h4>{{player.draft.year}}</h4>
+                                            <p>
+                                                Year
+                                            </p>
+                                        </div>
+                                        <div class="stats">
+                                            <h4>{{player.draft.round}}</h4>
+                                            <p>
+                                                Round
+                                            </p>
+                                        </div>
+                                        <div class="stats">
+                                            <h4>{{player.draft.number}}</h4>
+                                            <p>
+                                                Number
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<nav class="navbar navbar-fixed-bottom bg-primary"></nav>

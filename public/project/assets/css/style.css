@@ -1,0 +1,13 @@
+body {
+    padding-top: 70px;
+    padding-bottom: 60px;
+}
+
+.team-image{
+    max-height: 330px;
+    max-width: 500px;
+}
+
+.glyph{
+    padding-left: 15px;
+}

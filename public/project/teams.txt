@@ -1,0 +1,47 @@
+NFC - 
+
+"Dallas Cowboys" - "e627eec7-bbae-4fa4-8e73-8e1d6bc5c060"
+"New York Giants" - "04aa1c9d-66da-489d-b16a-1dee3f2eec4d"
+"Philadelphia Eagles" - "386bdbf9-9eea-4869-bb9a-274b0bc66e80"
+"Washington Redskins" - "22052ff7-c065-42ee-bc8f-c4691c50e624"
+
+"Green Bay Packers" - "a20471b4-a8d9-40c7-95ad-90cc30e46932"
+"Chicago Bears" - "7b112545-38e6-483c-a55c-96cf6ee49cb8"
+"Minnesota Vikings" - "33405046-04ee-4058-a950-d606f8c30852"
+"Detroit Lions" - "c5a59daa-53a7-4de0-851f-fb12be893e9e"
+
+"Atlanta Falcons" - "e6aa13a4-0055-48a9-bc41-be28dc106929"
+"Carolina Panthers" - "f14bf5cc-9a82-4a38-bc15-d39f75ed5314"
+"Tampa Bay Buccaneers" - "4254d319-1bc7-4f81-b4ab-b5e6f3402b69"
+"New Orleans Saints" - "0d855753-ea21-4953-89f9-0e20aff9eb73"
+
+"Arizona Cardinals" - "de760528-1dc0-416a-a978-b510d20692ff"
+"Los Angeles Rams" - "2eff2a03-54d4-46ba-890e-2bc3925548f3"
+"San Francisco 49ers" - "f0e724b0-4cbf-495a-be47-013907608da9"
+"Seattle Seahawks" - "3d08af9e-c767-4f88-a7dc-b920c6d2b4a8"
+
+
+
+AFC - 
+
+"Buffalo Bills" - "768c92aa-75ff-4a43-bcc0-f2798c2e1724"
+"New England Patriots" - "97354895-8c77-4fd4-a860-32e62ea7382a"
+"Miami Dolphins" - "4809ecb0-abd3-451d-9c4a-92a90b83ca06"
+"New York Jets" - "5fee86ae-74ab-4bdd-8416-42a9dd9964f3"
+
+"Baltimore Ravens" - "ebd87119-b331-4469-9ea6-d51fe3ce2f1c"
+"Cincinnati Bengals" - "ad4ae08f-d808-42d5-a1e6-e9bc4e34d123"
+"Cleveland Browns" - "d5a2eb42-8065-4174-ab79-0a6fa820e35e"
+"Pittsburgh Steelers" - "cb2f9f1f-ac67-424e-9e72-1475cb0ed398"
+
+"Jacksonville Jaguars" - "f7ddd7fa-0bae-4f90-bc8e-669e4d6cf2de"
+"Tennessee Titans" - "d26a1ca5-722d-4274-8f97-c92e49c96315"
+"Houston Texans" - "82d2d380-3834-4938-835f-aec541e5ece7"
+"Indianapolis Colts" - "82cf9565-6eb9-4f01-bdbd-5aa0d472fcd9"
+
+"Denver Broncos" - "ce92bd47-93d5-4fe9-ada4-0fc681e6caa0"
+"Oakland Raiders" - "1c1cec48-6352-4556-b789-35304c1a6ae1"
+"Kansas City Chiefs" - "6680d28d-d4d2-49f6-aace-5292d3ec02c2"
+"San Diego Chargers" - "9dbb9060-ba0f-4920-829e-16d4d9246b5d"
+
+

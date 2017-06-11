@@ -1,0 +1,172 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,400,700);
+/*html, body{
+height:100%;
+min-height:100%;
+}*/
+
+h1, h2, h3, h4, h5, h6{
+    font-family: 'Open Sans Condensed', sans-serif, sans-serif;
+}
+
+.btn{
+    border-radius:0;
+        font-family: 'Open Sans Condensed', sans-serif, sans-serif;
+        margin-bottom:15px;
+
+    }
+    
+.primary-bg{
+    background-color:#F34336;
+    color:#fff;
+    }
+    
+.primary-bg:hover, .primary-bg:focus{
+    background-color:#F22C1E;
+    color:#fff;
+    }
+.secondary-bg{
+    background-color:#20BFA9;
+    color:#fff;
+    }
+    
+.secondary-bg:hover, secondary-bg:focus{
+    background-color:#1CA996;
+    color:#fff;
+    }
+/* About
+============================================== */
+
+.about {
+  background: url(http://rolyart.ro/wp-content/uploads/2016/07/bg.png) no-repeat top center;
+  background-size: cover;
+  background-color: rgba(255, 255, 255, 0.2);
+  text-align: center;
+  padding: 30px 0;
+  min-height:100%;
+  /*border-top:1px solid #ddd;*/
+  /*border-bottom:1px solid #ddd;*/
+}
+.about .fig-profile {
+  max-width: 200px;
+  max-height: 200px;
+  margin: 0 auto 0;
+  position: relative;
+  overflow: hidden !important;
+  border: 12px solid #fff;
+  border-radius: 50%;
+  margin-bottom: 30px;
+}
+.about .fig-profile:hover figcaption {
+  opacity: 1;
+  webkit-transition: all 0.3s ease-out;
+  -moz-transition: all 0.3s ease-out;
+  -o-transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out;
+  background-color: #20BFA9;
+}
+.about .fig-profile figcaption {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  border-radius: 50%;
+  text-align: center;
+  vertical-align: center;
+  line-height: 180px;
+  opacity: 0;
+  font-family: 'Open Sans Condensed', sans-serif;
+  height: 100%;
+  webkit-transition: all 0.3s ease-out;
+  -moz-transition: all 0.3s ease-out;
+  -o-transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out;
+  color: #fff;
+  font-size: 24px;
+}
+.about .name {
+  font-size: 48px;
+  text-transform: uppercase;
+  margin: 20px 0 0 0;
+}
+
+.about .caption{
+    font-size:16px;
+    }
+.about .position {
+  margin: 0;
+}
+.about .location {
+  margin: 5px 0 20px 0;
+}
+.about .slogan {
+  margin-bottom: 40px;
+  margin-top: 40px;
+  font-weight: 700;
+}
+.about p {
+  font-size: 16px;
+}
+.flag {
+  width: 39px;
+  margin: 0 auto;
+}
+.flag .blue {
+  background-color: #002B7F;
+  width: 13px;
+  height: 26px;
+  float: right;
+}
+.flag .yellow {
+  background-color: #FCD116;
+  width: 13px;
+  height: 26px;
+  float: right;
+}
+.flag .red {
+  background-color: #CE1126;
+  width: 13px;
+  height: 26px;
+  float: right;
+}
+
+/* Title Divider
+============================================ */
+.title-divider {
+  margin: 0 auto;
+  max-width: 400px;
+  margin-bottom: 20px;
+  overflow: hidden;
+  padding: 10px 0;
+}
+.hr-divider {
+  border-bottom: 1px solid #ddd;
+  position: relative;
+  float: left;
+  bottom: -4px;
+}
+.icon-separator {
+  float: left;
+  text-align: center;
+  margin-top: -7px;
+  font-size: 18px;
+  color: #F34336;
+  padding: 0;
+}
+.heading-divider {
+  margin-bottom: 40px;
+  margin-top: 30px;
+  display: flex;
+}
+.heading-divider .title {
+  flex-grow: 0;
+  -webkit-flex-grow: 0;
+  margin: 0 5px 0 0;
+  line-height: 1px;
+}
+.heading-divider .line-separator {
+  border-bottom: 1px solid #ddd;
+  border-top: 1px solid #ddd;
+  flex-grow: 1;
+  -webkit-flex-grow: 1;
+  height: 6px;
+  position: relative;
+}

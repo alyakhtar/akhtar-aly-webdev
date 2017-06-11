@@ -22,14 +22,14 @@
             </div>
         </form>
         <div class="row">
-        <div class="container-fluid flickrImages">
-            <div class="col-xs-4" ng-repeat="photo in model.photos.photo">
-                <img    ng-click="model.selectPhoto(photo)" 
-                        class="img-thumbnail"
-                        ng-src="https://farm{{photo.farm}}.staticflickr.com/{{photo.server}}/{{photo.id}}_{{photo.secret}}_c.jpg"/>
+            <div class="container-fluid flickrImages">
+                <div class="col-xs-4" ng-repeat="photo in model.photos.photo">
+                    <img    ng-click="model.selectPhoto(photo)" 
+                            class="img-thumbnail"
+                            ng-src="https://farm{{photo.farm}}.staticflickr.com/{{photo.server}}/{{photo.id}}_{{photo.secret}}_c.jpg"/>
+                </div>
             </div>
         </div>
-    </div>
     </section>
 
 <nav class="navbar navbar-fixed-bottom navbar-inverse">

@@ -1,0 +1,52 @@
+<link rel="stylesheet" type="text/css" href="assets/css/teams.css">
+<nav class="navbar navbar-fixed-top navbar-transparent">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <ul class="navbar-brand">
+                <a href="#!/" class="home">
+                    <span class="glyphicon glyphicon-home"></span>
+                </a>
+            </ul>
+       </div>
+    </div>
+</nav>
+
+<section id="portfolio-container" class="padding-60">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="text-center">
+                    <h1 class="padding-b-25">National Football Conference</h1>
+                </div>
+            </div>
+        </div>
+        <div id="portfolio">
+            <div ng-repeat="team in model.teams">
+                <div ng-if="team.conference === 'nfc'" class="tile scale-anm web all advertising">
+                    <a ng-click="model.getTeamDetails(team.id)">
+                        <img ng-src="{{team.url.small}}">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="text-center">
+                    <h1 class="padding-b-25">American Football Conference</h1>
+                </div>
+            </div>
+        </div>
+        <div id="portfolio">
+            <div ng-repeat="team in model.teams">
+                <div ng-if="team.conference === 'afc'" class="tile scale-anm web all advertising">
+                    <a ng-click="model.getTeamDetails(team.id)">
+                        <img ng-src="{{team.url.small}}">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</section>

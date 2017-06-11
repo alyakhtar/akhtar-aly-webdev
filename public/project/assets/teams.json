@@ -1,0 +1,202 @@
+[
+		{
+			"name" : "Dallas Cowboys",
+			"id" : "e627eec7-bbae-4fa4-8e73-8e1d6bc5c060",
+			"url" : {
+				"big" : "https://render.fineartamerica.com/images/rendered/default/poster/8.000/4.500/break/images-medium-5/8-dallas-cowboys-uniform-joe-hamilton.jpg",
+				"small" : "http://44d5i01rkpt329p8yqqf89h5.wpengine.netdna-cdn.com/wp-content/uploads/2015/07/Cowboys-logo1.jpg",
+				"thumb" : "https://is2-ssl.mzstatic.com/image/thumb/Purple122/v4/24/f3/cc/24f3cc4b-db80-4da7-ba56-0776274d4353/source/512x512bb.jpg"
+			},
+			"conference" : "nfc"
+		},
+		{
+			"name" : "New York Giants",
+			"id" : "04aa1c9d-66da-489d-b16a-1dee3f2eec4d",
+			"url" : {
+				"big" : "http://thegamehaus.com/wp-content/uploads/2017/04/wp1813874.jpg",
+				"small" : "http://www.inticeonline.com/wp-content/uploads/2016/01/New_York_Giants4.jpg",
+				"thumb" : "https://pbs.twimg.com/profile_images/638951060799750144/ENsm6xNZ.jpg"
+			},
+			"conference" : "nfc"
+		},
+		{
+			"name" : "Philadelphia Eagles",
+			"id" : "386bdbf9-9eea-4869-bb9a-274b0bc66e80",
+			"url" : {
+				"big" : "https://i.ytimg.com/vi/a9Md68NwaS4/maxresdefault.jpg",
+				"small" : "https://s-media-cache-ak0.pinimg.com/originals/1d/99/e3/1d99e3fe3807aade713acfff95f457b2.jpg",
+				"thumb" : "https://pbs.twimg.com/profile_images/683550280043069440/HuhoazES.jpg"
+			},
+			"conference" : "nfc"
+		},
+		{
+			"name" : "Washington Redskins",
+			"id" : "22052ff7-c065-42ee-bc8f-c4691c50e624",
+			"url" : {
+				"big" : "https://www.pixelstalk.net/wp-content/uploads/2016/05/Free-Download-Redskins-Wallpaper-HD.jpg",
+				"small" : "http://cdn.dailyheadlines.net/wp-content/uploads/2016/05/redskins.jpg",
+				"thumb" : "https://pbs.twimg.com/profile_images/804413499388608512/6Bi3tYin.jpg"
+			},
+			"conference" : "nfc"
+		},
+		{
+			"name" : "Green Bay Packers",
+			"id" : "a20471b4-a8d9-40c7-95ad-90cc30e46932",
+			"url" : {
+				"big" : "http://i.imgur.com/ZbJ9niH.jpg",
+				"small" : "https://s-media-cache-ak0.pinimg.com/originals/10/7b/ed/107bede07b4e52db895de5247784a5bc.jpg",
+				"thumb" : "https://pbs.twimg.com/profile_images/856549987697733632/4s096MPz.jpg"
+			},
+			"conference" : "nfc"
+		},
+		{
+			"name" : "Chicago Bears",
+			"id" : "7b112545-38e6-483c-a55c-96cf6ee49cb8",
+			"url" : {
+				"big" : "http://i0.wp.com/images.clipartnet.com/chicago-bears-clipart-chicago-bears-dr-odd-1920x1080_0ae194.jpg?quality=80&strip=all",
+				"small" : "https://s-media-cache-ak0.pinimg.com/originals/b4/bf/37/b4bf3795b210640512628e80afb41b46.jpg",
+				"thumb" : "https://pbs.twimg.com/profile_images/727538201812934656/tYT6etdU.jpg"
+			},
+			"conference" : "nfc"
+		},
+		{
+			"name" : "Minnesota Vikings",
+			"id" : "33405046-04ee-4058-a950-d606f8c30852",
+			"url" : {
+				"big" : "http://assets.keloland.com/images/images/default-source/default-album/minnesota-vikings.jpg?sfvrsn=0",
+				"small" : "https://i.ytimg.com/vi/9RAJBB6eae0/maxresdefault.jpg",
+				"thumb" : "https://pbs.twimg.com/profile_images/773155845941043202/v4hEis-Y.jpg"
+			},
+			"conference" : "nfc"
+		},
+		{
+			"name" : "Detroit Lions",
+			"id" : "c5a59daa-53a7-4de0-851f-fb12be893e9e",
+			"url" : {
+				"big" : "https://s-media-cache-ak0.pinimg.com/originals/00/bc/4f/00bc4fab04822263847760e1d9196258.jpg",
+				"small" : "http://www.trendingtoplists.com/wp-content/uploads/2015/07/Detroit_Lions3.jpg",
+				"thumb" : "https://pbs.twimg.com/profile_images/837304119861784576/_4E0u43k.jpg"
+			},
+			"conference" : "nfc"
+		},
+		{
+			"name" : "Atlanta Falcons",
+			"id" : "e6aa13a4-0055-48a9-bc41-be28dc106929",
+			"url" : {
+				"big" : "http://content.boards.atlantafalcons.com/monthly_2017_01/Atlanta-falcons-wallpaper-new.jpg.62de52a822aefc24e1d9d2952c39af1d.jpg",
+				"small" : "http://wallpapercave.com/wp/aAYQcnl.jpg",
+				"thumb" : "https://lh5.ggpht.com/fX6g25xe62YDGczRn4ZZS89PrNtA18ewozxcoa2dSBTDrxPDCqf7ACQjYAIhMqQPeYI"
+			},
+			"conference" : "nfc"
+		},
+		{
+			"name" : "Carolina Panthers",
+			"id" : "f14bf5cc-9a82-4a38-bc15-d39f75ed5314",
+			"url" : {
+				"big" : "https://s-media-cache-ak0.pinimg.com/originals/c5/79/70/c57970dd1281829e7c02eaa7c5541120.jpg",
+				"small" : "http://mediad.publicbroadcasting.net/p/wunc/files/201312/CarolinaPanthers2012.jpg",
+				"thumb" : "https://pbs.twimg.com/profile_images/857590219440181249/YVihRu8p.jpg"
+			},
+			"conference" : "nfc"
+		},
+		{
+			"name" : "Tampa Bay Buccaneers",
+			"id" : "4254d319-1bc7-4f81-b4ab-b5e6f3402b69",
+			"url" : {
+				"big" : "http://blog.hdwallsource.com/wp-content/uploads/2016/05/tampa-bay-buccaneers-desktop-hd-wallpaper-52947-54668-hd-wallpapers.jpg",
+				"small" : "http://prod.static.buccaneers.clubs.nfl.com/assets/images/wallpapers/Flag1024.jpg",
+				"thumb" : "http://is4.mzstatic.com/image/thumb/Purple111/v4/51/50/cc/5150cc28-2536-2a79-50e2-ef61b95ca04b/source/512x512bb.jpg"
+			},
+			"conference" : "nfc"
+		},
+		{
+			"name" : "New Orleans Saints",
+			"id" : "0d855753-ea21-4953-89f9-0e20aff9eb73",
+			"url" : {
+				"big" : "http://www.ospreydawn.com/assets/images/work/blog/NFCS-NewOrleans.jpg",
+				"small" : "http://www.dcclothesline.com/wp-content/uploads/2015/07/new_orleans_saints-logo-in-gold-background29.jpg",
+				"thumb" : "https://halcyonyarn.com/team-yarn-colors/images/new-orleans-saints.svg"
+			},
+			"conference" : "nfc"
+		},
+		{
+			"name" : "Arizona Cardinals",
+			"id" : "de760528-1dc0-416a-a978-b510d20692ff",
+			"url" : {
+				"big" : "http://wallpaper-gallery.net/images/arizona-cardinals-wallpaper/arizona-cardinals-wallpaper-14.jpg",
+				"small" : "https://s-media-cache-ak0.pinimg.com/originals/7c/54/a6/7c54a6c80657adb2ab8f7b9de3bec99b.jpg",
+				"thumb" : "https://pbs.twimg.com/profile_images/860016195067457536/jcNIFqDr.jpg"
+			},
+			"conference" : "nfc"
+		},
+		{
+			"name" : "San Francisco 49ers",
+			"id" : "f0e724b0-4cbf-495a-be47-013907608da9",
+			"url" : {
+				"big" : "http://blog.hdwallsource.com/wp-content/uploads/2016/09/san-francisco-49ers-logo-desktop-wallpaper-55987-57736-hd-wallpapers.jpg",
+				"small" : "https://www.cochranfirmdc.com/wp-content/uploads/2015/09/49ers-logo.jpg",
+				"thumb" : "https://pbs.twimg.com/profile_images/839935311656341504/ozBjBsTS.jpg"
+			},
+			"conference" : "nfc"
+		},
+		{
+			"name" : "Los Angeles Rams",
+			"id" : "2eff2a03-54d4-46ba-890e-2bc3925548f3",
+			"url" : {
+				"big" : "https://s1.ticketm.net/dam/a/f7a/c0b554f7-8801-4ef2-932d-e46db28d2f7a_269221_TABLET_LANDSCAPE_LARGE_16_9.jpg",
+				"small" : "http://wallpaper-gallery.net/images/rams-wallpaper/rams-wallpaper-2.jpg",
+				"thumb" : "https://www.allaccess.com/assets/img/editorial/raw/ra/rams2016.jpg"
+			},
+			"conference" : "nfc"
+		},
+		{
+			"name" : "Seattle Seahawks",
+			"id" : "3d08af9e-c767-4f88-a7dc-b920c6d2b4a8",
+			"url" : {
+				"big" : "http://swxrn.images.worldnow.com/images/12844683_G.jpg",
+				"small" : "http://www.trendingtoplists.com/wp-content/uploads/2015/07/Seattle_Seahawks2.jpg",
+				"thumb" : "http://a2.mzstatic.com/us/r30/Purple/v4/1e/b1/22/1eb12230-7d03-200e-6d58-1826df53d6e1/icon_512.png"
+			},
+			"conference" : "nfc"
+		},
+		{
+			"name" : "Buffalo Bills",
+			"id" : "97354895-8c77-4fd4-a860-32e62ea7382a",
+			"url" : {
+				"big" : "http://www.ospreydawn.com/assets/images/work/blog/AFCE-NewEngland.jpg",
+				"small" : "http://www.trendingtoplists.com/wp-content/uploads/2015/07/New_England_Patriots.jpg",
+				"thumb" : "https://pbs.twimg.com/profile_images/719973611025612805/xKS0UrN6.jpg"
+			},
+			"conference" : "afc"
+		},
+		{
+			"name" : "New England Patriots",
+			"id" : "768c92aa-75ff-4a43-bcc0-f2798c2e1724",
+			"url" : {
+				"big" : "https://pbs.twimg.com/profile_background_images/378800000078731022/22402b45263e193d83e1678ced64faae.jpeg",
+				"small" : "http://media.seat.today/wp-content/uploads/2016/03/Buffalo-Bulls-Tickets.jpg",
+				"thumb" : "https://s-media-cache-ak0.pinimg.com/736x/c0/95/e0/c095e00f0ccf0e410b8b5d58603209b3.jpg"
+			},
+			"conference" : "afc"
+		},
+		{
+			"name" : "Los Angeles Rams",
+			"id" : "2eff2a03-54d4-46ba-890e-2bc3925548f3",
+			"url" : {
+				"big" : "https://s1.ticketm.net/dam/a/f7a/c0b554f7-8801-4ef2-932d-e46db28d2f7a_269221_TABLET_LANDSCAPE_LARGE_16_9.jpg",
+				"small" : "http://wallpaper-gallery.net/images/rams-wallpaper/rams-wallpaper-2.jpg",
+				"thumb" : "https://www.allaccess.com/assets/img/editorial/raw/ra/rams2016.jpg"
+			},
+			"conference" : "afc"
+		},
+		{
+			"name" : "Seattle Seahawks",
+			"id" : "3d08af9e-c767-4f88-a7dc-b920c6d2b4a8",
+			"url" : {
+				"big" : "http://swxrn.images.worldnow.com/images/12844683_G.jpg",
+				"small" : "http://www.trendingtoplists.com/wp-content/uploads/2015/07/Seattle_Seahawks2.jpg",
+				"thumb" : "http://a2.mzstatic.com/us/r30/Purple/v4/1e/b1/22/1eb12230-7d03-200e-6d58-1826df53d6e1/icon_512.png"
+			},
+			"conference" : "afc"
+		}
+]

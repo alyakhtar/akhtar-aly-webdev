@@ -16,19 +16,23 @@
 					userService
 						.findUserByUsername(username)
 						.then(
-							function(){
-								model.message = 'User Already Exists!!';
+							function(user){
+								if(user === null){
+									var newUser = {
+										username: username,
+										password: password,
+									}
+									userService
+										.createUser(newUser)
+										.then(function(user){
+											$location.url('/user/'+ user._id);
+										});	
+								} else{
+									model.message = 'User Already Exists!!';
+								}
 							},
 							function(){
-							var newUser = {
-								username: username,
-								password: password,
-							}
-							userService
-								.createUser(newUser)
-								.then(function(user){
-									$location.url('/user/'+ user._id);
-								});	
+								model.message = 'User Already Exists!!';
 						});
 				} else{
 					model.message = 'Passwords do not match';

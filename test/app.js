@@ -14,6 +14,7 @@ module.exports = function(app) {
 
     var mongoose = require("mongoose");
     mongoose.connect(connectionString);
+    mongoose.Promise = require('q').Promise;
 
     var TestSchema = mongoose.Schema({
         message: String

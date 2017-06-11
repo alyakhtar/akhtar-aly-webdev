@@ -1,0 +1,31 @@
+<link rel="stylesheet" type="text/css" href="assets/css/player.css">
+<section id="about" class="section-content about">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+                <div class="flag">
+                    <img height="50" width="50" src="https://cdn1.iconfinder.com/data/icons/rounded-flat-country-flag-collection-1/2000/us-01.png">
+                </div>
+                <div class="clearfix"></div>
+                <h2 class="name"><b>{{model.player.first_name}}</b> {{model.player.last_name}}</</h2>
+                <h3 class="position">Jersey Number: {{model.player.jersey}}</h3>
+                <h4 class="text-center location">Position: {{model.player.position}}</h4>
+                <div class="title-divider">
+                    <span class="hr-divider col-xs-5"></span>
+                    <span class="icon-separator col-xs-2"><i class="fa fa-star"></i></span>
+                    <span class="hr-divider col-xs-5"></span>
+                </div>
+            </div>
+            <div class="col-md-8 col-md-offset-2 text-center">
+                <h4 class="text-center location">Birth Date: {{model.player.birth_date}}</h4>
+                <h4 class="text-center location">Place: {{model.player.birth_place}}</h4>
+                <h4 class="text-center location">College: {{model.player.college}}</h4>
+                <h4 class="text-center location">Height: {{model.player.height}}</h4>
+                <h4 class="text-center location">Weight: {{model.player.weight}}</h4>
+                
+                <a href="http://rolandtheme.com" class="btn btn-default secondary-bg btn-lg">View my passion</a>
+                <a href="http://rolyart.ro/contact" class="btn btn-default page-scroll primary-bg btn-lg">Request custom theme</a>
+            </div>
+        </div>
+    </div>
+</section>

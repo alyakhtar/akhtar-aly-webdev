@@ -1,4 +1,5 @@
 const app = require('../../express.js');
+var widgetModel = require('../models/widget/widget.model.server.js');
 
 var multer = require('multer');
 var storage = multer.diskStorage({
@@ -13,18 +14,6 @@ var storage = multer.diskStorage({
 });
 var upload = multer({storage: storage});
 
-var widgets = [
-          { "_id": "123", "widgetType": "HEADING", "pageId": "321", "size": "2", "text": "GIZMODO"},
-          { "_id": "234", "widgetType": "HEADING", "pageId": "321", "size": "4", "text": "Lorem ipsum"},
-          { "_id": "345", "widgetType": "IMAGE", "pageId": "321", "width": "100%",
-            "url": "http://lorempixel.com/1900/1200/"},
-          { "_id": "456", "widgetType": "HTML", "pageId": "321", "text": "<p>Lorem ipsum</p>"},
-          { "_id": "567", "widgetType": "HEADING", "pageId": "321", "size": "4", "text": "Lorem ipsum"},
-          { "_id": "678", "widgetType": "YOUTUBE", "pageId": "321", "width": "100%",
-            "url": "https://youtu.be/AM2Ivdi9c4E" },
-          { "_id": "789", "widgetType": "HTML", "pageId": "321", "text": "<p>Lorem ipsum</p>"}
-        ];
-
 app.post('/api/page/:pageId/widget', createWidget);
 app.get('/api/page/:pageId/widget', findAllWidgetsForPage);
 app.get('/api/widget/:widgetId', findWidgetById);
@@ -35,70 +24,59 @@ app.put('/page/:pageId/widget', updatePosition);
 
 function findAllWidgetsForPage(req, res){
     var pageId = req.params['pageId'];
-    var widgetList = [];
-    for (var w in widgets) {
-        var widget = widgets[w];
-        if (widget.pageId === pageId)
-            widgetList.push(widget);
-    }
-    res.json(widgetList);
+    widgetModel
+        .findAllWidgetsForPage(pageId)
+        .then(function(widgets){
+            res.json(widgets);
+        }, function(err){
+            res.sendStatus(404);
+        });
 }
 
 function findWidgetById(req, res){
     var widgetId = req.params['widgetId'];
-    for (var w in widgets){
-        var widget = widgets[w];
-        if (widget._id === widgetId){
+    widgetModel
+        .findWidgetById(widgetId)
+        .then(function(widget){
             res.json(widget);
-            return;
-        }
-    }
-    res.sendStatus(404);
+        }, function(err){
+            res.sendStatus(404);
+        });
 }
 
 function createWidget(req, res){
     var pageId = req.params['pageId'];
     var widget = req.body;
-    lastId = widgets[widgets.length - 1]._id;
-    id = parseInt(lastId) + 111 + '';
-    widget._id = id;
-    widget.pageId = pageId;
-    widgets.push(widget);
-    res.json(widget)
+    widgetModel
+        .createWidget(pageId, widget)
+        .then(function(widget){
+            res.json(widget);
+        }, function(err){
+            res.sendStatus(400);
+        });
 }
 
 function updateWidget(req, res){
-    var widgetId = req.params['widgetId']
+    var widgetId = req.params['widgetId'];
     var widget = req.body;
-    for(var w in widgets){
-        if(widgets[w]._id === widgetId){
-            widgets[w] = widget;
+    widgetModel
+        .updateWidget(widgetId, widget)
+        .then(function(){
             res.sendStatus(200);
-            return;
-        }
-    }       
-    res.sendStatus(404);
+        }, function(){
+            res.sendStatus(404);
+        });
 }
 
 function deleteWidget(req, res){
     var widgetId = req.params['widgetId'];
-    for (var w in widgets){
-        var widget = widgets[w];
-        if (widget._id === widgetId){
-            widgets.splice(w,1);
+    widgetModel
+        .deleteWidget(widgetId)
+        .then(function(){
             res.sendStatus(200);
-            return;
-        }
-    }
-    res.sendStatus(404);
-}
-
-function getWidget(widgetId){
-    for(var w in widgets){
-        if(widgets[w]._id === widgetId){
-            return widgets[w];
-        }
-    }
+        }, function(){
+            res.sendStatus(404);
+        });
 }
 
 function uploadImage(req, res){
@@ -116,14 +94,25 @@ function uploadImage(req, res){
     var destination   = myFile.destination;
     var size          = myFile.size;
     var mimetype      = myFile.mimetype;
-    
-    widget = getWidget(widgetId);
-    widget.width = '100%';
-    widget.url = req.protocol + '://' + req.get('host') + "/uploads/" + filename;
 
-    var callbackUrl   = "/assignment/#!/user/"+userId+"/website/"+websiteId+'/page/'+pageId+'/widget/'+widgetId;
+    widgetModel
+        .findWidgetById(widgetId)
+        .then(function (widget){
+            widget.width = '100%';
+            widget.url = req.protocol + '://' + req.get('host') + "/uploads/" + filename;
+            pageId = widget._page;
 
-    res.redirect(callbackUrl);
+            widgetModel
+                .updateWidget(widget._id, widget)
+                .then(function(widget){
+                    var callbackUrl = "/assignment/#!/user/"+userId+"/website/"+websiteId+'/page/'+pageId+'/widget/'+widgetId;
+                    res.redirect(callbackUrl);
+                }, function(err){
+                    res.sendStatus(404);
+                });
+        }, function (error) {
+            res.sendStatus(400).send(error);
+        });
 }
 
 function updatePosition(req,res){
@@ -131,34 +120,41 @@ function updatePosition(req,res){
     end = req.query.final;
     pageId = req.params['pageId'];
 
-    initial = 0;
-    final = 0;
+    widgetModel
+        .reorderWidget(pageId, start, end)
+        .then(function(){
+            res.sendStatus(200);
+        }, function(){
+            res.sendStatus(404);
+        });
 
-    for(var i in widgets){
-        if(widgets[i].pageId === pageId){
-            if(parseInt(start) === initial){
-                temp = widgets[i];
-                widgets.splice(i,1);
-                break;
-            }
-            initial += 1;
-        }
-    }
+    // initial = 0;
+    // final = 0;
+
+    // for(var i in widgets){
+    //     if(widgets[i].pageId === pageId){
+    //         if(parseInt(start) === initial){
+    //             temp = widgets[i];
+    //             widgets.splice(i,1);
+    //             break;
+    //         }
+    //         initial += 1;
+    //     }
+    // }
     
-    for(var j in widgets){
-        if(widgets[j].pageId === pageId){
-            if(parseInt(end) === final){
-                widgets.splice(j, 0, temp);
-                break;
-            }
-            final += 1;
-        }
-        if(parseInt(j)+1 === widgets.length){
-            widgets.push(temp);
-        }
-    }
-    
-    res.sendStatus(200);
+    // for(var j in widgets){
+    //     if(widgets[j].pageId === pageId){
+    //         if(parseInt(end) === final){
+    //             widgets.splice(j, 0, temp);
+    //             break;
+    //         }
+    //         final += 1;
+    //     }
+    //     if(parseInt(j)+1 === widgets.length){
+    //         widgets.push(temp);
+    //     }
+    // }
+    // res.sendStatus(200);
 }
 
 

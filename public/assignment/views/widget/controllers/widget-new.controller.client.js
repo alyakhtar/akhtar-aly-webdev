@@ -17,15 +17,12 @@
             model.userId = userId;
             model.websiteId = websiteId;
             model.pageId = pageId;
-            widgetService
-                .findWidgetsByPageId(websiteId)
-                .then(currentWidget);
         }
         init();
         
         function createWidget(widgetType){
             var newWidget = {
-                widgetType: widgetType
+                type: widgetType
             }
             widgetService
                 .createWidget(model.pageId,newWidget)
@@ -34,8 +31,5 @@
                 });
         }
 
-        function currentWidget(widget){
-            model.widget = widget;
-        }
     }
 })();

@@ -8,7 +8,6 @@
         model.login = login;
 
         function login(username, password) {
-
             if(username && password){
                 userService
                     .findUserByCredentials(username, password)
@@ -18,7 +17,11 @@
             }
 
             function renderData(user){
-                $location.url('/user/' + user._id);
+                if(user !== null){
+                    $location.url('/user/' + user._id);
+                } else{
+                    model.message = "Incorrect username/password, please try again!";    
+                }
             }
 
             function handleError(error) {

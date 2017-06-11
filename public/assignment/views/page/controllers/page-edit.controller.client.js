@@ -33,7 +33,7 @@
 
         function updatePage(page){
             page._id = pageId;
-            page.developerId = websiteId;
+            page._website = websiteId;
             var date = (new Date());
             page.accessed = date;
             pageService

@@ -21,12 +21,11 @@
     	
     	function createWebsite(website){
             var date = (new Date());
-            website.created = date;
             website.accessed = date;
     		websiteService
                 .createWebsite(userId,website)
                 .then(function(website){
-            		$location.url('/user/' + website.developerId +'/website');
+            		$location.url('/user/' + website._user +'/website');
                 });
     	}
 

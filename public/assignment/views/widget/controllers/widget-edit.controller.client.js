@@ -29,7 +29,7 @@
 
         function editWidgetUrl(widget){
             if(typeof widget !== 'undefined'){
-                var widgetType = widget.widgetType.toLowerCase();
+                var widgetType = widget.type.toLowerCase();
                 var url = 'views/widget/templates/widget-'+widgetType+'.edit.view.client.html';
                 return url + '';
             }

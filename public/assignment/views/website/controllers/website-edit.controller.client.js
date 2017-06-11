@@ -31,7 +31,7 @@
 
         function updateWebsite(website){
             website._id = websiteId;
-            website.developerId = userId;
+            website._user = userId;
             website.accessed = (new Date());
             websiteService
                 .updateWebsite(websiteId,website)
