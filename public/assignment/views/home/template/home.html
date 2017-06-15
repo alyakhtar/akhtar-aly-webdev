@@ -16,10 +16,18 @@
                     </h1>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#!/login">Login</a></li>
-                <li><a href="#!/register">Register</a></li>
-                <li><a href="#!/profile">Profile</a></li>
-                <li><a href="">Logout</a></li>
+                <li ng-show="!model.currentUser._id">
+                    <a href="#!/login">Login</a>
+                </li>
+                <li ng-show="!model.currentUser._id">
+                    <a href="#!/register">Register</a>
+                </li>
+                <li ng-show="model.currentUser._id">
+                    <a href="#!/profile">Profile</a>
+                </li>
+                <li ng-show="model.currentUser._id">
+                    <a ng-click="model.logout()" href="">Logout</a>
+                </li>
             </ul>
         </div>
     </div>

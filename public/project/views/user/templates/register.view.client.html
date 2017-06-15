@@ -11,6 +11,13 @@
     </div>
 </nav>
 <h1>Join Us!</h1>
+<div class="col-sm-4 col-sm-offset-4">
+    <div    ng-show="model.message" 
+            class="alert alert-danger alert text-center">
+            {{model.message}}
+    </div>
+</div>
+<br><br>
 <div class="login">
     <div class="ribbon-wrapper h2 ribbon-red">
         <div class="ribbon-front">
@@ -26,7 +33,11 @@
                     <div class="input-group-addon">
                         <span class="glyphicon glyphicon-user"></span> 
                     </div>
-                    <input type="text" class="form-control" id="email" name="email">
+                    <input  ng-model="username"
+                            type="text" 
+                            class="form-control"
+                            name="email"
+                            placeholder="username">
                 </div>
             </li>
             <li>
@@ -34,7 +45,11 @@
                     <div class="input-group-addon">
                         <span class="glyphicon glyphicon-lock"></span> 
                     </div>
-                    <input type="password" class="form-control" id="email" name="email">
+                    <input  ng-model="password"
+                            type="password" 
+                            class="form-control" 
+                            name="email"
+                            placeholder="password">
                 </div>
             </li>
             <li>
@@ -42,12 +57,18 @@
                     <div class="input-group-addon">
                         <span class="glyphicon glyphicon-lock"></span> 
                     </div>
-                    <input type="password" class="form-control" id="email" name="email">
+                    <input  ng-model="password2"
+                            type="password" 
+                            class="form-control" 
+                            name="email"
+                            placeholder="verify password">
                 </div>
             </li>
         </ul>
     </form>
     <div class="submit">
-        <input type="submit" onclick="myFunction()" value="Register">
+        <input  type="submit" 
+                ng-click="model.register(username,password,password2)" 
+                value="Register">
     </div>
 </div>

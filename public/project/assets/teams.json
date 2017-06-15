@@ -161,41 +161,161 @@
 		},
 		{
 			"name" : "Buffalo Bills",
-			"id" : "97354895-8c77-4fd4-a860-32e62ea7382a",
+			"id" : "768c92aa-75ff-4a43-bcc0-f2798c2e1724",
 			"url" : {
 				"big" : "http://www.ospreydawn.com/assets/images/work/blog/AFCE-NewEngland.jpg",
-				"small" : "http://www.trendingtoplists.com/wp-content/uploads/2015/07/New_England_Patriots.jpg",
+				"small" : "http://media.seat.today/wp-content/uploads/2016/03/Buffalo-Bulls-Tickets.jpg",
 				"thumb" : "https://pbs.twimg.com/profile_images/719973611025612805/xKS0UrN6.jpg"
 			},
 			"conference" : "afc"
 		},
 		{
 			"name" : "New England Patriots",
-			"id" : "768c92aa-75ff-4a43-bcc0-f2798c2e1724",
+			"id" : "97354895-8c77-4fd4-a860-32e62ea7382a",
 			"url" : {
 				"big" : "https://pbs.twimg.com/profile_background_images/378800000078731022/22402b45263e193d83e1678ced64faae.jpeg",
-				"small" : "http://media.seat.today/wp-content/uploads/2016/03/Buffalo-Bulls-Tickets.jpg",
+				"small" : "http://www.trendingtoplists.com/wp-content/uploads/2015/07/New_England_Patriots.jpg",
 				"thumb" : "https://s-media-cache-ak0.pinimg.com/736x/c0/95/e0/c095e00f0ccf0e410b8b5d58603209b3.jpg"
 			},
 			"conference" : "afc"
 		},
 		{
-			"name" : "Los Angeles Rams",
-			"id" : "2eff2a03-54d4-46ba-890e-2bc3925548f3",
+			"name" : "Miami Dolphins",
+			"id" : "4809ecb0-abd3-451d-9c4a-92a90b83ca06",
 			"url" : {
-				"big" : "https://s1.ticketm.net/dam/a/f7a/c0b554f7-8801-4ef2-932d-e46db28d2f7a_269221_TABLET_LANDSCAPE_LARGE_16_9.jpg",
-				"small" : "http://wallpaper-gallery.net/images/rams-wallpaper/rams-wallpaper-2.jpg",
-				"thumb" : "https://www.allaccess.com/assets/img/editorial/raw/ra/rams2016.jpg"
+				"big" : "http://unisci24.com/data_images/wlls/34/286794-miami-dolphins.jpg",
+				"small" : "https://s-media-cache-ak0.pinimg.com/originals/7c/3e/e9/7c3ee91e4c6d332fa5596d885d96ded3.jpg",
+				"thumb" : "https://pbs.twimg.com/profile_images/804413390114488320/7q_6hxSD.jpg"
 			},
 			"conference" : "afc"
 		},
 		{
-			"name" : "Seattle Seahawks",
-			"id" : "3d08af9e-c767-4f88-a7dc-b920c6d2b4a8",
+			"name" : "New York Jets",
+			"id" : "5fee86ae-74ab-4bdd-8416-42a9dd9964f3",
 			"url" : {
-				"big" : "http://swxrn.images.worldnow.com/images/12844683_G.jpg",
-				"small" : "http://www.trendingtoplists.com/wp-content/uploads/2015/07/Seattle_Seahawks2.jpg",
-				"thumb" : "http://a2.mzstatic.com/us/r30/Purple/v4/1e/b1/22/1eb12230-7d03-200e-6d58-1826df53d6e1/icon_512.png"
+				"big" : "http://lbc9.net/sports/american-football/nfl/nfl-teams/new-york-jets/nfl-new-york-jets-logo-green-wallpaper.jpg",
+				"small" : "http://www.imgbase.info/images/safe-wallpapers/sports/nfl/25566-sports_new_york_jets_wallpaper.jpg",
+				"thumb" : "https://pbs.twimg.com/profile_images/798337196424101888/nt0g8k41.jpg"
+			},
+			"conference" : "afc"
+		},
+		{
+			"name" : "Baltimore Ravens",
+			"id" : "ebd87119-b331-4469-9ea6-d51fe3ce2f1c",
+			"url" : {
+				"big" : "http://fanspeak.com/baltimoreravens/files/2013/08/baltimore-ravens-logo-hd-widescreen-wallpaper.jpg",
+				"small" : "https://spookyexpress.com/wp-content/uploads/2016/08/Baltimore_Ravens.jpg",
+				"thumb" : "https://pbs.twimg.com/profile_images/804691323982737408/zN_T-d7R.jpg"
+			},
+			"conference" : "afc"
+		},
+		{
+			"name" : "Cincinnati Bengals",
+			"id" : "ad4ae08f-d808-42d5-a1e6-e9bc4e34d123",
+			"url" : {
+				"big" : "http://www.ospreydawn.com/assets/images/work/blog/AFCN-Cincinnati.jpg",
+				"small" : "http://www.trendingtoplists.com/wp-content/uploads/2015/07/CincinnatiBengals.jpg",
+				"thumb" : "https://is2-ssl.mzstatic.com/image/thumb/Purple71/v4/a2/10/4a/a2104a03-e649-5b9e-1360-916d5af22d8a/source/512x512bb.jpg"
+			},
+			"conference" : "afc"
+		},
+		{
+			"name" : "Cleveland Browns",
+			"id" : "d5a2eb42-8065-4174-ab79-0a6fa820e35e",
+			"url" : {
+				"big" : "https://s-media-cache-ak0.pinimg.com/originals/35/ac/96/35ac96277af0d89bd3d407abb8dcfc5c.png",
+				"small" : "https://s-media-cache-ak0.pinimg.com/originals/4c/b8/e3/4cb8e32dc3e138131a815a9f64d41369.jpg",
+				"thumb" : "https://images.vexels.com/media/users/3/141834/isolated/preview/5c98f4cff6d29fd0f29fabc0bf7d66f4-cleveland-browns-american-football-by-vexels.png"
+			},
+			"conference" : "afc"
+		},
+		{
+			"name" : "Pittsburgh Steelers",
+			"id" : "cb2f9f1f-ac67-424e-9e72-1475cb0ed398",
+			"url" : {
+				"big" : "https://www.pixelstalk.net/wp-content/uploads/2016/06/Photos-Pittsburgh-Steelers-Logo-Wallpaper-HD.jpg",
+				"small" : "https://s-media-cache-ak0.pinimg.com/originals/7d/21/57/7d2157acd20dd730c77f9b31bc03415d.jpg",
+				"thumb" : "https://slm-assets1.secondlife.com/assets/9759609/lightbox/Pittsburgh_Steelers_Trike(boxed)_PIC.jpg?1401477801"
+			},
+			"conference" : "afc"
+		},
+		{
+			"name" : "Jacksonville Jaguars",
+			"id" : "f7ddd7fa-0bae-4f90-bc8e-669e4d6cf2de",
+			"url" : {
+				"big" : "http://www.ospreydawn.com/assets/images/work/blog/AFCS-Jacksonville.jpg",
+				"small" : "http://www.trendingtoplists.com/wp-content/uploads/2015/07/Jacksonville_Jaguars_2013c.jpg",
+				"thumb" : "https://halcyonyarn.com/team-yarn-colors/images/jacksonville-jaguars.svg"
+			},
+			"conference" : "afc"
+		},
+		{
+			"name" : "Tennessee Titans",
+			"id" : "d26a1ca5-722d-4274-8f97-c92e49c96315",
+			"url" : {
+				"big" : "http://www.drodd.com/images14/tennessee-titans10.jpg",
+				"small" : "https://s-media-cache-ak0.pinimg.com/originals/a6/69/c5/a669c5fb501a1600f76d29708b3dbba6.jpg",
+				"thumb" : "https://halcyonyarn.com/team-yarn-colors/images/tennessee-titans.svg"
+			},
+			"conference" : "afc"
+		},
+		{
+			"name" : "Houston Texans",
+			"id" : "82d2d380-3834-4938-835f-aec541e5ece7",
+			"url" : {
+				"big" : "http://htownxchange.com/wp-content/uploads/AFCS-Houston.jpg",
+				"small" : "http://www.bettorsnet.com/payperhead/wp-content/uploads/2014/07/Texans-2014-3.jpg",
+				"thumb" : "https://s-media-cache-ak0.pinimg.com/736x/53/93/49/53934952b8ee14a65b44ed62466810e7.jpg"
+			},
+			"conference" : "afc"
+		},
+		{
+			"name" : "Indianapolis Colts",
+			"id" : "82cf9565-6eb9-4f01-bdbd-5aa0d472fcd9",
+			"url" : {
+				"big" : "http://wallpaper-gallery.net/images/free-indianapolis-colts-wallpaper/free-indianapolis-colts-wallpaper-24.jpg",
+				"small" : "http://www.trendingtoplists.com/wp-content/uploads/2015/07/Indianapolis_Colts2.jpg",
+				"thumb" : "https://pbs.twimg.com/profile_images/808439497583050752/8Z_S5pFp.jpg"
+			},
+			"conference" : "afc"
+		},
+		{
+			"name" : "Denver Broncos",
+			"id" : "ce92bd47-93d5-4fe9-ada4-0fc681e6caa0",
+			"url" : {
+				"big" : "https://s-media-cache-ak0.pinimg.com/originals/79/28/aa/7928aacc6b9a8b607621fbeb7593ea82.png",
+				"small" : "http://www.trendingtoplists.com/wp-content/uploads/2015/07/Denver_Broncos2-1.jpg",
+				"thumb" : "https://pbs.twimg.com/profile_images/818613120075599873/yMGvb5Cu.jpg"
+			},
+			"conference" : "afc"
+		},
+		{
+			"name" : "Oakland Raiders",
+			"id" : "1c1cec48-6352-4556-b789-35304c1a6ae1",
+			"url" : {
+				"big" : "https://s-media-cache-ak0.pinimg.com/originals/8e/24/70/8e2470a18e6ac4c354737b8a2a79019b.jpg",
+				"small" : "http://cdn.exstreamist.com/wp-content/uploads/2016/08/Watch-Oakland-Raiders-Online.jpg",
+				"thumb" : "https://halcyonyarn.com/team-yarn-colors/images/oakland-raiders.svg"
+			},
+			"conference" : "afc"
+		},
+		{
+			"name" : "Kansas City Chiefs",
+			"id" : "6680d28d-d4d2-49f6-aace-5292d3ec02c2",
+			"url" : {
+				"big" : "http://www.ospreydawn.com/assets/images/work/blog/AFCW-KansasCity.jpg",
+				"small" : "https://s-media-cache-ak0.pinimg.com/originals/ae/8f/33/ae8f33f3aa0ff0bb1c782dfae9a6159d.jpg",
+				"thumb" : "https://images-na.ssl-images-amazon.com/images/I/51n8X179nzL.png"
+			},
+			"conference" : "afc"
+		},
+		{
+			"name" : "San Diego Chargers",
+			"id" : "9dbb9060-ba0f-4920-829e-16d4d9246b5d",
+			"url" : {
+				"big" : "http://wallpapercave.com/wp/sUH0VWl.jpg",
+				"small" : "https://s-media-cache-ak0.pinimg.com/originals/5d/86/3c/5d863c9af628fe902bed39c8e1000db5.jpg",
+				"thumb" : "http://www.vectorlogo.org/logo/gif/s/118854__san_diego_chargers.gif"
 			},
 			"conference" : "afc"
 		}

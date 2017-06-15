@@ -3,7 +3,7 @@
         .module('WebAppMaker')
         .controller('websiteEditController', websiteEditController);
 
-    function websiteEditController($location, $routeParams, websiteService) {
+    function websiteEditController($location, $routeParams, currentUser, websiteService) {
 
         var model = this;
 
@@ -11,7 +11,7 @@
         model.deleteWebsite = deleteWebsite;
         
         var websiteId = $routeParams['websiteId'];
-        var userId = $routeParams['userId'];
+        var userId = currentUser._id;
 
         function init(){
             model.userId = userId;
@@ -36,7 +36,7 @@
             websiteService
                 .updateWebsite(websiteId,website)
                 .then(function(){
-                    $location.url('/user/'+userId+'/website');
+                    $location.url('/website');
                 });
         }
 
@@ -44,7 +44,7 @@
             websiteService
                 .deleteWebsite(websiteId)
                 .then(function(){
-                    $location.url('/user/'+userId+'/website');
+                    $location.url('/website');
                 });
         }
 

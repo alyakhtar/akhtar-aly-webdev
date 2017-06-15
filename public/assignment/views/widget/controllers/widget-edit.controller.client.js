@@ -3,7 +3,7 @@
         .module('WebAppMaker')
         .controller('widgetEditController', widgetEditController);
 
-    function widgetEditController($location, $routeParams, widgetService) {
+    function widgetEditController($location, $routeParams, currentUser, widgetService) {
 
         var model = this;
 
@@ -12,7 +12,7 @@
         model.deleteWidget = deleteWidget;
         
         var websiteId = $routeParams['websiteId'];
-        var userId = $routeParams['userId'];
+        var userId = currentUser._id;
         var pageId = $routeParams['pageId'];
         var widgetId = $routeParams['widgetId'];
 
@@ -39,7 +39,7 @@
             widgetService
                 .updateWidget(widgetId,widget)
                 .then(function(){
-                    $location.url('/user/'+userId+'/website/'+websiteId+'/page/'+pageId+'/widget');
+                    $location.url('/website/'+websiteId+'/page/'+pageId+'/widget');
                 })
         }
 
@@ -47,7 +47,7 @@
             widgetService
                 .deleteWidget(widgetId)
                 .then(function(){
-                    $location.url('/user/'+userId+'/website/'+websiteId+'/page/'+pageId+'/widget');
+                    $location.url('/website/'+websiteId+'/page/'+pageId+'/widget');
                 })
         }
 

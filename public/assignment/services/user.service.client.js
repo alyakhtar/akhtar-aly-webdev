@@ -6,29 +6,51 @@
     function userService($http) {
 
         var api = {
-            createUser: createUser,
-            findUserById: findUserById,
             findUserByUsername: findUserByUsername,
-            findUserByCredentials: findUserByCredentials,
             updateUser: updateUser,
             deleteUser: deleteUser,
+            login: login,
+            loggedin: loggedin,
+            register: register,
+            logout: logout
         };
         return api;
 
-        function findUserById(userId) {
-            var url = '/api/user/'+userId;
+        function register(user){
+            var url = "/api/register";
+            return $http
+                    .post(url, user)
+                    .then(function(response){
+                        return response.data;
+                    });
+        }
+
+        function logout(){
+            var url = "/api/logout";
+            return $http
+                    .post(url)
+                    .then(function(response){
+                        return response.data;
+                    });
+        }
+
+        function loggedin(){
+            var url = "/api/loggedin";
             return $http
                     .get(url)
                     .then(function(response){
-                        var user = response.data;
-                        return user;
+                        return response.data;
                     });
         }
-        
-        function findUserByCredentials(username, password) {
-            var url = '/api/user?username='+username+'&password='+password;
+
+        function login(username, password){
+            var url = '/api/login';
+            var credentials = {
+                username: username,
+                password: password
+            }
             return $http
-                    .get(url)
+                    .post(url, credentials)
                     .then(function(response){
                         var user = response.data;
                         return user;
@@ -39,16 +61,6 @@
             var url = '/api/user?username='+username;
             return $http
                     .get(url)
-                    .then(function(response){
-                        var user = response.data;
-                        return user;
-                    });
-        }
-
-        function createUser(user){
-            var url = '/api/user';
-            return $http
-                    .post(url,user)
                     .then(function(response){
                         var user = response.data;
                         return user;

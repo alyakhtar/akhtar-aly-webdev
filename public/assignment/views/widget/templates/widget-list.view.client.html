@@ -1,12 +1,12 @@
 <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container-fluid">
         <div class="navbar-text pull-left">
-            <a href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page">
+            <a href="#!/website/{{model.websiteId}}/page">
                 <span class="glyphicon glyphicon-chevron-left"></span>
             </a>
         </div>
         <div class="navbar-text pull-right">
-            <a href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget/new">
+            <a href="#!/website/{{model.websiteId}}/page/{{model.pageId}}/widget/new">
             <span class="glyphicon glyphicon-plus"></span></a>
         </div>
         <div class="navbar-header">
@@ -19,7 +19,7 @@
     <div wbdv-sortable>
         <div class="wd-widget" ng-repeat="widget in model.widgets">
             <div class="drag-n-edit" drag-n-edit>
-                <a href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget/{{widget._id}}">
+                <a href="#!/website/{{model.websiteId}}/page/{{model.pageId}}/widget/{{widget._id}}">
                     <span class="glyphicon glyphicon-cog"></span>
                 </a>
                 <span class="glyphicon glyphicon-align-justify"></span>
@@ -35,7 +35,7 @@
 <nav class="navbar navbar-inverse navbar-fixed-bottom">
     <div class="container-fluid">
         <div class="navbar-text pull-right">
-            <a href="#!/user/{{model.userId}}"><span class="glyphicon glyphicon-user"></span></a>
+            <a href="#!/profile"><span class="glyphicon glyphicon-user"></span></a>
         </div>
     </div>
 </nav>

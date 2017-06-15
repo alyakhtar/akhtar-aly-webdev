@@ -1,0 +1,150 @@
+<link rel="stylesheet" type="text/css" href="assets/css/profile.css">
+<nav class="navbar navbar-fixed-top bg-primary">
+    <div class="container-fluid">
+        <div class="navbar-text pull-right">
+              <a class="wall" href="#!/user/{{model.userId}}/wall">Wall</a>
+              <a class="wall" href="#!/login">Logout</a>
+        </div>
+        <div class="navbar-header">
+            <a class="navbar-brand">Profile</a>
+        </div>
+    </div>
+</nav>
+<div class="container-fluid">
+    <form class="form-horizontal" id="accountSetForm">
+          <div class="form-grup">
+              <label class="col-sm-5 control-label">Avatar</label>
+                <div class="custom-input-file">
+                    <label class="uploadPhoto">
+                        Edit
+                        <input type="file" class="change-avatar" name="image" id="avatar">
+                    </label>
+                </div>
+          </div>
+        <br>
+        <br>
+        <br>
+        <center>
+            <label  ng-show="model.message" 
+                    class="alert alert-success alert-label">
+                        {{model.message}}
+            </label>
+        </center>
+        <div class="form-grup">
+            <label class="col-sm-5 control-label">Profile Created on</label>
+            <div class="col-sm-3">
+                <h5>{{model.user.created | date}}</h5>
+            </div>
+        </div>
+        <br>
+        <br>
+        <div class="form-grup">
+            <label class="col-sm-5 control-label" for="fname">First Name</label>
+            <div class="col-sm-3">
+                <input  ng-model="model.user.first_name"
+                        type="text" 
+                        class="form-control"
+                        id="fname"
+                        value="">
+            </div>
+        </div>
+        <br>
+        <br><div class="form-grup">
+            <label class="col-sm-5 control-label" for="lname">Last Name</label>
+            <div class="col-sm-3">
+                <input  ng-model="model.user.last_name"
+                        type="text" 
+                        id="lname"
+                        class="form-control"
+                        value="">
+            </div>
+        </div>
+        <br>
+        <br>
+        <div class="form-grup">
+            <label class="col-sm-5 control-label" for="email">Email</label>
+            <div class="col-sm-3">
+                <input  ng-model="model.user.email"
+                        type="email"
+                        id="email" 
+                        class="form-control"
+                        value="">
+            </div>
+        </div>
+        <br>
+        <br>
+        <div class="form-grup">
+            <label class="col-sm-5 control-label" for="phone">Phone Number</label>
+            <div class="col-sm-3">
+                <input  ng-model="model.user.phone"
+                        type="number" 
+                        id="phone"
+                        class="form-control"
+                        value="">
+            </div>
+        </div>
+        <br>
+        <br>
+        <div class="form-grup">
+            <label class="col-sm-5 control-label" for="team">Team</label>
+            <div class="col-sm-3">
+              <select 
+                      ng-model="model.user.team"
+                      type="text"
+                      id="team"
+                      class="form-control">
+                      <option   value="1">----Select----</option>
+                      <option   ng-repeat="team in model.teams | orderBy : 'name'"
+                                value="{{team.name}}">
+                                    {{team.name}}
+                      </option>
+              </select>
+            </div>
+        </div>
+        <br>
+        <br>
+        <center>
+            <label  ng-show="model.error" 
+                    class="alert alert-danger alert-label">
+                        {{model.error}}
+            </label>
+        </center>
+        <div class="form-grup">
+            <label class="col-sm-5 control-label" for="newPassword">New Password</label>
+            <div class="col-sm-3">
+                <input  ng-model="password"
+                        type="password" 
+                        class="form-control" 
+                        id="newPassword">
+            </div>
+        </div>
+        <br>
+        <br>
+        <div class="form-grup">
+            <label class="col-sm-5 control-label" for="confirmPassword">Confirm Password</label>
+            <div class="col-sm-3">
+                <input  ng-model="password2"
+                        type="password" 
+                        class="form-control"
+                        id="confirmPassword">
+            </div>
+        </div>
+        <br>
+        <br>
+        <div class="form-grup">
+            <center>
+                <input  type="submit" 
+                        class="btn btn-success"
+                        value="Update Info"
+                        ng-click="model.update(model.user,password,password2)">
+            </center>
+        </div>
+    </form>
+</div>
+<nav class="navbar navbar-fixed-bottom bg-primary">
+    <div class="container-fluid">
+        <div class="navbar-text pull-right">
+            <a ng-click="model.deleteUser(model.user._id)"><span class="glyphicon glyphicon-trash"></span></a>
+        </div>
+    </div>
+</nav>

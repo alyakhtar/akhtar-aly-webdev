@@ -46,9 +46,9 @@
                     placeholder="Wonderland" 
                     value="Akhtar">
             <a  class="btn btn-primary btn-block" 
-                href="#!/user/{{model.user._id}}/website">Websites</a>
+                href="#!/website">Websites</a>
             <a  class="btn btn-danger btn-block" 
-                href="#!/">Logout</a>
+                ng-click="model.logout()">Logout</a>
         </div>
     </form>
 </div>

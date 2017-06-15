@@ -3,11 +3,11 @@
         .module('WebAppMaker')
         .controller('pageListController', pageListController);
 
-    function pageListController($location, $routeParams, pageService) {
+    function pageListController($location, $routeParams, currentUser, pageService) {
 
         var model = this;
 
-        var userId = $routeParams['userId'];
+        var userId = currentUser._id;
         var websiteId = $routeParams['websiteId'];
 
         model.updateAccessed = updateAccessed;
@@ -35,7 +35,7 @@
             pageService
                     .updatePage(page._id,page)
                     .then(function(){
-                        $location.url('/user/'+userId+'/website/'+websiteId+'/page/'+page._id+'/widget');
+                        $location.url('/website/'+websiteId+'/page/'+page._id+'/widget');
                     })
         }
     }

@@ -105,7 +105,7 @@ function uploadImage(req, res){
             widgetModel
                 .updateWidget(widget._id, widget)
                 .then(function(widget){
-                    var callbackUrl = "/assignment/#!/user/"+userId+"/website/"+websiteId+'/page/'+pageId+'/widget/'+widgetId;
+                    var callbackUrl = "/assignment/#!/website/"+websiteId+'/page/'+pageId+'/widget/'+widgetId;
                     res.redirect(callbackUrl);
                 }, function(err){
                     res.sendStatus(404);
@@ -127,34 +127,6 @@ function updatePosition(req,res){
         }, function(){
             res.sendStatus(404);
         });
-
-    // initial = 0;
-    // final = 0;
-
-    // for(var i in widgets){
-    //     if(widgets[i].pageId === pageId){
-    //         if(parseInt(start) === initial){
-    //             temp = widgets[i];
-    //             widgets.splice(i,1);
-    //             break;
-    //         }
-    //         initial += 1;
-    //     }
-    // }
-    
-    // for(var j in widgets){
-    //     if(widgets[j].pageId === pageId){
-    //         if(parseInt(end) === final){
-    //             widgets.splice(j, 0, temp);
-    //             break;
-    //         }
-    //         final += 1;
-    //     }
-    //     if(parseInt(j)+1 === widgets.length){
-    //         widgets.push(temp);
-    //     }
-    // }
-    // res.sendStatus(200);
 }
 
 

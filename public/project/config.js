@@ -9,18 +9,32 @@
                 templateUrl: 'home.html'
             })
             .when('/login', {
-            	templateUrl: 'views/user/templates/login.html'
+            	templateUrl: 'views/user/templates/login.view.client.html',
+                controller:'loginController',
+                controllerAs: 'model'
             })
             .when('/register', {
-                templateUrl: 'views/user/templates/register.html'
+                templateUrl: 'views/user/templates/register.view.client.html',
+                controller: 'registerController',
+                controllerAs: 'model'
+            })
+            .when('/user/:userId/wall', {
+                templateUrl: 'views/user/templates/wall.view.client.html',
+                // controller: 'wallController',
+                // controllerAs: 'model'
+            })
+            .when('/user/:userId', {
+                templateUrl: 'views/user/templates/profile.view.client.html',
+                controller: 'profileController',
+                controllerAs: 'model'
             })
             .when('/teams', {
-                templateUrl: 'views/user/templates/teams.html',
+                templateUrl: 'views/team/templates/teams.view.client.html',
                 controller: 'teams',
                 controllerAs: 'model'
             })
             .when('/team/:teamId', {
-                templateUrl: 'views/user/templates/team-info.html',
+                templateUrl: 'views/team/templates/team-info.view.client.html',
                 controller: 'teamDetails',
                 controllerAs: 'model'
             })

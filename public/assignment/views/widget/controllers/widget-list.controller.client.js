@@ -3,7 +3,7 @@
         .module('WebAppMaker')
         .controller('widgetListController', widgetListController);
 
-    function widgetListController($sce, $routeParams, widgetService) {
+    function widgetListController($sce, $routeParams, currentUser, widgetService) {
 
         var model = this;
 
@@ -12,7 +12,7 @@
         model.widgetUrl = widgetUrl;
         model.updatePosition = updatePosition;
         
-        var userId = $routeParams['userId'];
+        var userId = currentUser._id;
         var websiteId = $routeParams['websiteId'];
         var pageId = $routeParams['pageId'];
 

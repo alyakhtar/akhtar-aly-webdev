@@ -11,3 +11,24 @@ body {
 .glyph{
     padding-left: 15px;
 }
+
+a.navbar-brand{
+	color: white;
+}
+
+.wall{
+	color: #fff;
+	font-size: 16px;
+}
+
+.wall:hover{
+	color: white;
+}
+
+span.glyphicon.glyphicon-trash{
+	color: white;
+}
+
+.alert-label{
+	margin-left: 28px;
+}

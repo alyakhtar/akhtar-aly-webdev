@@ -1,86 +1,119 @@
 var app = require('../../express.js');
 var UserModel = require('../models/user/user.model.server.js');
+var passport = require('passport');
+var LocalStrategy = require('passport-local').Strategy;
+passport.use(new LocalStrategy(localStrategy));
+passport.serializeUser(serializeUser);
+passport.deserializeUser(deserializeUser);
 
-app.post('/api/user', createUser);
-app.get('/api/user', findUser);
-app.get('/api/user/:userId', findUserById);
+app.get('/api/user', findUserByUsername);
 app.put('/api/user/:userId', updateUser);
 app.delete('/api/user/:userId', deleteUser);
+app.post('/api/login', passport.authenticate('local'), login);
+app.get('/api/loggedin', loggedin);
+app.post('/api/logout', logout);
+app.post('/api/register', register);
 
-function findUser(req,res){
-	var query = req.query;
-	if(query.username && query.password){
-		findUserByCredentials(req,res);
-	} else if (query.username){
-		findUserByUsername(req,res);
-	}
-}
-
-function findUserByUsername(req,res){
-	var username = req.query.username;
-    UserModel
-        .findUserByUsername(username)
-        .then(function(user){
-            res.json(user);
-        }, function(err){
-            res.sendStatus(404);
-        });
-}
-
-function findUserByCredentials(req,res){
-    var username = req.query.username;
-    var password = req.query.password;
-    UserModel
-        .findUserByCredentials(username,password)
-        .then(function(user){
-            res.json(user);
-        }, function(err){
-            res.senStatus(404);
-        });
-}
-
-
-function findUserById(req,res){
-	var userId = req.params['userId'];
-    UserModel
-        .findUserById(userId)
-        .then(function(user){
-            res.json(user);
-        }, function(err){
-            res.send(err);
-        });
-}
-
-function createUser(req, res){
+function register(req, res){
     var user = req.body;
     UserModel
         .createUser(user)
         .then(function(user){
-            res.json(user);
-        }, function(err){
-            res.send(err);
+            if(user){
+                req.login(user, function(err) {
+                    if(err){
+                        res.status(400).send(err);
+                    } else{
+                        res.json(user);
+                    }
+                });
+            }
+
         });
 }
 
-function updateUser(req, res){
+function logout(req, res) {
+    req.logout();
+    res.sendStatus(200);
+}
+
+function loggedin(req, res) {
+    if(req.isAuthenticated()) {
+        res.json(req.user);
+    } else {
+        res.send('0');
+    }
+}
+
+function localStrategy(username, password, done) {
+    UserModel
+        .findUserByCredentials(username, password)
+        .then(
+            function(user) {
+                if (!user) {
+                    return done(null, false); 
+                }
+                return done(null, user);
+            },
+            function(err) {
+                if (err) {
+                    return done(err); }
+            }
+        );
+}
+
+function login(req, res) {
+    var user = req.user;
+    res.json(user);
+}
+
+function serializeUser(user, done) {
+    done(null, user);
+}
+
+function deserializeUser(user, done) {
+    UserModel
+        .findUserById(user._id)
+        .then(
+            function(user){
+                done(null, user);
+            },
+            function(err){
+                done(err, null);
+            }
+        );
+}
+
+function findUserByUsername(req, res) {
+    var username = req.query.username;
+    UserModel
+        .findUserByUsername(username)
+        .then(function(user) {
+            res.json(user);
+        }, function(err) {
+            res.sendStatus(404);
+        });
+}
+
+function updateUser(req, res) {
     var user = req.body;
     var userId = req.params['userId']
     UserModel
-        .updateUser(userId,user)
-        .then(function(user){
+        .updateUser(userId, user)
+        .then(function(user) {
             res.sendStatus(200);
-        }, function(err){
+        }, function(err) {
             res.sendStatus(err);
         });
 }
 
-function deleteUser(req, res){
+function deleteUser(req, res) {
     var userId = req.params['userId'];
     UserModel
         .deleteUser(userId)
-        .then(function(){
+        .then(function() {
             res.sendStatus(200);
-        }, function(){
+        }, function() {
             res.sendStatus(404);
         });
 }

@@ -1,12 +1,12 @@
 <nav class="navbar navbar-fixed-top bg-primary">
     <div class="container-fluid">
         <div class="navbar-text pull-left">
-            <a href="#!/user/{{model.userId}}">
+            <a href="#!/profile">
                 <span class="glyphicon glyphicon-chevron-left"></span>
             </a>
         </div>
         <div class="navbar-text pull-right">
-            <a href="#!/user/{{model.userId}}/website/new"><span class="glyphicon glyphicon-plus"></span></a>
+            <a href="#!/website/new"><span class="glyphicon glyphicon-plus"></span></a>
         </div>
         <div class="navbar-header">
             <a class="navbar-brand">Websites</a>
@@ -48,7 +48,7 @@
                     {{website.accessed | date}}
                 </div>
                 <div class="col-xs-1">
-                    <a href="#!/user/{{model.userId}}/website/{{website._id}}">
+                    <a href="#!/website/{{website._id}}">
                         <span class="glyphicon glyphicon-cog pull-right"></span>
                     </a>
                 </div>
@@ -59,7 +59,7 @@
 <nav class="navbar navbar-fixed-bottom bg-primary">
     <div class="container-fluid">
         <div class="navbar-text pull-right">
-            <a href="#!/user/{{model.userId}}"><span class="glyphicon glyphicon-user"></span></a>
+            <a href="#!/profile"><span class="glyphicon glyphicon-user"></span></a>
         </div>
     </div>
 </nav>
