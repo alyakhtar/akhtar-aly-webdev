@@ -9,8 +9,22 @@ userModel.findUserByUsername =findUserByUsername;
 userModel.findUserByCredentials = findUserByCredentials;
 userModel.updateUser = updateUser;
 userModel.deleteUser = deleteUser;
+userModel.findUserByGoogleId = findUserByGoogleId;
+userModel.findUserByFacebookId = findUserByFacebookId;
+userModel.findUserByGithubId = findUserByGithubId;
 
 module.exports = userModel;
+
+function findUserByGoogleId(googleId){
+	return userModel.findOne({'google.id':googleId});
+}
+
+function findUserByFacebookId(facebookid){
+	return userModel.findOne({'facebook.id':facebookid});
+}
+function findUserByGithubId(githubId){
+	return userModel.findOne({'github.id':githubId});
+}
 
 function createUser(user){
 	return userModel.create(user);

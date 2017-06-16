@@ -7,6 +7,10 @@ input{
     margin-bottom: 5px;
 }
 
+.col-sm-4 .btn{
+    margin-top: 10px;
+}
+
 textarea{
 	margin-bottom: 5px;
 }
