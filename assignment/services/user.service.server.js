@@ -10,18 +10,13 @@ var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
 var FacebookStrategy = require('passport-facebook').Strategy;
 var GitHubStrategy = require('passport-github2').Strategy;
 
-// clientID     : '908038950509-4odl0opfhho1rov96dsjl0itbbt4ovc7.apps.googleusercontent.com',
-// clientSecret : 'uwktoBhRX6V5jchmjokbAYSk',
-// callbackURL  : 'http://127.0.0.1:3000/auth/google/callback'
+var bcrypt = require("bcrypt-nodejs");
+
 var googleConfig = {
     clientID     : process.env.GOOGLE_CLIENT_ID,
     clientSecret : process.env.GOOGLE_CLIENT_SECRET,
     callbackURL  : process.env.GOOGLE_CALLBACK_URL
 };
-
-// clientSecret : 'ab378ba7fcd5f21c2eb62eec56901263',
-// clientID     : '440912039627944',
-// callbackURL  : 'http://127.0.0.1:3000/auth/facebook/callback',
 
 var facebookConfig = {
     clientID     : process.env.FACEBOOK_CLIENT_ID,
@@ -29,10 +24,6 @@ var facebookConfig = {
     callbackURL  : process.env.FACEBOOK_CALLBACK_URL,
     profileFields: ['id', 'email', 'gender', 'link', 'locale', 'name']
 };
-
-// clientID     : 'af112fbb291a8f2556b9',
-// clientSecret : 'cb4f1b2db424c757a1ab050856ed3dda548c7b29',
-// callbackURL  : 'http://127.0.0.1:3000/auth/github/callback',
 
 var githubConfig = {
     clientID     : process.env.GITHUB_CLIENT_ID,
@@ -186,6 +177,7 @@ function googleStrategy(token, refreshToken, profile, done) {
 
 function register(req, res){
     var user = req.body;
+    user.password = bcrypt.hashSync(user.password);
     UserModel
         .createUser(user)
         .then(function(user){
@@ -217,13 +209,14 @@ function loggedin(req, res) {
 
 function localStrategy(username, password, done) {
     UserModel
-        .findUserByCredentials(username, password)
+        .findUserByUsername(username)
         .then(
             function(user) {
-                if (!user) {
-                    return done(null, false); 
+                if(user && bcrypt.compareSync(password, user.password)) {
+                    return done(null, user);
+                } else {
+                    return done(null, false);
                 }
-                return done(null, user);
             },
             function(err) {
                 if (err) {
