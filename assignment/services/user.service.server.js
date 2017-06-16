@@ -30,13 +30,14 @@ var facebookConfig = {
     profileFields: ['id', 'email', 'gender', 'link', 'locale', 'name']
 };
 
+// clientID     : 'af112fbb291a8f2556b9',
+// clientSecret : 'cb4f1b2db424c757a1ab050856ed3dda548c7b29',
+// callbackURL  : 'http://127.0.0.1:3000/auth/github/callback',
+
 var githubConfig = {
-    // clientID     : process.env.FACEBOOK_CLIENT_ID,
-    clientID     : 'af112fbb291a8f2556b9',
-    // clientSecret : process.env.FACEBOOK_CLIENT_SECRET,
-    clientSecret : 'cb4f1b2db424c757a1ab050856ed3dda548c7b29',
-    // callbackURL  : process.env.FACEBOOK_CALLBACK_URL,
-    callbackURL  : 'http://127.0.0.1:3000/auth/github/callback',
+    clientID     : process.env.GITHUB_CLIENT_ID,
+    clientSecret : process.env.GITHUB_CLIENT_SECRET,
+    callbackURL  : process.env.GITHUB_CALLBACK_URL,
 };
 
 passport.use(new GoogleStrategy(googleConfig, googleStrategy));
