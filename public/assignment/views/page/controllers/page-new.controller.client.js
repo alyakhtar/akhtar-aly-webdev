@@ -22,14 +22,20 @@
         init();
         
         function createPage(page){
-            var date = (new Date());
-            page.created = date;
-            page.accessed = date;
-            pageService
-                .createPage(websiteId,page)
-                .then(function(){
-                    $location.url('/website/'+websiteId+'/page');
-                });
+            var pn = angular.element(document.querySelector('#name'));
+            if(typeof page === 'undefined' || !page.name){
+                model.pageName = 'Please enter a page name';
+                pn.addClass('validate');
+            } else{
+                var date = (new Date());
+                page.created = date;
+                page.accessed = date;
+                pageService
+                    .createPage(websiteId,page)
+                    .then(function(){
+                        $location.url('/website/'+websiteId+'/page');
+                    });
+            }
         }
 
         function renderPages(pages){

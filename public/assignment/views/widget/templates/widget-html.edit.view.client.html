@@ -6,6 +6,8 @@
             id="name" 
             placeholder="Widget Name">
 
+    <div ng-show="model.widgetName" class="alert alert-danger">{{model.widgetName}}</div>
+
     <label  for="text">Text</label>
     <div    ng-model="model.widget.text"
             text-angular

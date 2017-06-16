@@ -19,7 +19,7 @@
                     <span class="glyphicon glyphicon-chevron-left"></span></a>
             </div>
             <div class="navbar-text pull-right">
-                <a ng-click="model.updateWebsite(model.website)">
+                <a ng-click="model.updateWebsite(model.website)" href="">
                     <span class="glyphicon glyphicon-ok"></span></a>
             </div>
             <div class="navbar-header">
@@ -47,6 +47,7 @@
             </div>
         </div>
         <div class="col-xs-12 col-sm-8 pull-right ">
+            <div ng-show="model.websiteName" class="alert alert-danger">{{model.websiteName}}</div>
             <form>
                 <div class="form-group">
                     <label  for="name ">Website Name</label>

@@ -32,15 +32,21 @@
         }
 
         function updatePage(page){
-            page._id = pageId;
-            page._website = websiteId;
-            var date = (new Date());
-            page.accessed = date;
-            pageService
-                .updatePage(pageId,page)
-                .then(function(){
-                    $location.url('/website/'+websiteId+'/page');
-                });
+            var pn = angular.element(document.querySelector('#name'));
+            if(typeof page === 'undefined' || !page.name){
+                model.pageName = 'Please enter a page name';
+                pn.addClass('validate');
+            } else{
+                page._id = pageId;
+                page._website = websiteId;
+                var date = (new Date());
+                page.accessed = date;
+                pageService
+                    .updatePage(pageId,page)
+                    .then(function(){
+                        $location.url('/website/'+websiteId+'/page');
+                    });
+            }
         }
 
         function deletePage(pageId){

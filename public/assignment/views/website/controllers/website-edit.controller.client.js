@@ -30,14 +30,20 @@
         }
 
         function updateWebsite(website){
-            website._id = websiteId;
-            website._user = userId;
-            website.accessed = (new Date());
-            websiteService
-                .updateWebsite(websiteId,website)
-                .then(function(){
-                    $location.url('/website');
-                });
+            var nm = angular.element(document.querySelector('#name'));
+            if(typeof website === 'undefined' || !website.name){
+                model.websiteName = 'Please enter website name';
+                nm.addClass('validate');
+            } else{
+                website._id = websiteId;
+                website._user = userId;
+                website.accessed = (new Date());
+                websiteService
+                    .updateWebsite(websiteId,website)
+                    .then(function(){
+                        $location.url('/website');
+                    });
+            }
         }
 
         function deleteWebsite(websiteId){

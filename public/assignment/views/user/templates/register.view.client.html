@@ -1,38 +1,47 @@
 <nav class="navbar navbar-fixed-top bg-primary"></nav>
 <div class="container-fluid">
-    <h1>Register</h1>
-    <div ng-show="model.message" class="alert alert-info">{{model.message}}</div>
-    <form>
-    	<label 	for="username">Username</label>
-	    <input 	ng-model="username"
-	    		type="text" 
-	    		id="username" 
-	    		class="form-control"
-	    		placeholder="ronaldo">
+	<div class="col-sm-6 col-sm-offset-3">
+		<h1>Register</h1>
+	    <div ng-show="model.message" class="alert alert-danger">{{model.message}}</div>
+	    <form>
+	    	<label 	for="username">Username</label>
+		    <input 	ng-model="username"
+		    		type="text" 
+		    		id="username" 
+		    		class="form-control"
+		    		placeholder="ronaldo">
 
-	    <label 	for="password">Password</label>
-	    <input 	ng-model="password"
-	    		type="password" 
-	    		id="password" 
-	    		class="form-control" 
-	    		placeholder="webdevelopment">
+		    <div ng-show="model.messageUsername" class="alert alert-danger">{{model.messageUsername}}</div>
 
-	    <label 	for="vpassword">Verify password</label>
-	    <input 	ng-model="vpassword"
-	    		type="password" 
-	    		id="vpassword" 
-	    		class="form-control"
-	    		placeholder="webdevelopment">
+		    <label 	for="password">Password</label>
+		    <input 	ng-model="password"
+		    		type="password" 
+		    		id="password" 
+		    		class="form-control" 
+		    		placeholder="webdevelopment">
 
-	    <input 	ng-click="model.register(username,password,vpassword)"
-	    		class="btn btn-primary btn-block"
-	    		type="submit"
-	    		value="Register">
-	    </input>
-	    <a  class="btn btn-success btn-block"
-	    	href="#!/login">
-	    	Cancel
-        </a>
-    </form>
+		    <div ng-show="model.messagePassword" class="alert alert-danger">{{model.messagePassword}}</div>
+
+		    <label 	for="vpassword">Verify password</label>
+		    <input 	ng-model="vpassword"
+		    		type="password" 
+		    		id="vpassword" 
+		    		class="form-control"
+		    		placeholder="webdevelopment">
+
+		    <div ng-show="model.messageVPassword" class="alert alert-danger">{{model.messageVPassword}}</div>
+		    <div ng-show="model.passwordsMatch" class="alert alert-danger">{{model.passwordsMatch}}</div>
+
+		    <input 	ng-click="model.register(username,password,vpassword)"
+		    		class="btn btn-primary btn-block"
+		    		type="submit"
+		    		value="Register">
+		    </input>
+		    <a  class="btn btn-success btn-block"
+		    	href="#!/login">
+		    	Cancel
+	        </a>
+	    </form>
+	</div> 
 </div>
 <nav class="navbar navbar-fixed-bottom bg-primary"></nav>

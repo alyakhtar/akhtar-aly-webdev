@@ -36,11 +36,17 @@
         }
 
         function updateWidget(widget){
-            widgetService
-                .updateWidget(widgetId,widget)
-                .then(function(){
-                    $location.url('/website/'+websiteId+'/page/'+pageId+'/widget');
-                })
+            var pn = angular.element(document.querySelector('#name'));
+            if(typeof widget === 'undefined' || !widget.name){
+                model.widgetName = 'Please enter the widget name';
+                pn.addClass('validate');
+            } else{
+                widgetService
+                    .updateWidget(widgetId,widget)
+                    .then(function(){
+                        $location.url('/website/'+websiteId+'/page/'+pageId+'/widget');
+                    })
+            }
         }
 
         function deleteWidget(){

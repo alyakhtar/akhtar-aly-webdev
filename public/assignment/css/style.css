@@ -7,8 +7,27 @@ input{
     margin-bottom: 5px;
 }
 
+.validate{
+  border:1px solid #f00;
+}
+
 .col-sm-4 .btn{
     margin-top: 10px;
+}
+
+.btn-google{
+    background-color: #db4437; 
+    border-color: #db4437;
+}
+
+.btn-facebook{
+    background-color: #3b5998; 
+    border-color: #3b5998;
+}
+
+.btn-github{
+    background-color: #24292e; 
+    border-color: #24292e;
 }
 
 textarea{

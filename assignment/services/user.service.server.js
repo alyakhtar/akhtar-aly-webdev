@@ -214,7 +214,7 @@ function localStrategy(username, password, done) {
             function(user) {
                 if(user && bcrypt.compareSync(password, user.password)) {
                     return done(null, user);
-                } else {
+                } else{
                     return done(null, false);
                 }
             },

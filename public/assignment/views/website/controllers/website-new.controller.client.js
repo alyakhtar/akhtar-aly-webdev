@@ -20,13 +20,19 @@
         init();
     	
     	function createWebsite(website){
-            var date = (new Date());
-            website.accessed = date;
-    		websiteService
-                .createWebsite(userId,website)
-                .then(function(website){
-            		$location.url('/website');
-                });
+            var nm = angular.element(document.querySelector('#name'));
+            if(typeof website === 'undefined' || !website.name){
+                model.websiteName = 'Please enter website name';
+                nm.addClass('validate');
+            } else{
+                var date = (new Date());
+                website.accessed = date;
+        		websiteService
+                    .createWebsite(userId,website)
+                    .then(function(website){
+                		$location.url('/website');
+                    });
+            }
     	}
 
         function renderWebsites(websites){

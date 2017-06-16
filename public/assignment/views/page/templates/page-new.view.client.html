@@ -20,7 +20,7 @@
                 </a>
             </div>
             <div class="navbar-text pull-right">
-                <a ng-click="model.createPage(page)">
+                <a ng-click="model.createPage(page)" href="">
                     <span class="glyphicon glyphicon-ok"></span></a>
             </div>
             <div class="navbar-header">
@@ -50,6 +50,7 @@
             </div>
         </div>
         <div class="col-xs-12 col-sm-8 pull-right ">
+            <div ng-show="model.pageName" class="alert alert-danger">{{model.pageName}}</div>
             <form>
                 <div class="form-group">
                     <label  for="name">Name</label>
