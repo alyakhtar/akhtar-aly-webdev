@@ -37,7 +37,7 @@
 
         function updateWidget(widget){
             var pn = angular.element(document.querySelector('#name'));
-            if((typeof widget === 'undefined' || !widget.name) && !widget.text){
+            if(typeof widget === 'undefined' || !widget.name){
                 model.widgetName = 'Please enter the widget name';
                 pn.addClass('validate');
             } else{

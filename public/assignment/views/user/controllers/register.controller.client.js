@@ -101,6 +101,8 @@
 	                vps.addClass('validate');
 	                model.message='';
 	                model.messageUsername='';
+	                model.messagePassword='';
+	                model.messageVPassword='';
 				}
 			}
 		}

@@ -30,6 +30,11 @@ input{
     border-color: #24292e;
 }
 
+.btn-github:hover{
+    background-color: #353f48; 
+    border-color: #353f48;
+}
+
 textarea{
 	margin-bottom: 5px;
 }

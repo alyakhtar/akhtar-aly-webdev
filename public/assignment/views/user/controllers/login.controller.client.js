@@ -8,7 +8,7 @@
         
         model.login = login;
 
-        function login(username, password) {
+        function login(username, password){
             var un = angular.element(document.querySelector('#username'));
             var ps = angular.element(document.querySelector('#password'));
             if(username && password){

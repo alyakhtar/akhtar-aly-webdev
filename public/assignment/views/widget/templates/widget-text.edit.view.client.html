@@ -1,17 +1,29 @@
+<label  for="name ">Name</label>
+<input  ng-model="model.widget.name"
+        type="text" 
+        class="form-control" 
+        id="name" 
+        placeholder="Widget Name">
+
+<div ng-show="model.widgetName" class="alert alert-danger">{{model.widgetName}}</div>
+
 <label  for="text">Text</label>
 <input 	id="text"
 		ng-model="model.widget.text" 
 		class="form-control"
-		type="text">
+		type="text"
+		placeholder="Text">
 <label 	for="rows">Rows</label>
 <input 	id="rows"
 		ng-model="model.widget.rows" 
 		class="form-control" 
-		type="number">
+		type="number"
+		placeholder="rows">
 <label 	for="placeholder">Placeholder</label>
 <input 	for="placeholder"
 		ng-model="model.widget.placeholder" 
-		class="form-control">
+		class="form-control"
+		placeholder="placeholder">
 <label 	for="formatted">Formatted</label>
 <input 	for="formatted"
 		ng-model="model.widget.formatted" 
