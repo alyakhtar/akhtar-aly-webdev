@@ -4,6 +4,9 @@
   "description": "Web Dev at Northeastern University",
   "main": "server.js",
   "dependencies": {
+    "angular-bootstrap-datetimepicker": "^1.1.4",
+    "angular-datepicker": "^1.0.5",
+    "angular-loading-bar": "^0.9.0",
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.15.1",
     "cookie-parser": "^1.4.3",

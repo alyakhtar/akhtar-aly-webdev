@@ -1,0 +1,33 @@
+<div    ng-repeat="hotel in model.hotels track by $index" 
+        class="flight-tickets">
+    <p>Name: {{hotel.name}}</p>
+    <p>Price: {{hotel.price}}</p>
+    <p>Address: {{hotel.address}}, {{hotel.city}}, {{hotel.region}}</p>
+    <p ng-if="hotel.rating">Rating: {{hotel.rating}}</p>
+    <p>Room Type: {{hotel.roomType}}</p>
+    <p>Bed Type: {{hotel.bedType}}</p>
+    <p>Number of beds: {{hotel.beds}}</p>
+    <p>Amenities:</p>
+    <div ng-repeat="amenity in hotel.amenities track by $index">
+        <ul>
+            <li>
+                {{amenity}}
+            </li>
+        </ul>
+    </div>
+    <p>Description:</p>
+    <div ng-repeat="description in hotel.description track by $index">
+        <ul>
+            <li>
+                {{description}}
+            </li>
+        </ul>
+    </div>
+    <p>Phone: {{hotel.phone}}</p>
+    <a  class="btn btn-success btn-block" 
+        ng-click="" 
+        target="_blank">
+                    Book this Hotel
+    </a>
+</div>
+<a href="" ng-click="model.getHotels(1)" class="btn btn-info btn-block">Get More Hotels</a>

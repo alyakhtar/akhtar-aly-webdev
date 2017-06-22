@@ -1,0 +1,120 @@
+<link rel="stylesheet" href="assets/css/wall.css">
+<div class="navbar-wrapper">
+    <div class="container-fluid">
+        <div class="navbar navbar-default navbar-static-top" role="navigation">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand nav-brand" href="#!/">
+                        <img alt="Brand" src="http://a.espncdn.com/combiner/i?img=/i/teamlogos/leagues/500/nfl.png&w=400&h=400" width="30px" height="30px">
+                    </a>
+                    <a class="navbar-brand" href="./ORqmj">Super Bowl</a>
+                    <i class="brand_network"><small><small>Ticket Manager</small></small></i>
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="">Book Tickets</a></li>
+                        <li><span class="badge badge-important">2</span><a href="#"><i class="fa fa-bell-o fa-lg" aria-hidden="true"></i></a></li>
+                        <li><a href="#"><i class="fa fa-envelope-o fa-lg" aria-hidden="true"></i></a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="dropdown">
+                            <a href="" class="dropdown-toggle" data-toggle="dropdown">
+                                <span class="user-avatar pull-left">
+                                    </span>
+                                <span class="user-name">
+                                        John Doe
+                                    </span>
+                                <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <div class="navbar-content">
+                                        <div class="row">
+                                            <div class="col-md-5">
+                                                <img src="https://lut.im/7JCpw12uUT/mY0Mb78SvSIcjvkf.png" alt="Alternate Text" class="img-responsive" width="120px" height="120px" />
+                                                <p class="text-center small">
+                                                    <a href="#!/user/{{model.userId}}">Change Photo</a></p>
+                                            </div>
+                                            <div class="col-md-7">
+                                                <span>John Doe</span>
+                                                <p class="text-muted small">
+                                                    example@pods.tld</p>
+                                                <div class="divider">
+                                                </div>
+                                                <a href="#!/user/{{model.userId}}" class="btn btn-default btn-block btn-xs"><i class="fa fa-user-o" aria-hidden="true"></i> Profile</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="navbar-footer">
+                                        <div class="navbar-footer-content">
+                                            <div class="row">
+                                                <div class="col-md-6 col-md-offset-2">
+                                                    <a href="#" class="btn btn-default btn-sm pull-right"><i class="fa fa-power-off" aria-hidden="true"></i> Sign Out</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <div id="sidebar" class="well sidebar-nav">
+                    <button ng-click="model.init()"
+                            href=""
+                            class="btn btn-info btn-block"
+                            style="border-radius: 0;">
+                                Details
+                    </button>
+                </h5>
+                <ul class="nav nav-pills nav-stacked">
+                    <li id="match">
+                        <button ng-click="model.viewType('match')" 
+                                id="matchBut"
+                                class="btn btn-info btn-block sidebar-buttons"
+                                disabled>
+                                Match Tickets
+                        </button>
+                    </li>
+                    <li id="flight">
+                        <button ng-click="model.viewType('flight')" 
+                                id="flightBut"
+                                class="btn btn-info btn-block sidebar-buttons"
+                                disabled>
+                                Flight Tickets
+                        </button>
+                    </li>
+                    <li id="hotel">
+                        <button ng-click="model.viewType('hotel')"
+                                id="hotelBut" 
+                                class="btn btn-info btn-block sidebar-buttons"
+                                disabled>
+                                Hotel Reservation
+                        </button>
+                    </li>
+                    <li id="car">
+                        <button ng-click="model.viewType('car')"
+                                id="carBut"
+                                class="btn btn-info btn-block sidebar-buttons" 
+                                disabled>
+                            Car Rental
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-8">
+            <ng-include src="model.TicketType"></ng-include>
+        </div>
+    </div>
+</div>

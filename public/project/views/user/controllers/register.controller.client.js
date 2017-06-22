@@ -31,7 +31,7 @@
 							.register(newUser)
 							.then(function(user){
 								// model.message = user.username+' User Created';
-								$location.url('/login');
+								$location.url('/user/' + user._id+'/wall');
 							});
 					});
 			} else{

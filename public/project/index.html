@@ -2,16 +2,21 @@
 <html lang="en" ng-app="Project">
 
 <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-route.min.js"></script>
 
     <script src="app.js"></script>
     <script src="config.js"></script>
+    <script src="directives/datepickerDirective.js"></script>
 
     <!-- user -->
     <script src="views/user/controllers/login.controller.client.js"></script>
     <script src="views/user/controllers/register.controller.client.js"></script>
+    <script src="views/user/controllers/wall.controller.client.js"></script>
     <script src="views/user/controllers/profile.controller.client.js"></script>
+    <script src="views/user/controllers/ticket.controller.client.js"></script>
     <script src="services/user.service.client.js"></script>
 
     <!-- team -->
@@ -33,7 +38,8 @@
     <link href='https://fonts.googleapis.com/css?family=Grand+Hotel' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Raleway:500' rel='stylesheet' type='text/css'>
     <link href="https://fonts.googleapis.com/css?family=Arima+Madurai:100,200,300,400,500,700,800,900" rel="stylesheet">
-    
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel='stylesheet' href='//cdnjs.cloudflare.com/ajax/libs/angular-loading-bar/0.9.0/loading-bar.min.css' type='text/css' media='all' />
 </head>
 
 <body>
@@ -43,8 +49,8 @@
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script type='text/javascript' src='//cdnjs.cloudflare.com/ajax/libs/angular-loading-bar/0.9.0/loading-bar.min.js'></script>
 </body>
 
 </html>

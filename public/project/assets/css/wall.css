@@ -70,3 +70,8 @@ overflow: hidden;
 body {
     background-color: #e8e8e8;
 }
+
+.nav-brand{
+  margin-right:-8px; 
+  margin-top:-5px;
+}

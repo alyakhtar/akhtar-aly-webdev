@@ -1,0 +1,62 @@
+<form>
+    <div    ng-show = "model.message"
+            class="alert alert-warning alert-dismissible" 
+            role="alert">
+        <button type="button" 
+                class="close" 
+                data-dismiss="alert" 
+                aria-label="Close">
+                <span aria-hidden="true">
+                    &times;
+                </span>
+        </button>
+        <strong>{{model.message}}!</strong>
+    </div>
+    <label>Source</label>
+    <select class="form-control" ng-model="model.trip.source" type="text">
+        <option value="1">----Select----</option>
+        <option ng-repeat="city in model.cities | orderBy : 'city'" value="{{city.code}}">
+            {{city.city}} ({{city.airport}})
+        </option>
+    </select>
+    <label>Destination</label>
+    <select class="form-control" ng-model="model.trip.destination" type="text">
+        <option value="1">----Select----</option>
+        <option ng-repeat="city in model.cities | orderBy : 'city'" value="{{city.code}}">
+            {{city.city}} ({{city.airport}})
+        </option>
+    </select>
+    <label  for="depart">Depart</label>
+    <input  type="text" 
+            name="depart" 
+            ng-model="model.trip.date" 
+            class="form-control input-md" 
+            placeholder="YYYY-MM-DD" 
+            datepicker>
+    <label  for="return">Return</label>
+    <input  type="text"
+            name="return" 
+            ng-model="model.trip.return" 
+            class="form-control input-md" 
+            placeholder="YYYY-MM-DD" datepicker>
+    <label for="passengers">Passengers</label>
+    <select class="form-control" 
+            name="passengers" 
+            ng-model="model.trip.passengers">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+    </select>
+    <label for="cabin">Preferred Cabin</label>
+    <select class="form-control" name="cabin" ng-model="model.trip.cabin">
+        <option value="NONE">None</option>
+        <option value="COACH">Coach</option>
+        <option value="PREMIUM_COACH">Premium Coach</option>
+        <option value="BUSINESS">Business</option>
+        <option value="FIRST">First Class</option>
+    </select>
+    <input ng-click="model.getTickets(model.trip)" type="submit" value="Get Tickets" class="btn btn-danger btn-block" style="margin-top:10px; margin-bottom: 10px;" id="detailBut">
+</form>

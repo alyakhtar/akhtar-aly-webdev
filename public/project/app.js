@@ -1,4 +1,4 @@
 (function () {
     angular
-        .module('Project', ['ngRoute']);
+        .module('Project', ['angular-loading-bar','ngRoute']);
 })();

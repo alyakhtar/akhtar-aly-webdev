@@ -32,3 +32,30 @@ span.glyphicon.glyphicon-trash{
 .alert-label{
 	margin-left: 28px;
 }
+
+.flight-tickets{
+	margin-bottom: 10px; 
+	border: solid black 1px;
+	padding: 2px;
+}
+
+.matchLogo{
+	float: left;
+	padding-right: 10px;
+	height: 150px;
+}
+
+@media screen and (max-width:600px){
+	.matchLogo{
+		float: none;
+		width: 100%;
+		text-align: center;
+		height: none;
+	}
+}
+
+.sidebar-buttons{
+	margin-bottom: -5px;
+	border-radius: 0;
+	border: none;
+}

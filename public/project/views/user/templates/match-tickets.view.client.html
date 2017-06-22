@@ -1,0 +1,28 @@
+<div class="container-fluid">
+    <div class="row">
+        <img src="{{model.match.image}}" class="matchLogo">
+        <h1>{{model.match.name}}</h1>
+    </div>
+    <br><br>
+    <h3>Location:</h3>
+    <strong>
+        {{model.match.venue}}, {{model.match.city}}, {{model.match.state}}
+    </strong>
+    <h3>Date:</h3>
+    <strong>{{model.match.date | date}}</strong>
+    <h3>Time:</h3>
+    <strong>{{model.match.time}}</strong>
+    <h3>Price Range:</h3>
+    <strong>${{model.match.priceMin}} - ${{model.match.priceMax}}</strong>
+    <h3>Ticket Sale Start:</h3>
+    <strong>{{model.match.saleStart | date}}</strong>
+    <br><br>
+    <h3>Seatmap:</h3>
+    <img src="{{model.match.seatmap}}" width="100%">
+    <br><br><br>
+    <a  href="{{model.match.url}}" 
+        class="btn btn-danger btn-block" 
+        target="_blank">
+            Book Ticket
+    </a>
+</div>

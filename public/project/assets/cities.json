@@ -1,0 +1,202 @@
+[
+	{
+		"city" : "Atlanta",
+		"airport" : "Hartsfield Jackson Atlanta International",
+		"code" : "ATL"
+	},
+	{
+		"city" : "Chicago",
+		"airport" : "Chicago O’Hare International",
+		"code" : "ORD"
+	},
+	{
+		"city" : "Los Angeles",
+		"airport" : "Los Angeles International",
+		"code" : "LAX"
+	},
+	{
+		"city" : "Dallas-Fort Worth",
+		"airport" : "Dallas Fort Worth International",
+		"code" : "DFW"
+	},
+	{
+		"city" : "Denver",
+		"airport" : "Denver International",
+		"code" : "DEN"
+	},
+	{
+		"city" : "New York",
+		"airport" : "John F Kennedy International",
+		"code" : "JFK"
+	},
+	{
+		"city" : "San Francisco",
+		"airport" : "San Francisco International",
+		"code" : "SFO"
+	},
+	{
+		"city" : "Charlotte",
+		"airport" : "Charlotte Douglas International",
+		"code" : "CLT"
+	},
+	{
+		"city" : "Las Vegas",
+		"airport" : "McCarran International",
+		"code" : "LAS"
+	},
+	{
+		"city" : "Phoenix",
+		"airport" : "Chicago O’Hare International",
+		"code" : "PHX"
+	},
+	{
+		"city" : "Houston",
+		"airport" : "George Bush Intercontinental Houston",
+		"code" : "IAH"
+	},
+	{
+		"city" : "Miami",
+		"airport" : "Miami International",
+		"code" : "MIA"
+	},
+	{
+		"city" : "Orlando",
+		"airport" : "Orlando International",
+		"code" : "MCO"
+	},
+	{
+		"city" : "Newark",
+		"airport" : "Newark Liberty International",
+		"code" : "EWR"
+	},
+	{
+		"city" : "Seattle",
+		"airport" : "Seattle Tacoma International",
+		"code" : "SEA"
+	},
+	{
+		"city" : "Minneapolis",
+		"airport" : "Minneapolis-St Paul International/Wold-Chamberlain",
+		"code" : "MSP"
+	},
+	{
+		"city" : "Detroit",
+		"airport" : "Detroit Metropolitan Wayne County",
+		"code" : "DTW"
+	},
+	{
+		"city" : "Philadelphia",
+		"airport" : "Philadelphia International",
+		"code" : "PHL"
+	},
+	{
+		"city" : "Boston",
+		"airport" : "General Edward Lawrence Logan International",
+		"code" : "BOS"
+	},
+	{
+		"city" : "New York",
+		"airport" : "La Guardia",
+		"code" : "LGA"
+	},
+	{
+		"city" : "Fort Lauderdale",
+		"airport" : "Fort Lauderdale Hollywood International",
+		"code" : "FLL"
+	},
+	{
+		"city" : "Baltimore",
+		"airport" : "Baltimore/Washington International Thurgood Marshall",
+		"code" : "BWI"
+	},
+	{
+		"city" : "Washington",
+		"airport" : "Washington Dulles International",
+		"code" : "IAD"
+	},
+	{
+		"city" : "Salt Lake City",
+		"airport" : "Salt Lake City International",
+		"code" : "SLC"
+	},
+	{
+		"city" : "Washington",
+		"airport" : "Ronald Reagan Washington National",
+		"code" : "DCA"
+	},
+	{
+		"city" : "Chicago",
+		"airport" : "Chicago Midway International",
+		"code" : "MDW"
+	},
+	{
+		"city" : "Honolulu",
+		"airport" : "Honolulu International",
+		"code" : "HNL"
+	},
+	{
+		"city" : "San Diego",
+		"airport" : "San Diego International",
+		"code" : "SAN"
+	},
+	{
+		"city" : "Tampa",
+		"airport" : "Tampa International",
+		"code" : "TPA"
+	},
+	{
+		"city" : "Cleveland",
+		"airport" : "Cleveland Hopkins International",
+		"code" : "CLE"
+	},
+	{
+		"city" : "Portland",
+		"airport" : "Portland International",
+		"code" : "PDX"
+	},
+	{
+		"city" : "St Louis",
+		"airport" : "Lambert St Louis International",
+		"code" : "STL"
+	},
+	{
+		"city" : "Houston",
+		"airport" : "William P Hobby",
+		"code" : "HOU"
+	},
+	{
+		"city" : "Oakland",
+		"airport" : "Metropolitan Oakland International",
+		"code" : "OAK"
+	},
+	{
+		"city" : "Kansas City",
+		"airport" : "Kansas City International",
+		"code" : "MCI"
+	},
+	{
+		"city" : "Nashville",
+		"airport" : "Nashville International",
+		"code" : "BNA"
+	},
+	{
+		"city" : "Austin",
+		"airport" : "Austin Bergstrom International",
+		"code" : "AUS"
+	},
+	{
+		"city" : "Raleigh/Durham",
+		"airport" : "Raleigh Durham International",
+		"code" : "RDU"
+	},
+	{
+		"city" : "Sacramento",
+		"airport" : "Sacramento International",
+		"code" : "SMF"
+	},
+	{
+		"city" : "Santa Ana",
+		"airport" : "John Wayne-Orange County",
+		"code" : "SNA"
+	}
+]

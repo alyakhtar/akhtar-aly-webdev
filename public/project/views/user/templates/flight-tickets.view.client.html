@@ -1,0 +1,29 @@
+<div    ng-repeat="flight in model.flights track by $index" 
+        class="flight-tickets">
+    <p>Price: {{flight.price}}</p>
+    <p>Airline: {{flight.airline}}</p>
+    <div ng-repeat="slice in flight.slices">
+        <ul>
+            <div ng-repeat="segment in slice.segments">
+                <li> Flight : {{segment.carrier}} {{segment.number}}</p>
+                    <div ng-repeat="leg in segment.legs">
+                        <p>{{leg.origin}} {{leg.departure | date}} {{leg.destination}} {{leg.arrival | date}}</p>
+                    </div>
+                </li>
+            </div>
+        </ul>
+        <br>
+    </div>
+    <br>
+    <a  class="btn btn-success btn-block" 
+        ng-click="model.gotoAirlinesSite(flight.carrier)" 
+        target="_blank">
+                    Book this flight
+    </a>
+</div>
+<a  ng-show="model.flights.length > 0" 
+    ng-click="model.getFlights(model.trip, 1)" 
+    class="btn btn-danger btn-block" 
+    style="margin-top:10px; margin-bottom: 10px;">
+                    MORE FLIGHTS
+</a>

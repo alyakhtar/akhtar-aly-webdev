@@ -1,0 +1,27 @@
+<div    ng-repeat="car in model.cars track by $index"
+        class="flight-tickets">
+        <h1><strong>{{car.company}}</strong></h1>
+        <div ng-repeat="option in car.options track by $index"">
+            <div class="media">
+                <div class="media-left">
+                    <a href="">
+                        <img class="media-object" src="{{option.image}}">
+                    </a>
+                </div>
+                <div class="media-body">
+                    <h4 class="media-heading">{{option.category}}</h4>
+                    <p> 
+                        <strong>Transmission</strong>: {{option.transmission}}, 
+                        <strong>Type</strong>: {{option.type}}, 
+                        <strong>Daily Rate</strong>: {{option.daily_rate}}, 
+                        <strong>Total Price</strong>: {{option.price}}
+                    </p>
+                </div>
+            </div>
+        </div>
+        <a  href="{{car.website}}" 
+            class="btn btn-primary btn-block"
+            target="_black">
+                Book From Here!
+        </a>
+</div>
