@@ -9,7 +9,14 @@
             login : login,
             register : register,
             update : update,
-            findUserById : findUserById
+            findUserById : findUserById,
+            createNewPost: createNewPost,
+            findAllPosts: findAllPosts,
+            deletePost: deletePost,
+            likePost: likePost,
+            addComment: addComment,
+            deleteComment: deleteComment,
+            updatePost: updatePost
         };
         return api;
 
@@ -48,6 +55,69 @@
                     .then(function(response){
                         return response.data;
                     })
+        }
+
+        function createNewPost(post){
+            url= '/api/project/user/'+post.userId+'/newPost';
+            return $http
+                    .post(url,post)
+                    .then(function(response){
+                        return response.data;
+                    });
+        }
+
+        function findAllPosts(userId){
+            url = '/api/project/user/'+userId+'/posts';
+            return $http
+                    .get(url)
+                    .then(function(response){
+                        return response.data;
+                    });
+        }
+
+        function deletePost(postId, userId){
+            url='/api/project/post/'+postId;
+            return $http
+                    .get(url)
+                    .then(function(response){
+                        return response.data;
+                    });
+        }
+
+        function updatePost(post){
+            url = '/api/project/post/'+post._id;
+            return $http
+                    .post(url, post)
+                    .then(function(response){
+                        return response.data;
+                    });
+        }
+
+        function likePost(postId, userId){
+            url = '/api/project/user/'+userId+'/post/'+postId+'/like';
+            return $http
+                    .get(url)
+                    .then(function(response){
+                        return response.data;
+                    })
+        }
+
+        function addComment(postId, comment){
+            url = '/api/project/user/post/'+postId+'/comment';
+            return $http
+                    .post(url,comment)
+                    .then(function(response){
+                        return response.data;
+                    });
+        }
+
+        function deleteComment(userId, postId, commentId){
+            url = '/api/project/user/'+userId+'/post/'+postId+'/comment/'+commentId;
+            return $http
+                    .get(url)
+                    .then(function(response){
+                        return response.data;
+                    });
         }
     }
 })();

@@ -3,16 +3,16 @@
         .module('Project')
         .controller('ticketController', ticketController)
 
-    function ticketController($location, $routeParams, $window, $http) {
+    function ticketController($location, $routeParams, $window, $http, ticketService, userService) {
 
         var model = this;
 
+        model.userId = $routeParams['userId'];
+
         model.getTickets = getTickets;
-        model.getFlights = getFlights;
+        model.getMoreFlights = getMoreFlights;
         model.gotoAirlinesSite = gotoAirlinesSite;
-        model.getMatchTicket = getMatchTicket;
-        model.getHotels = getHotels;
-        model.getCars = getCars;
+        model.getMoreHotels = getMoreHotels;
         model.viewType = viewType;
         model.init = init;
 
@@ -91,9 +91,13 @@
         }
 
         function init() {
-            model.flights = [];
+            userService
+                .findUserById(model.userId)
+                .then(function(user){
+                    model.user = user;
+                });
             getAirports();
-            model.TicketType = 'views/user/templates/ticket-details.view.client.html';
+            model.TicketType = 'views/ticket/templates/ticket-details.view.client.html';
             var ft = angular.element(document.querySelector('#flightBut'));
             var mt = angular.element(document.querySelector('#matchBut'));
             var ht = angular.element(document.querySelector('#hotelBut'));
@@ -105,31 +109,38 @@
         }
         init();
 
+        function getAirports() {
+            $http.get('assets/cities.json')
+                .then(function(cities) {
+                    model.cities = cities.data;
+                });
+        }
+
         function viewType(vw){
-        	 var mt = angular.element(document.querySelector('#matchBut'));
+        	var mt = angular.element(document.querySelector('#matchBut'));
     		var ft = angular.element(document.querySelector('#flightBut'));
             var ht = angular.element(document.querySelector('#hotelBut'));
             var cr = angular.element(document.querySelector('#carBut'));
         	if(vw === 'match'){
-        		model.TicketType = 'views/user/templates/match-tickets.view.client.html';
+        		model.TicketType = 'views/ticket/templates/match-tickets.view.client.html';
 	            mt.addClass('active');
 	            ft.removeClass('active');
 	            ht.removeClass('active');
 	            cr.removeClass('active');
         	} else if(vw === 'flight'){
-        		model.TicketType = 'views/user/templates/flight-tickets.view.client.html';
+        		model.TicketType = 'views/ticket/templates/flight-tickets.view.client.html';
 	            mt.removeClass('active');
 	            ft.addClass('active');
 	            ht.removeClass('active');
 	            cr.removeClass('active');
         	} else if(vw === 'hotel'){
-        		model.TicketType = 'views/user/templates/hotel-reservation.view.client.html';
+        		model.TicketType = 'views/ticket/templates/hotel-reservation.view.client.html';
 	            mt.removeClass('active');
 	            ft.removeClass('active');
 	            ht.addClass('active');
 	            cr.removeClass('active');
         	} else if(vw === 'car'){
-        		model.TicketType = 'views/user/templates/car-reservation.view.client.html';
+        		model.TicketType = 'views/ticket/templates/car-reservation.view.client.html';
 	            mt.removeClass('active');
 	            ft.removeClass('active');
 	            ht.removeClass('active');
@@ -148,28 +159,49 @@
                 model.message = 'Please fill all details!';
             } else {
                 model.trip = trip;
-                getFlights(trip, 0);
-                getMatchTicket();
-                getHotels(0);
-                getCars();
+                ticketService
+                    .getMatchTicket()
+                    .then(function(response){
+                        matchTicketDetails(response)
+                    })
+                    .then(function(){
+                        var mtb = angular.element(document.querySelector('#matchBut'));
+                        mtb.removeAttr('disabled');
+                    });
+
+                ticketService
+                    .getFlights(trip, 0, 0)
+                    .then(function(flights){
+                        getFlightData(flights);
+                    })
+                    .then(function(){
+                        var ftb = angular.element(document.querySelector('#flightBut'));
+                        ftb.removeAttr('disabled');
+                    });
+
+                ticketService
+                    .getHotels(0,0,model.trip)
+                    .then(function(hotels){
+                        hotelDetails(hotels);
+                    })
+                    .then(function(){
+                        var htb = angular.element(document.querySelector('#hotelBut'));
+                        htb.removeAttr('disabled');
+                    });
+                    
+                ticketService
+                    .getCars(model.trip)
+                    .then(function(cars){
+                       carDetails(cars); 
+                    })
+                    .then(function(){
+                        var cb = angular.element(document.querySelector('#carBut'));
+                        cb.removeAttr('disabled');
+                    });
             }
         }
 
-        function getMatchTicket() {
-            var key = 'Y8CUMTdtH8ryvRTDvpGWNFhFQ6WyDOHF';
-            var url = 'https://app.ticketmaster.com/discovery/v2/events.json?apikey='+ key + '&keyword=international champions cup';
-            $http
-                .get(url)
-                .then(function(response) {
-                    matchTicketDetails(response.data._embedded.events[0]);
-                }, function(err) {
-                    console.log(err);
-                })
-                .then(function(){
-                	var mtb = angular.element(document.querySelector('#matchBut'));
-	                mtb.removeAttr('disabled');
-                });
-        }
+        
 
         function matchTicketDetails(event) {
             model.match = {}
@@ -188,52 +220,8 @@
             model.match.state = event._embedded.venues[0].state.name;
         }
 
-        function getFlights(trip, flag) {
-            model.trip = trip;
-            if (flag === 1 || flag === '1') {
-                count = model.flights.length + 20;
-            } else {
-                count = 20;
-            }
-
+        function getFlightData(trips) {
             model.flights = [];
-            var flight = {
-                "request": {
-                    "passengers": {
-                        "adultCount": trip.passengers
-                    },
-                    "slice": [{
-                        "origin": trip.source,
-                        "destination": trip.destination,
-                        "date": trip.date,
-                        "preferredCabin": trip.cabin
-                    }, {
-                        "origin": trip.destination,
-                        "destination": trip.source,
-                        "date": trip.return,
-                        "preferredCabin": trip.cabin
-                    }],
-                    "solutions": count,
-                    "refundable": false
-                }
-            }
-
-            var api = 'AIzaSyBJoisTMUjUlY6JRMmr0EJjmaZnM1WduJs';
-            var url = 'https://www.googleapis.com/qpxExpress/v1/trips/search?key=' + api;
-            $http
-                .post(url, flight)
-                .then(function(response) {
-                    getData(response.data.trips.tripOption);
-                }, function(err) {
-                    console.log(err);
-                })
-                .then(function(){
-                	var ftb = angular.element(document.querySelector('#flightBut'));
-	                ftb.removeAttr('disabled');
-                });
-        }
-
-        function getData(trips) {
             for (var t in trips) {
                 flight = {};
                 flight.price = trips[t].saleTotal;
@@ -264,40 +252,20 @@
             }
         }
 
+        function getMoreFlights(){
+            ticketService
+                .getFlights(model.trip, 1, model.flights.length)
+                .then(function(flights){
+                    getFlightData(flights);
+                });
+        }
+
         function gotoAirlinesSite(code) {
             airline = flightHomePages[code].website;
             $window.open(airline, '_blank');
         }
 
-        function getAirports() {
-            $http.get('assets/cities.json')
-                .then(function(cities) {
-                    model.cities = cities.data;
-                });
-        }
-
-        function getHotels(flag) {
-            if (flag === 0 || flag === '0') {
-                count = 20;
-            } else {
-                count = model.hotels.length + 20;
-            }
-            var key = 'PsCw2ApzCs1YyuyiQmGyAh39fFTGzhMU';
-            var url = 'https://api.sandbox.amadeus.com/v1.2/hotels/search-airport?apikey=' + key + '&location=' + model.trip.destination + '&check_in=' + model.trip.date + '&check_out=' + model.trip.return +'&radius=50&number_of_results=' + count;
-
-            $http
-                .get(url)
-                .then(function(response) {
-                    hotelDetails(response.data.results);
-                }, function(err) {
-                    console.log(err);
-                })
-                .then(function(){
-                	var htb = angular.element(document.querySelector('#hotelBut'));
-	                htb.removeAttr('disabled');
-                });
-
-        }
+        
 
         function hotelDetails(hotels) {
             model.hotels = []
@@ -327,21 +295,12 @@
             }
         }
 
-        function getCars() {
-            var key = 'PsCw2ApzCs1YyuyiQmGyAh39fFTGzhMU';
-            var url = 'https://api.sandbox.amadeus.com//v1.2/cars/search-airport?apikey=' + key + '&location=' + model.trip.destination + '&pick_up=' + model.trip.date + '&drop_off=' + model.trip.return;
-
-            $http
-                .get(url)
-                .then(function(response) {
-                    carDetails(response.data.results);
-                }, function(err) {
-                    console.log(err);
+        function getMoreHotels(){
+            ticketService
+                .getHotels(1,model.hotels.length,model.trip)
+                .then(function(hotels){
+                    hotelDetails(hotels);
                 })
-                .then(function(){
-                	var cb = angular.element(document.querySelector('#carBut'));
-	                cb.removeAttr('disabled');
-                });
         }
 
         function carDetails(cars) {
@@ -356,7 +315,11 @@
                     vehicle.category = cars[c].cars[l].vehicle_info.category;
                     vehicle.type = cars[c].cars[l].vehicle_info.type;
                     vehicle.daily_rate = cars[c].cars[l].rates[0].price.amount;
-                    vehicle.image = cars[c].cars[l].images[0].url;
+                    if(cars[c].cars[l].images){
+                        vehicle.image = cars[c].cars[l].images[0].url;
+                    } else{
+                        vehicle.image = 'https://dummyimage.com/64x64/000/fff.jpg';
+                    }
                     vehicle.price = cars[c].cars[l].estimated_total.amount;
                     car.options.push(vehicle);
                 }

@@ -39,15 +39,15 @@
                 controllerAs: 'model'
             })
             .when('/user/:userId/tickets', {
-                templateUrl: 'views/user/templates/tickets.view.client.html',
+                templateUrl: 'views/ticket/templates/tickets.view.client.html',
                 controller: 'ticketController',
                 controllerAs: 'model'
             })
-            // .when('/player/:playerId', {
-            // 	templateUrl: 'views/user/templates/player.html',
-            //     controller: 'playerDetails',
-            //     controllerAs: 'model'
-            // })
+            .when('/user/:userId/itinerary', {
+                templateUrl: 'views/ticket/templates/itinerary.view.client.html',
+                controller: 'itineraryController',
+                controllerAs: 'model'
+            })
 
     }
 })();

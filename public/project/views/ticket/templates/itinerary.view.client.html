@@ -10,23 +10,22 @@
                     <a class="navbar-brand nav-brand" href="#!/">
                         <img alt="Brand" src="http://a.espncdn.com/combiner/i?img=/i/teamlogos/leagues/500/nfl.png&w=400&h=400" width="30px" height="30px">
                     </a>
-                    <a class="navbar-brand" href="./ORqmj">Super Bowl</a>
+                    <a class="navbar-brand" href="#!/user/{{model.userId}}/wall">Super Bowl</a>
                     <i class="brand_network"><small><small>Ticket Manager</small></small></i>
                 </div>
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
-                        <li class="active"><a href="">Book Tickets</a></li>
+                        <li><a href="#!/user/{{model.userId}}/tickets">Book Tickets</a></li>
+                        <li class="active"><a href="#!/user/{{model.userId}}/itinerary">Itinerary</a></li>
                         <li><span class="badge badge-important">2</span><a href="#"><i class="fa fa-bell-o fa-lg" aria-hidden="true"></i></a></li>
                         <li><a href="#"><i class="fa fa-envelope-o fa-lg" aria-hidden="true"></i></a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <li class="dropdown">
                             <a href="" class="dropdown-toggle" data-toggle="dropdown">
-                                <span class="user-avatar pull-left">
-                                    </span>
                                 <span class="user-name">
-                                        John Doe
-                                    </span>
+                                        {{model.user.first_name}}
+                                </span>
                                 <b class="caret"></b></a>
                             <ul class="dropdown-menu">
                                 <li>
@@ -38,9 +37,10 @@
                                                     <a href="#!/user/{{model.userId}}">Change Photo</a></p>
                                             </div>
                                             <div class="col-md-7">
-                                                <span>John Doe</span>
+                                                <span>{{model.user.first_name}} {{model.user.last_name}}</span>
                                                 <p class="text-muted small">
-                                                    example@pods.tld</p>
+                                                    {{model.user.email}}
+                                                </p>
                                                 <div class="divider">
                                                 </div>
                                                 <a href="#!/user/{{model.userId}}" class="btn btn-default btn-block btn-xs"><i class="fa fa-user-o" aria-hidden="true"></i> Profile</a>
@@ -66,55 +66,3 @@
     </div>
 </div>
 
-<div class="container">
-    <div class="row">
-        <div class="col-md-4">
-            <div id="sidebar" class="well sidebar-nav">
-                    <button ng-click="model.init()"
-                            href=""
-                            class="btn btn-info btn-block"
-                            style="border-radius: 0;">
-                                Details
-                    </button>
-                </h5>
-                <ul class="nav nav-pills nav-stacked">
-                    <li id="match">
-                        <button ng-click="model.viewType('match')" 
-                                id="matchBut"
-                                class="btn btn-info btn-block sidebar-buttons"
-                                disabled>
-                                Match Tickets
-                        </button>
-                    </li>
-                    <li id="flight">
-                        <button ng-click="model.viewType('flight')" 
-                                id="flightBut"
-                                class="btn btn-info btn-block sidebar-buttons"
-                                disabled>
-                                Flight Tickets
-                        </button>
-                    </li>
-                    <li id="hotel">
-                        <button ng-click="model.viewType('hotel')"
-                                id="hotelBut" 
-                                class="btn btn-info btn-block sidebar-buttons"
-                                disabled>
-                                Hotel Reservation
-                        </button>
-                    </li>
-                    <li id="car">
-                        <button ng-click="model.viewType('car')"
-                                id="carBut"
-                                class="btn btn-info btn-block sidebar-buttons" 
-                                disabled>
-                            Car Rental
-                        </button>
-                    </li>
-                </ul>
-            </div>
-        </div>
-        <div class="col-md-8">
-            <ng-include src="model.TicketType"></ng-include>
-        </div>
-    </div>
-</div>

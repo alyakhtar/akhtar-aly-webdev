@@ -59,3 +59,53 @@ span.glyphicon.glyphicon-trash{
 	border-radius: 0;
 	border: none;
 }
+
+.btn-car{
+	padding-top: 3px;
+	word-wrap: break-word;
+}
+
+.post-header{
+	font-size:30px;
+}
+
+.post-image{
+	margin-right:8px; 
+	margin-top:-5px;
+}
+
+.post-image-comment{
+	margin-left:3px; 
+	margin-right:-5px;
+}
+
+.post-time-color{
+	color: grey;
+	text-decoration: none;
+}
+
+.post-time-color:hover{
+	text-decoration: none;
+	color: grey;
+}
+
+.post-like-color{
+	color: red;
+}
+
+.post-viwership{
+	margin-left:5px;
+}
+
+.post-comment{
+	margin-right:8px; 
+	margin-top:-5px;
+}
+
+.like-space{
+	padding-left: 5px;
+}
+
+.more-posts{
+	margin-bottom: 50px;
+}
