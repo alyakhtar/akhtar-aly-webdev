@@ -12,6 +12,9 @@
 		var userId = $routeParams['userId'];
 		model.userId = userId;
 
+		model.unfollowUser = unfollowUser;
+		model.deleteUser = deleteUser;
+
 		function init(){
 			teamService
                 .getTeams()
@@ -46,6 +49,22 @@
 						model.message = 'Profile Updated Successfully!!';
 					});
 			}
+		}
+
+		function unfollowUser(userId, followId){
+			userService
+				.unfollow(userId, followId)
+				.then(function(user){
+					model.user = user;
+				});
+		}
+
+		function deleteUser(userId){
+			userService
+				.deleteUser(userId)
+				.then(function(){
+					$location.url('/');
+				})
 		}
 	}
 

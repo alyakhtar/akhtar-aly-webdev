@@ -109,3 +109,14 @@ span.glyphicon.glyphicon-trash{
 .more-posts{
 	margin-bottom: 50px;
 }
+
+ul.title-content-list > li { 
+	display: block; 
+	height: 35px;
+}
+ul.title-content-list > li > div.title { 
+	float: left 
+}
+ul.title-content-list > li > div.content { 
+	float: right 
+}

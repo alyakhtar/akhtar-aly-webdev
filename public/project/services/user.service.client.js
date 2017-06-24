@@ -16,7 +16,9 @@
             likePost: likePost,
             addComment: addComment,
             deleteComment: deleteComment,
-            updatePost: updatePost
+            updatePost: updatePost,
+            unfollow: unfollow,
+            deleteUser: deleteUser
         };
         return api;
 
@@ -78,7 +80,7 @@
         function deletePost(postId, userId){
             url='/api/project/post/'+postId;
             return $http
-                    .get(url)
+                    .delete(url)
                     .then(function(response){
                         return response.data;
                     });
@@ -87,7 +89,7 @@
         function updatePost(post){
             url = '/api/project/post/'+post._id;
             return $http
-                    .post(url, post)
+                    .put(url, post)
                     .then(function(response){
                         return response.data;
                     });
@@ -114,7 +116,25 @@
         function deleteComment(userId, postId, commentId){
             url = '/api/project/user/'+userId+'/post/'+postId+'/comment/'+commentId;
             return $http
+                    .delete(url)
+                    .then(function(response){
+                        return response.data;
+                    });
+        }
+
+        function unfollow(userId, followId){
+            var url ='/api/project/user/'+userId+'/unfollow/'+followId;
+            return $http
                     .get(url)
+                    .then(function(response){
+                        return response.data;
+                    });
+        }
+
+        function deleteUser(userId){
+            var url = '/api/project/user/'+userId;
+            return $http
+                    .delete(url)
                     .then(function(response){
                         return response.data;
                     });

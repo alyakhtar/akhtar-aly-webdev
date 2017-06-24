@@ -11,19 +11,25 @@
     </div>
 </nav>
 <div class="container-fluid">
-    <form class="form-horizontal" id="accountSetForm">
-          <div class="form-grup">
+    <form   class="form-horizontal"
+            action="/api/project/upload" 
+            method="post" 
+            enctype="multipart/form-data">
+            <div class="form-grup">
               <label class="col-sm-5 control-label">Avatar</label>
                 <div class="custom-input-file">
                     <label class="uploadPhoto">
                         Edit
-                        <input type="file" class="change-avatar" name="image" id="avatar">
+                        <input type="file" class="change-avatar" name="myFile" id="avatar">
                     </label>
                 </div>
-          </div>
+            </div>
         <br>
         <br>
         <br>
+        <input  name="userId" 
+                value="{{model.userId}}" 
+                style="display: none"/>
         <center>
             <label  ng-show="model.message" 
                     class="alert alert-success alert-label">
@@ -33,7 +39,7 @@
         <div class="form-grup">
             <label class="col-sm-5 control-label">Profile Created on</label>
             <div class="col-sm-3">
-                <h5>{{model.user.created | date}}</h5>
+                <h5>{{model.user.time | date}}</h5>
             </div>
         </div>
         <br>
@@ -196,6 +202,78 @@
         </div>
     </form>
 </div>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+    $('[id^=detail-]').hide();
+    $('.toggle').click(function() {
+        $input = $( this );
+        $target = $('#'+$input.attr('data-toggle'));
+        $target.slideToggle();
+    });
+});
+</script>
+<br><br><br>
+<div class="container-fluid">
+    <div class="panel panel-default">
+        <ul class="list-group">
+            <li class="list-group-item">
+                <div class="row toggle" id="dropdown-detail-1" data-toggle="detail-1">
+                    <div class="col-xs-10">
+                        Following <span class="badge">{{model.user.following.length}}</span></a>
+                    </div>
+                    <div class="col-xs-2"><i class="fa fa-chevron-down pull-right"></i></div>
+                </div>
+                <div id="detail-1">
+                    <hr></hr>
+                    <div class="container">
+                        <div    class="fluid-row" 
+                                ng-repeat="following in model.user.following">
+                            <ul class="title-content-list">
+                                <li>
+                                    <div class="title">{{following.name}}</div>
+                                    <div class="content">
+                                        <a  href="" 
+                                            class="btn btn-success"
+                                            ng-click="model.unfollowUser(model.user._id, following.id)">
+                                            <i class="fa fa-star" aria-hidden="true"></i>
+                                            unfollow
+                                        </a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li class="list-group-item">
+                <div class="row toggle" id="dropdown-detail-2" data-toggle="detail-2">
+                    <div class="col-xs-10">
+                        Followers 
+                        <span class="badge">
+                            {{model.user.followers.length}}
+                        </span></a>
+                    </div>
+                    <div class="col-xs-2"><i class="fa fa-chevron-down pull-right"></i></div>
+                </div>
+                <div id="detail-2">
+                    <hr></hr>
+                    <div class="container">
+                        <div    class="fluid-row" 
+                                ng-repeat="follower in model.user.followers">
+                            <ul class="title-content-list">
+                                <li>
+                                    {{follower.name}}
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+
 <nav class="navbar navbar-fixed-bottom bg-primary">
     <div class="container-fluid">
         <div class="navbar-text pull-right">

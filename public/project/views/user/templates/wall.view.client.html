@@ -19,8 +19,6 @@
                             <ul class="nav navbar-nav">
                                 <li><a href="#!/user/{{model.userId}}/tickets">Book Tickets</a></li>
                                 <li><a href="#!/user/{{model.userId}}/itinerary">Itinerary</a></li>
-                                <li><span class="badge badge-important">2</span><a href="#"><i class="fa fa-bell-o fa-lg" aria-hidden="true"></i></a></li>
-                                <li><a href="#"><i class="fa fa-envelope-o fa-lg" aria-hidden="true"></i></a></li>
                             </ul>
                             <ul class="nav navbar-nav navbar-right">
                                 <li class="dropdown">
@@ -36,7 +34,7 @@
                                             <div class="navbar-content">
                                                 <div class="row">
                                                     <div class="col-md-5">
-                                                        <img src="https://lut.im/7JCpw12uUT/mY0Mb78SvSIcjvkf.png" alt="Alternate Text" class="img-responsive" width="120px" height="120px" />
+                                                        <img src="{{model.user.image}}" alt="Alternate Text" class="img-responsive" width="120px" height="120px" />
                                                         <p class="text-center small">
                                                             <a href="#!/user/{{model.userId}}">Change Photo</a></p>
                                                     </div>
@@ -76,7 +74,7 @@
         <div class="panel-body">
             <div class="media">
                 <div align="center">
-                    <img class="thumbnail img-responsive" src="https://lut.im/7JCpw12uUT/mY0Mb78SvSIcjvkf.png" width="300px" height="300px">
+                    <img class="thumbnail img-responsive" src="{{model.user.image}}" width="300px" height="300px">
                 </div>
                 <div class="media-body">
                     <hr>
@@ -147,7 +145,7 @@
                 <div class="pull-left">
                     <a href="#">
                         <img    class="media-object img-circle post-image" 
-                                src="https://lut.im/7JCpw12uUT/mY0Mb78SvSIcjvkf.png" 
+                                src="{{post.userImage}}" 
                                 width="50px" height="50px">
                     </a>
                 </div>
@@ -241,7 +239,7 @@
                         <div class="pull-left">
                             <a href="#">
                                 <img    class="media-object img-circle post-comment" 
-                                        src="https://diaspote.org/uploads/images/thumb_large_283df6397c4db3fe0344.png" 
+                                        src="{{comment.userImage}}" 
                                         width="35px" height="35px" >
                             </a>
                         </div>
@@ -309,7 +307,7 @@
             <div class="pull-left">
                 <a href="#">
                     <img    class="media-object img-circle post-image-comment" 
-                            src="https://lut.im/7JCpw12uUT/mY0Mb78SvSIcjvkf.png" 
+                            src="{{model.user.image}}" 
                             width="35px" height="35px">
                 </a>
             </div>

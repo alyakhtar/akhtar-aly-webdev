@@ -67,6 +67,7 @@
 				post = checkHashTags(post);
 				post.team = model.user.team;
 				post.userId = model.user._id;
+				post.userImage = model.user.image;
 				post.time = new Date();
 				post.like = 0;
 				post.likesBy = [];
@@ -129,6 +130,7 @@
 				comment = {}
 				comment.text = com;
 				comment.userId = model.userId;
+				comment.userImage = model.user.image;
 				comment.user = model.user.first_name + ' '+ model.user.last_name;
 				comment.time = new Date();
 				comment.image = model.user.image;
