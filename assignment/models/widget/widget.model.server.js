@@ -45,7 +45,7 @@ function getWidgets(count, widgets, relevantWidgets) {
 	            	}
                 return getWidgets(--count, widgets, relevantWidgets);
             });
-    }
+}
 
 function findAllWidgetsForPage(pageId){
 	return pageModel

@@ -55,7 +55,11 @@
 			userService
 				.unfollow(userId, followId)
 				.then(function(user){
-					model.user = user;
+					userService
+	            	.findUserById(userId)
+	            	.then(function(user){
+	            		model.user = user;
+	            	});
 				});
 		}
 

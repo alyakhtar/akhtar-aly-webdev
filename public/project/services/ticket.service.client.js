@@ -9,7 +9,10 @@
             getMatchTicket: getMatchTicket,
             getFlights: getFlights,
             getHotels: getHotels,
-            getCars: getCars
+            getCars: getCars,
+            bookTicket: bookTicket,
+            findTicketByUserId: findTicketByUserId,
+            cancelBooking: cancelBooking
         };
         return api;
 
@@ -95,6 +98,42 @@
                 }, function(err) {
                     console.log(err);
                 })
+        }
+
+        function bookTicket(ticket){
+            var url = '/api/project/bookTicket';
+            if(ticket.price){
+                if(ticket.price.indexOf('USD') < 0){
+                    ticket.price = '$'+ticket.price;
+                }
+            }
+            return $http
+                .post(url, ticket)
+                .then(function(response) {
+                    return response.data;
+                }, function(err) {
+                    console.log(err);
+                })
+        }
+
+        function findTicketByUserId(userId){
+            var url = '/api/project/user/'+userId+'/getTickets';
+
+            return $http
+                    .get(url)
+                    .then(function(response){
+                        return response.data;
+                    });
+        }
+
+        function cancelBooking(bookingId, userId){
+            var url = '/api/project/user/'+userId+'/cancelTicket/'+bookingId;
+
+            return $http
+                    .delete(url)
+                    .then(function(response){
+                        return response.data;
+                    });
         }
         
     }

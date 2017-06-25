@@ -30,7 +30,7 @@
                                     <div class="navbar-content">
                                         <div class="row">
                                             <div class="col-md-5">
-                                                <img src="https://lut.im/7JCpw12uUT/mY0Mb78SvSIcjvkf.png" alt="Alternate Text" class="img-responsive" width="120px" height="120px" />
+                                                <img src="{{model.user.image}}" width="120px" height="120px" />
                                                 <p class="text-center small">
                                                     <a href="#!/user/{{model.userId}}">Change Photo</a></p>
                                             </div>
@@ -60,6 +60,45 @@
                     </ul>
                 </div>
             </div>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid">
+    <div class="alert alert-info" ng-show="model.tickets.length < 1">
+        <center><h3>USER HAS NO BOOKINGS!</h3></center>
+    </div>
+    <div ng-repeat="ticket in model.tickets">
+        <div class="well well-lg">
+            <h3>{{ticket.type | uppercase}}</h3>
+            <h5>{{ticket.name}}</h5>
+            <h5>{{ticket.date | date}}</h5>
+            <h5>{{ticket.time}}</h5>
+            <h5>{{ticket.venue}}</h5>
+            <h5>{{ticket.address}}</h5>
+            <h5>{{ticket.city}}</h5>
+            <h5>{{ticket.return}}</h5>
+            <h5>{{ticket.class}}</h5>
+            <h5>{{ticket.price}}</h5>
+            <h5>{{ticket.airline}}</h5>
+            <div ng-if="ticket.slices">
+                <div ng-repeat="flights in ticket.slices">
+                    <div ng-repeat="flight in flights.segments">
+                        <h5>Flight : {{flight.carrier}} {{flight.number}}</h5>
+                        <div ng-repeat="info in flight.legs">
+                            <h5>{{info.origin}} {{info.departure | date}} {{info.destination}} {{info.arrival | date}}</h5>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            <h5>{{ticket.phone}}</h5>
+            <h5>{{ticket.roomType}}</h5>
+            <h5>{{ticket.beds}}</h5>
+            <h5>{{ticket.company}}</h5>
+            <h5>{{ticket.transmission}}</h5>
+            <h5>{{ticket.category}}</h5>
+            <a ng-click="model.cancelBooking(ticket._id)" class="btn btn-danger">Cancel Ticket</a>
         </div>
     </div>
 </div>

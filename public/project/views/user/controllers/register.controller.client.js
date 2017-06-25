@@ -9,7 +9,7 @@
 
 		model.register = register;
 
-		function register(username, password, password2){
+		function register(username, password, password2, fname, lname){
 			if(!username || !password || !password2){
 				model.message = 'All fields are required';
 				return;
@@ -23,15 +23,15 @@
 						var newUser = {
 							"username": username,
 							"password": password,
-							"created":(new Date()),
-							"_id":345
+							"first_name": fname,
+							"last_name": lname,
+							"dateCreated": new Date()
 						}
 
 						userService
 							.register(newUser)
 							.then(function(user){
-								// model.message = user.username+' User Created';
-								$location.url('/user/' + user._id+'/wall');
+								$location.url('/user/' + user._id);
 							});
 					});
 			} else{

@@ -36,8 +36,32 @@
                     <input  ng-model="username"
                             type="text" 
                             class="form-control"
-                            name="email"
+                            name="username"
                             placeholder="username">
+                </div>
+            </li>
+            <li>
+                <div class="input-group">
+                    <div class="input-group-addon">
+                        <span class="glyphicon glyphicon-user"></span> 
+                    </div>
+                    <input  ng-model="first_name"
+                            type="text" 
+                            class="form-control"
+                            name="fname"
+                            placeholder="First Name">
+                </div>
+            </li>
+            <li>
+                <div class="input-group">
+                    <div class="input-group-addon">
+                        <span class="glyphicon glyphicon-user"></span> 
+                    </div>
+                    <input  ng-model="last_name"
+                            type="text" 
+                            class="form-control"
+                            name="lname"
+                            placeholder="Last Name">
                 </div>
             </li>
             <li>
@@ -68,7 +92,7 @@
     </form>
     <div class="submit">
         <input  type="submit" 
-                ng-click="model.register(username,password,password2)" 
+                ng-click="model.register(username,password,password2,first_name,last_name)" 
                 value="Register">
     </div>
 </div>

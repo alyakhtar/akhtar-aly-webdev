@@ -1,0 +1,109 @@
+<link rel="stylesheet" href="assets/css/wall.css">
+<div class="mainbody container-fluid">
+    <div class="row">
+        <div class="navbar-wrapper">
+            <div class="container-fluid">
+                <div class="navbar navbar-default navbar-static-top" role="navigation">
+                    <div class="container-fluid">
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                                <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+                            </button>
+                            <a class="navbar-brand nav-brand" href="#!/">
+                                <img alt="Brand" src="http://a.espncdn.com/combiner/i?img=/i/teamlogos/leagues/500/nfl.png&w=400&h=400" width="30px" height="30px">
+                            </a>
+                            <a class="navbar-brand" href="#!/user/{{model.userId}}/wall">Super Bowl</a>
+                            <i class="brand_network"><small><small>Ticket Manager</small></small></i>
+                        </div>
+                        <div class="navbar-collapse collapse">
+                            <ul class="nav navbar-nav">
+                                <li><a href="#!/user/{{model.userId}}/tickets">Book Tickets</a></li>
+                                <li><a href="#!/user/{{model.userId}}/itinerary">Itinerary</a></li>
+                            </ul>
+                            <ul class="nav navbar-nav navbar-right">
+                                <li class="dropdown">
+                                    <a href="" class="dropdown-toggle" data-toggle="dropdown">
+                                        <span class="user-avatar pull-left">
+                                    </span>
+                                        <span class="user-name">
+                                        {{model.user.first_name}}
+                                    </span>
+                                        <b class="caret"></b></a>
+                                    <ul class="dropdown-menu">
+                                        <li>
+                                            <div class="navbar-content">
+                                                <div class="row">
+                                                    <div class="col-md-5">
+                                                        <img src="{{model.user.image}}" alt="Alternate Text" class="img-responsive" width="120px" height="120px" />
+                                                        <p class="text-center small">
+                                                            <a href="#!/user/{{model.userId}}">Change Photo</a></p>
+                                                    </div>
+                                                    <div class="col-md-7">
+                                                        <span>{{model.user.first_name}} {{model.user.last_name}}</span>
+                                                        <p class="text-muted small">
+                                                            {{model.user.email}}</p>
+                                                        <div class="divider">
+                                                        </div>
+                                                        <a href="#!/user/{{model.userId}}" class="btn btn-default btn-block btn-xs"><i class="fa fa-user-o" aria-hidden="true"></i> Profile</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="navbar-footer">
+                                                <div class="navbar-footer-content">
+                                                    <div class="row">
+                                                        <div class="col-md-6 col-md-offset-2">
+                                                            <a href="#!/login" class="btn btn-default btn-sm pull-right"><i class="fa fa-power-off" aria-hidden="true"></i> Sign Out</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div style="padding-top:50px;"> </div>
+
+<div class="container-fluid">
+    <div class="alert alert-danger" ng-show="model.message">
+        {{model.message}}
+    </div>
+    <center>
+        <img src="{{model.profile.image}}" height="200" width="200">
+    </center>
+    <br>
+    <center>
+        <a  href="" 
+            class="btn btn-success"
+            ng-click="model.followUser()">
+            <i class="fa fa-star" aria-hidden="true"></i>
+            follow
+        </a>
+    </center>
+    <div class="col-sm-6 col-sm-offset-4">
+        <ul class="list-unstyled">
+            <li>
+                <h4>Bio :</h4>
+                <p>{{model.profile.bio}}</p>
+            </li>
+            <li>
+                <h4>Location :</h4>
+                <p>{{model.profile.location}}</p>
+            </li>
+            <li>
+                <h4>Gender :</h4>
+                <p>{{model.profile.gender}}</p>
+            </li>
+            <li>
+                <h4>Birthday :</h4>
+                <p>{{model.profile.birthday}}</p>
+            </li>
+        </ul>
+    </div>
+</div>

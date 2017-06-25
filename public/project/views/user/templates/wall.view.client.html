@@ -89,6 +89,9 @@
                     <hr>
                     <h3><strong>Birthday</strong></h3>
                     <p>{{model.user.birthday | date}}</p>
+                    <hr>
+                    <h3><strong>Team</strong></h3>
+                    <p>{{model.user.team}}</p>
                 </div>
             </div>
         </div>
@@ -143,14 +146,15 @@
         <div class="panel panel-default">
             <div class="panel-body">
                 <div class="pull-left">
-                    <a href="#">
+                    <a href="">
                         <img    class="media-object img-circle post-image" 
                                 src="{{post.userImage}}" 
                                 width="50px" height="50px">
                     </a>
                 </div>
                 <h4>
-                    <a href="" style="text-decoration: none">
+                    <a href="#!/user/{{model.userId}}/profile/{{post.userId}}" 
+                        style="text-decoration: none">
                         <strong>{{post.name}}</strong>
                     </a>
                      - 
@@ -199,7 +203,7 @@
                 </span>
         <hr>
         <div class="post-content">
-            <p>{{post.text}}</p>
+            <p id="postText">{{post.text}}</p>
             <img    class="img-responsive" 
                     ng-src="{{post.image}}" 
                     height="200" width="200">
@@ -214,7 +218,7 @@
         
         <div>
             <div    class="pull-right btn-group-xs like-space">
-                <a ng-click="model.likeComment(post._id)">
+                <a ng-click="model.likePost(post._id)">
                     <i  class="fa fa-thumbs-up" 
                         aria-hidden="true">
                     </i>Like
@@ -237,14 +241,14 @@
                 <div class="panel-default">
                     <div class="panel-body">
                         <div class="pull-left">
-                            <a href="#">
+                            <a href="">
                                 <img    class="media-object img-circle post-comment" 
                                         src="{{comment.userImage}}" 
                                         width="35px" height="35px" >
                             </a>
                         </div>
                         <h4>
-                            <a href="#" style="text-decoration:none;">
+                            <a href="#!/user/{{model.userId}}/profile/{{comment.userId}}" style="text-decoration:none;">
                                 <strong>{{comment.user}}</strong>
                             </a>
                         </h4>
@@ -280,7 +284,7 @@
                         <div class="post-content">
                             <p>{{comment.text}}</p>
                             <small><small>
-                                <a href="#" style="text-decoration:none; color:grey;">
+                                <a href="" style="text-decoration:none; color:grey;">
                                     <i>
                                         <i  class="fa fa-clock-o" 
                                             aria-hidden="true">
@@ -305,7 +309,7 @@
         </a>
         <div class="media">
             <div class="pull-left">
-                <a href="#">
+                <a href="">
                     <img    class="media-object img-circle post-image-comment" 
                             src="{{model.user.image}}" 
                             width="35px" height="35px">

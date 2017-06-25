@@ -22,7 +22,7 @@
 	            function renderData(user){
 	                if(user !== null){
 	                	// model.message = "logged In!!"+user.username;
-	                    $location.url('/user/' + user._id+'/wall');
+	                    $location.url('/user/' + user._id);
 	                } else{
 	                    model.message = "Incorrect username/password, please try again!";    
 	                }

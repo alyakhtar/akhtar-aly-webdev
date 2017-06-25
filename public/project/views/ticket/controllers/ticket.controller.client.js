@@ -14,6 +14,7 @@
         model.gotoAirlinesSite = gotoAirlinesSite;
         model.getMoreHotels = getMoreHotels;
         model.viewType = viewType;
+        model.bookTicket = bookTicket;
         model.init = init;
 
         var flightHomePages = {
@@ -260,9 +261,17 @@
                 });
         }
 
-        function gotoAirlinesSite(code) {
-            airline = flightHomePages[code].website;
+        function gotoAirlinesSite(ticket, type) {
+            airline = flightHomePages[ticket.carrier].website;
             $window.open(airline, '_blank');
+
+            ticket.type = type;
+            ticket.userId = model.userId;
+            ticketService
+                .bookTicket(ticket)
+                .then(function(){
+                    model.type = 'Ticket Booked!';
+                })
         }
 
         
@@ -326,6 +335,19 @@
                 car.website = carHomePags[cars[c].provider.company_name];
                 model.cars.push(car);
             }
+        }
+
+        function bookTicket(ticket, type, company){
+            ticket.type = type;
+            ticket.userId = model.userId;
+            if(company){
+                ticket.company = company;
+            }
+            ticketService
+                .bookTicket(ticket)
+                .then(function(){
+                    model.type = 'Ticket Booked!';
+                })
         }
     }
 })();

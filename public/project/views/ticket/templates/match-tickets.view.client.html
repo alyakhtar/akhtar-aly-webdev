@@ -20,7 +20,8 @@
     <h3>Seatmap:</h3>
     <img src="{{model.match.seatmap}}" width="100%">
     <br><br><br>
-    <a  href="{{model.match.url}}" 
+    <a  href="{{model.match.url}}"
+        ng-click="model.bookTicket(model.match, 'match', '')"
         class="btn btn-danger btn-block" 
         target="_blank">
             Book Ticket

@@ -18,6 +18,7 @@
             deleteComment: deleteComment,
             updatePost: updatePost,
             unfollow: unfollow,
+            follow: follow,
             deleteUser: deleteUser
         };
         return api;
@@ -68,8 +69,8 @@
                     });
         }
 
-        function findAllPosts(userId){
-            url = '/api/project/user/'+userId+'/posts';
+        function findAllPosts(team){
+            url = '/api/project/posts/'+team;
             return $http
                     .get(url)
                     .then(function(response){
@@ -78,7 +79,7 @@
         }
 
         function deletePost(postId, userId){
-            url='/api/project/post/'+postId;
+            url='/api/project/user/'+userId+'/post/'+postId;
             return $http
                     .delete(url)
                     .then(function(response){
@@ -126,6 +127,20 @@
             var url ='/api/project/user/'+userId+'/unfollow/'+followId;
             return $http
                     .get(url)
+                    .then(function(response){
+                        return response.data;
+                    });
+        }
+
+        function follow(userId, follow){
+            var url ='/api/project/user/'+userId+'/follow/'+follow._id;
+            var name = follow.first_name + ' ' + follow.last_name;
+            var user = {
+                name:name,
+                id: follow._id
+            }
+            return $http
+                    .put(url,user)
                     .then(function(response){
                         return response.data;
                     });

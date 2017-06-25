@@ -13,7 +13,7 @@
 			model.addPhotoToPost = addPhotoToPost;
 			model.newPost = newPost;
 			model.deletePost = deletePost;
-			model.likeComment = likeComment;
+			model.likePost = likePost;
 			model.addComment = addComment;
 			model.deleteComment = deleteComment;
 			model.editPost = editPost;
@@ -33,25 +33,24 @@
 					.then(function(user){
 						model.user = user;
 					})
-
-				userService	
-					.findAllPosts(model.userId)
-					.then(function(posts){
-						model.posts = posts;
-					})
 					.then(function(){
-						model.commentQuantity = [];
-						for(var p in model.posts){
-							quantity = {}
-							var id = model.posts[p]._id;
+						userService	
+							.findAllPosts(model.user.team)
+							.then(function(posts){
+								model.posts = posts;
+							})
+							.then(function(){
+								model.commentQuantity = [];
+								for(var p in model.posts){
+									quantity = {}
+									var id = model.posts[p]._id;
 
-							quantity.quant = 1;
-							quantity.postId = id;
-							model.commentQuantity.push(quantity);
-						}
+									quantity.quant = 1;
+									quantity.postId = id;
+									model.commentQuantity.push(quantity);
+								}
+							});
 					});
-
-
 			}	
 			init();
 
@@ -71,7 +70,6 @@
 				post.time = new Date();
 				post.like = 0;
 				post.likesBy = [];
-				post.hidden = false;
 				post.comments = [];
 				post.name = model.user.first_name +' '+ model.user.last_name;
 				userService
@@ -110,19 +108,51 @@
 			}
 
 
-			function deletePost(postId,userId){
+			function deletePost(postId){
 				userService
-					.deletePost(postId)
-					.then(function(posts){
-						model.posts = posts;
+					.deletePost(postId, userId)
+					.then(function(){
+						userService	
+							.findAllPosts(model.user.team)
+							.then(function(posts){
+								model.posts = posts;
+							});
 					});
 			}
 
-			function likeComment(postId){
+			function editPost(post){
+				if(post.userId === userId){
+					model.edit = true;
+					model.post = post;	
+				}
+			}
+
+			function updatePost(post){
+				post = checkHashTags(post);
+				post.edited = true;
+				userService
+					.updatePost(post)
+					.then(function(posts){
+						userService	
+							.findAllPosts(model.user.team)
+							.then(function(posts){
+								model.posts = posts;
+								model.edit = false;
+								model.imageUrl = false;
+							});
+						model.post = '';
+					});
+			}
+
+			function likePost(postId){
 				userService
 					.likePost(postId, model.userId)
-					.then(function(posts){
-						model.posts = posts;
+					.then(function(){
+						userService	
+							.findAllPosts(model.user.team)
+							.then(function(posts){
+								model.posts = posts;
+							});
 					})
 			}
 
@@ -133,12 +163,10 @@
 				comment.userImage = model.user.image;
 				comment.user = model.user.first_name + ' '+ model.user.last_name;
 				comment.time = new Date();
-				comment.image = model.user.image;
 				
 				userService
 					.addComment(postId, comment)
-					.then(function(posts){
-						model.posts = posts;
+					.then(function(){
 						$route.reload();
 					});
 			}
@@ -147,29 +175,18 @@
 				userService
 					.deleteComment(model.userId, postId, commentId)
 					.then(function(posts){
-						model.posts = posts;
+						userService	
+							.findAllPosts(model.user.team)
+							.then(function(posts){
+								model.posts = posts;
+							});
 					});
 			}
 
-			function editPost(post){
-				model.edit = true;
-				model.post = post;
-			}
-
-			function updatePost(post){
-				post.edited = true;
-				userService
-					.updatePost(post)
-					.then(function(posts){
-						model.posts = posts;
-						$route.reload();
-						model.post = '';
-					});
-			}
 
 			function quantity(postId){
 				for(var p in model.commentQuantity){
-					if(model.commentQuantity[p].postId == parseInt(postId)){
+					if(model.commentQuantity[p].postId == postId){
 						return model.commentQuantity[p].quant;
 					}	
 				}
@@ -177,7 +194,7 @@
 
 			function showMoreComments(postId){
 				for(var p in model.commentQuantity){
-					if(model.commentQuantity[p].postId == parseInt(postId)){
+					if(model.commentQuantity[p].postId == postId){
 						model.commentQuantity[p].quant += 2;
 						return model.commentQuantity[p].quant;
 					}	

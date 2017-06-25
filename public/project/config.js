@@ -48,6 +48,12 @@
                 controller: 'itineraryController',
                 controllerAs: 'model'
             })
+            .when('/user/:userId/profile/:profileId', {
+                templateUrl: 'views/user/templates/user-profile.view.client.html',
+                controller: 'userProfileController',
+                controllerAs: 'model'
+            })
+
 
     }
 })();
