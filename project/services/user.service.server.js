@@ -72,6 +72,7 @@ app.post('/api/project/upload', upload.single('myFile'), uploadImage);
 app.get('/api/project/admin/users', isAdmin, findAllUsers);
 app.get('/api/project/admin/posts', isAdmin, findAllPosts);
 app.delete('/api/project/admin/post/:postId', isAdmin, deletePost);
+app.post('/api/project/admin/createUser', isAdmin, createUser)
 
 app.get('/auth/google', passport.authenticate('google', { scope : ['profile', 'email'] }));
 app.get('/auth/google/callback',
@@ -208,8 +209,8 @@ function googleStrategy(token, refreshToken, profile, done) {
 function register(req, res) {
     var user = req.body;
 
-    user .role = 'USER';
-    user.password = user.password;
+    user.roles = [];
+    user.roles.push('USER');
     user.image = 'https://openclipart.org/download/233689/north-korean-maze-mobile-casino.svg';
 
     UserModel
@@ -228,6 +229,26 @@ function register(req, res) {
         });
 }
 
+function createUser(req, res){
+    var user = req.body;
+
+    if(!user.roles){
+        user.roles = [];
+        user.roles.push('USER');
+    }
+    user.image = 'https://openclipart.org/download/233689/north-korean-maze-mobile-casino.svg';
+
+    UserModel
+        .createUser(user)
+        .then(function(user){
+            if(user){
+                res.json(user);
+            } else{
+                res.sendStatus(400);
+            }
+        });
+}
+
 function logout(req, res) {
     req.logout();
     res.sendStatus(200);
@@ -242,7 +263,7 @@ function loggedin(req, res) {
 }
 
 function checkAdmin(req, res) {
-    if(req.isAuthenticated() && req.user.role == 'ADMIN') {
+    if(req.isAuthenticated() && req.user.roles.indexOf('ADMIN') > -1) {
         res.json(req.user);
     } else {
         res.send('0');
@@ -324,7 +345,7 @@ function findAllPosts(req, res){
 }
 
 function isAdmin(req, res, next){
-    if(req.isAuthenticated() && req.user.role == 'ADMIN') {
+    if(req.isAuthenticated() && req.user.roles.indexOf('ADMIN') > -1) {
         next();
     } else{
         res.sendStatus(401);
@@ -527,7 +548,7 @@ function uploadImage(req, res){
             UserModel
                 .updateUser(user._id, user)
                 .then(function(user){
-                    var callbackUrl = "/project/#!/user/"+userId;
+                    var callbackUrl = "/project/#!/profile";
                     res.redirect(callbackUrl);
                 }, function(err){
                     res.sendStatus(404);

@@ -15,7 +15,7 @@ var userSchema = mongoose.Schema({
 	team: String,
 	following: [],
 	followers: [],
-	role: String,
+	roles: [{type: String, default: 'USER', enum: ['USER', 'ADMIN']}],
 	google: {id: String, token: String},
 	facebook: {id: String, token: String},
 	github: {id: String, token: String},

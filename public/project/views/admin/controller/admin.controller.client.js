@@ -11,6 +11,10 @@
 			model.viewType = viewType;
 			model.deleteUser = deleteUser;
 			model.deletePost = deletePost;
+			model.updatePost = deletePost;
+			model.createUser = createUser;
+			model.updateUser = updateUser;
+			model.editUser = editUser;
 
 			model.logout = logout;
 
@@ -29,11 +33,44 @@
 			}
 			init();
 
+			function createUser(user){
+				if(user.roles){
+					roles = user.roles.split(',');
+					user.roles = roles;
+				}
+				user.password = 'user';
+				userService
+					.createUser(user)
+					.then(function(){
+						init();
+						model.user = '';
+					})
+			}
+
 			function deleteUser(userId){
 				userService
 					.deleteUser(userId)
 					.then(function(){
 						init();
+					});
+			}
+
+			function editUser(user){
+				model.updateBut = true;
+				model.user = user;
+			}
+
+			function updateUser(user){
+				if(user.roles && typeof user.roles == 'string'){
+					roles = user.roles.split(",");
+					user.roles = roles;
+				}
+
+				userService
+					.update(user._id, user)
+					.then(function(){
+						model.updateBut = false;
+						model.user = '';
 					});
 			}
 

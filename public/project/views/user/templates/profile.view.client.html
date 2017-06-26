@@ -4,7 +4,7 @@
         <div class="navbar-text pull-right">
               <a class="wall" href="#!/wall">Wall</a>
               <a    class="wall" 
-                    ng-show="model.currentUser.role == 'ADMIN'"
+                    ng-show="model.currentUser.roles.indexOf('ADMIN') > -1"
                     href="#!/admin">
                 Admin
                 </a>

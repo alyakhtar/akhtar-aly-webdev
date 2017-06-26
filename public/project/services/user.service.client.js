@@ -25,7 +25,8 @@
             checkAdmin: checkAdmin,
             getAllUsers: getAllUsers,
             getAllPosts: getAllPosts, 
-            deletePostByAdmin: deletePostByAdmin
+            deletePostByAdmin: deletePostByAdmin,
+            createUser: createUser
         };
         return api;
 
@@ -64,6 +65,15 @@
 
             return $http
                     .get(url)
+                    .then(function(response){
+                        return response.data;
+                    });
+        }
+
+        function createUser(user){
+             var url = "/api/project/admin/createUser";
+            return $http
+                    .post(url, user)
                     .then(function(response){
                         return response.data;
                     });
