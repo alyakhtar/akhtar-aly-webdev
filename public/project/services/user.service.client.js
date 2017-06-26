@@ -19,12 +19,32 @@
             updatePost: updatePost,
             unfollow: unfollow,
             follow: follow,
-            deleteUser: deleteUser
+            deleteUser: deleteUser,
+            loggedin: loggedin,
+            logout: logout
         };
         return api;
 
-        function login(username, password){
-            var url = "/api/project/user?username="+username+"&password="+password;
+        function register(user){
+            var url = "/api/project/register";
+            return $http
+                    .post(url, user)
+                    .then(function(response){
+                        return response.data;
+                    });
+        }
+
+        function logout(){
+            var url = "/api/project/logout";
+            return $http
+                    .post(url)
+                    .then(function(response){
+                        return response.data;
+                    });
+        }
+
+        function loggedin(){
+            var url = "/api/project/loggedin";
             return $http
                     .get(url)
                     .then(function(response){
@@ -32,12 +52,17 @@
                     });
         }
 
-        function register(user){
-            var url = "/api/project/user";
+        function login(username, password){
+            var url = '/api/project/login';
+            var credentials = {
+                username: username,
+                password: password
+            }
             return $http
-                    .post(url, user)
+                    .post(url, credentials)
                     .then(function(response){
-                        return response.data;
+                        var user = response.data;
+                        return user;
                     });
         }
 

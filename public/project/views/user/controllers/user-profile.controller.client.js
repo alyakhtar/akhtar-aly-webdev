@@ -3,14 +3,15 @@
 		.module('Project')
 		.controller('userProfileController', userProfileController)
 
-	function userProfileController($routeParams, userService){
+	function userProfileController($routeParams, userService, currentUser){
 
 		var model = this;
 
-		var userId = $routeParams['userId'];
+		var userId = currentUser._id;
 		var profileId = $routeParams['profileId'];
 		model.userId = userId;
 		model.profileId = profileId;
+		model.logout = logout;
 
 		model.followUser = followUser;
 
@@ -30,6 +31,13 @@
 		}
 		init();
 
+		function logout(){
+            userService
+                .logout()
+                .then(function(){
+                    $location.url('/login');
+                });
+        }
 
 		function followUser(){
 			if(userId !== profileId){

@@ -6,7 +6,12 @@
     function configuration($routeProvider) {
         $routeProvider
             .when('/', {
-                templateUrl: 'home.html'
+                templateUrl: 'views/home/template/home.html',
+                controller: 'homeController',
+                controllerAs: 'model',
+                resolve: {
+                    currentUser: checkCurrentUser
+                }
             })
             .when('/teams', {
                 templateUrl: 'views/team/templates/teams.view.client.html',
@@ -28,32 +33,76 @@
                 controller: 'registerController',
                 controllerAs: 'model'
             })
-            .when('/user/:userId', {
+            .when('/profile', {
                 templateUrl: 'views/user/templates/profile.view.client.html',
                 controller: 'profileController',
-                controllerAs: 'model'
+                controllerAs: 'model',
+                resolve: {
+                    currentUser: checkLoggedIn
+                }
             })
-            .when('/user/:userId/wall', {
+            .when('/wall', {
                 templateUrl: 'views/user/templates/wall.view.client.html',
                 controller: 'wallController',
-                controllerAs: 'model'
+                controllerAs: 'model',
+                resolve: {
+                    currentUser: checkLoggedIn
+                }
             })
-            .when('/user/:userId/tickets', {
+            .when('/tickets', {
                 templateUrl: 'views/ticket/templates/tickets.view.client.html',
                 controller: 'ticketController',
-                controllerAs: 'model'
+                controllerAs: 'model',
+                resolve: {
+                    currentUser: checkLoggedIn
+                }
             })
-            .when('/user/:userId/itinerary', {
+            .when('/itinerary', {
                 templateUrl: 'views/ticket/templates/itinerary.view.client.html',
                 controller: 'itineraryController',
-                controllerAs: 'model'
+                controllerAs: 'model',
+                resolve: {
+                    currentUser: checkLoggedIn
+                }
             })
-            .when('/user/:userId/profile/:profileId', {
+            .when('/profile/:profileId', {
                 templateUrl: 'views/user/templates/user-profile.view.client.html',
                 controller: 'userProfileController',
-                controllerAs: 'model'
+                controllerAs: 'model',
+                resolve: {
+                    currentUser: checkLoggedIn
+                }
             })
+    }
 
+    function checkLoggedIn(userService, $q, $location) {
+        var deferred = $q.defer();
+        userService
+            .loggedin()
+            .then(function (user) {
+                if(user === '0') {
+                    deferred.reject();
+                    $location.url('/login');
+                } else {
+                    deferred.resolve(user);
+                }
+            });
 
+        return deferred.promise;
+    }
+
+    function checkCurrentUser(userService, $q, $location) {
+        var deferred = $q.defer();
+        userService
+            .loggedin()
+            .then(function (user) {
+                if(user === '0') {
+                    deferred.resolve({});
+                } else {
+                    deferred.resolve(user);
+                }
+            });
+
+        return deferred.promise;
     }
 })();

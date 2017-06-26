@@ -2,8 +2,8 @@
 <nav class="navbar navbar-fixed-top bg-primary">
     <div class="container-fluid">
         <div class="navbar-text pull-right">
-              <a class="wall" href="#!/user/{{model.userId}}/wall">Wall</a>
-              <a class="wall" href="#!/login">Logout</a>
+              <a class="wall" href="#!/wall">Wall</a>
+              <a class="wall" ng-click="model.logout()" href="">Logout</a>
         </div>
         <div class="navbar-header">
             <a class="navbar-brand">Profile</a>
@@ -273,7 +273,7 @@
                                 ng-repeat="follower in model.user.followers">
                                 <ul class="title-content-list">
                                     <li>
-                                        <a href="#!/user/{{model.userId}}/profile/{{follower.id}}">
+                                        <a href="#!/profile/{{follower.id}}">
                                             {{follower.name}}
                                         </a>
                                     </li>

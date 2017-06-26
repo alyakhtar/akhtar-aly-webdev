@@ -10,13 +10,13 @@
                     <a class="navbar-brand nav-brand" href="#!/">
                         <img alt="Brand" src="http://a.espncdn.com/combiner/i?img=/i/teamlogos/leagues/500/nfl.png&w=400&h=400" width="30px" height="30px">
                     </a>
-                    <a class="navbar-brand" href="#!/user/{{model.userId}}/wall">Super Bowl</a>
+                    <a class="navbar-brand" href="#!/wall">Super Bowl</a>
                     <i class="brand_network"><small><small>Ticket Manager</small></small></i>
                 </div>
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
-                        <li><a href="#!/user/{{model.userId}}/tickets">Book Tickets</a></li>
-                        <li class="active"><a href="#!/user/{{model.userId}}/itinerary">Itinerary</a></li>
+                        <li><a href="#!/tickets">Book Tickets</a></li>
+                        <li class="active"><a href="#!/itinerary">Itinerary</a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <li class="dropdown">
@@ -32,7 +32,7 @@
                                             <div class="col-md-5">
                                                 <img src="{{model.user.image}}" width="120px" height="120px" />
                                                 <p class="text-center small">
-                                                    <a href="#!/user/{{model.userId}}">Change Photo</a></p>
+                                                    <a href="#!/profile">Change Photo</a></p>
                                             </div>
                                             <div class="col-md-7">
                                                 <span>{{model.user.first_name}} {{model.user.last_name}}</span>
@@ -41,7 +41,7 @@
                                                 </p>
                                                 <div class="divider">
                                                 </div>
-                                                <a href="#!/user/{{model.userId}}" class="btn btn-default btn-block btn-xs"><i class="fa fa-user-o" aria-hidden="true"></i> Profile</a>
+                                                <a href="#!/profile" class="btn btn-default btn-block btn-xs"><i class="fa fa-user-o" aria-hidden="true"></i> Profile</a>
                                             </div>
                                         </div>
                                     </div>
@@ -49,7 +49,9 @@
                                         <div class="navbar-footer-content">
                                             <div class="row">
                                                 <div class="col-md-6 col-md-offset-2">
-                                                    <a href="#" class="btn btn-default btn-sm pull-right"><i class="fa fa-power-off" aria-hidden="true"></i> Sign Out</a>
+                                                    <a href="#" 
+                                                    ng-click="model.logout()"
+                                                    class="btn btn-default btn-sm pull-right"><i class="fa fa-power-off" aria-hidden="true"></i> Sign Out</a>
                                                 </div>
                                             </div>
                                         </div>

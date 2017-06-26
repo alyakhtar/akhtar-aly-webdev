@@ -21,8 +21,7 @@
 
 	            function renderData(user){
 	                if(user !== null){
-	                	// model.message = "logged In!!"+user.username;
-	                    $location.url('/user/' + user._id);
+	                    $location.url('/profile');
 	                } else{
 	                    model.message = "Incorrect username/password, please try again!";    
 	                }

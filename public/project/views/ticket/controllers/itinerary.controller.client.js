@@ -3,13 +3,14 @@
         .module('Project')
         .controller('itineraryController', itineraryController)
 
-    function itineraryController($location, $routeParams, ticketService, userService) {
+    function itineraryController($location, $routeParams, ticketService, userService, currentUser) {
 
         var model = this;
 
-        model.userId = $routeParams['userId'];
+        model.userId = currentUser._id;
 
         model.cancelBooking = cancelBooking;
+        model.logout = logout;
 
         function init(){
             userService
@@ -26,6 +27,13 @@
         }
         init();
 
+        function logout(){
+            userService
+                .logout()
+                .then(function(){
+                    $location.url('/login');
+                });
+        }
 
         function cancelBooking(bookingId){
             ticketService

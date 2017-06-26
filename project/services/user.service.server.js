@@ -1,6 +1,11 @@
 var app = require('../../express.js');
 var UserModel = require('../models/user/user.model.server.js');
 var WallModel = require('../models/wall/wall.model.server.js');
+var passport = require('passport');
+var LocalStrategy = require('passport-local').Strategy;
+passport.use(new LocalStrategy(localStrategy));
+passport.serializeUser(serializeUser);
+passport.deserializeUser(deserializeUser);
 
 var multer = require('multer');
 var storage = multer.diskStorage({
@@ -15,8 +20,11 @@ var storage = multer.diskStorage({
 });
 var upload = multer({storage: storage});
 
-app.get('/api/project/user', login);
-app.post('/api/project/user', register);
+app.post('/api/project/login', passport.authenticate('local'), login);
+app.get('/api/project/loggedin', loggedin);
+app.post('/api/project/logout', logout);
+app.post('/api/project/register', register);
+
 app.put('/api/project/user/:userId', updateUserByUserId);
 app.delete('/api/project/user/:userId', deleteUserByUserId);
 app.get('/api/project/user/:userId', findUserById);
@@ -31,58 +39,79 @@ app.get('/api/project/user/:userId/unfollow/:followId', unfollowUserById);
 app.put('/api/project/user/:userId/follow/:followId', followUserById);
 app.post('/api/project/upload', upload.single('myFile'), uploadImage);
 
-var users = [
-    { "_id": 123, "username": "aly", "password": "123", 
-    "first_name": "Aly", "last_name": "Akhtar", 
-    "following": [{ "name": "admin admin", "id": 21 }], 
-    "followers": [{ "name": "admin admin" }],
-    "image" : "https://openclipart.org/download/233689/north-korean-maze-mobile-casino.svg"},
-    { "_id": 234, "username": "admin", "password": "admin" }
-];
-
-var posts = [];
-
-function login(req, res) {
-    var username = req.query.username;
-
-    var password = req.query.password;
-
-    UserModel
-        .findUserByCredentials(username, password)
-        .then(function(user){
-            if(user){
-                res.json(user);
-            } else{
-                res.sendStatus(400).send(err);
-            }
-        });
-
-    // for (var u in users) {
-    //     if (users[u].username === username &&
-    //         users[u].password === bcrypt.hashSync(password)) {
-    //         res.json(users[u]);
-    //         return;
-    //     }
-    // }
-    // res.sendStatus(404);
-}
-
 function register(req, res) {
     var user = req.body;
     
     user.password = user.password;
     user.image = 'https://openclipart.org/download/233689/north-korean-maze-mobile-casino.svg';
+
     UserModel
         .createUser(user)
         .then(function(user){
             if(user){
-                res.json(user);
-            } else{
-                res.sendStatus(400).send(err);
+                req.login(user, function(err) {
+                    if(err){
+                        res.status(400).send(err);
+                    } else{
+                        res.json(user);
+                    }
+                });
             }
+
         });
-    // users.push(user);
-    // res.json(user);
+}
+
+function logout(req, res) {
+    req.logout();
+    res.sendStatus(200);
+}
+
+function loggedin(req, res) {
+    if(req.isAuthenticated()) {
+        res.json(req.user);
+    } else {
+        res.send('0');
+    }
+}
+
+function localStrategy(username, password, done) {
+    UserModel
+        .findUserByCredentials(username,password)
+        .then(
+            function(user) {
+                if(user) {
+                    return done(null, user);
+                } else{
+                    return done(null, false);
+                }
+            },
+            function(err) {
+                if (err) {
+                    return done(err); }
+            }
+        );
+}
+
+function login(req, res) {
+    var user = req.user;
+    res.json(user);
+}
+
+function serializeUser(user, done) {
+    done(null, user);
+}
+
+function deserializeUser(user, done) {
+    UserModel
+        .findUserById(user._id)
+        .then(
+            function(user){
+                done(null, user);
+            },
+            function(err){
+                done(err, null);
+            }
+        );
 }
 
 
@@ -97,13 +126,6 @@ function findUserById(req, res) {
                 res.sendStatus(400).send(err);
             }
         });
-    // for (var u in users) {
-    //     if (users[u]._id === parseInt(userId)) {
-    //         res.json(users[u]);
-    //         return;
-    //     }
-    // }
-    // res.sendStatus(404);
 }
 
 function updateUserByUserId(req, res) {
@@ -119,17 +141,6 @@ function updateUserByUserId(req, res) {
                 res.sendStatus(400).send(err);
             }
         });
-    // for (var u in users) {
-    //     if (users[u]._id === parseInt(userId)) {
-    //         user._id = users[u]._id;
-    //         user.username = users[u].username;
-    //         user.password = users[u].password;
-    //         users[u] = user;
-    //         res.json(user);
-    //         return
-    //     }
-    // }
-    // res.sendStatus(404);
 }
 
 function deleteUserByUserId(req, res){
@@ -140,14 +151,6 @@ function deleteUserByUserId(req, res){
         .then(function(){
             res.sendStatus(200);
         });
-    // for (var u in users) {
-    //     if (users[u]._id === parseInt(userId)) {
-    //         users.splice(u, 1);
-    //         res.sendStatus(200);
-    //         return
-    //     }
-    // }
-    // res.sendStatus(404);
 }
 
 function createPost(req, res) {
@@ -164,22 +167,6 @@ function createPost(req, res) {
                     return;
                 });
         });
-    // if (posts.length >= 1) {
-    //     for (var p in posts) {
-    //         var id = posts[p]._id;
-    //     }
-    //     newId = id + 111;
-    //     post._id = newId;
-    //     posts.push(post);
-    //     res.json(posts);
-    //     return;
-    // } else {
-    //     post._id = 111;
-    //     posts.push(post);
-    //     res.json(posts);
-    //     return;
-    // }
-    // res.sendStatus(404);
 }
 
 function findAllPostsByTeam(req, res) {
@@ -190,7 +177,6 @@ function findAllPostsByTeam(req, res) {
             res.json(posts);
             return;
         });
-    // res.json(posts);
 }
 
 function deletePostById(req, res) {
@@ -211,14 +197,6 @@ function deletePostById(req, res) {
                 res.sendStatus(404);
             }
         });
-    // for (var p in posts) {
-    //     if (posts[p]._id === parseInt(postId)) {
-    //         posts.splice(p, 1);
-    //         res.json(posts);
-    //         return;
-    //     }
-    // }
-    // res.sendStatus(404);
 }
 
 function updatePostById(req, res) {
@@ -230,14 +208,6 @@ function updatePostById(req, res) {
         .then(function(){
             res.sendStatus(200);
         });
-    // for (var p in posts) {
-    //     if (posts[p]._id === parseInt(postId)) {
-    //         posts[p] = post;
-    //         res.json(posts);
-    //         return;
-    //     }
-    // }
-    // res.sendStatus(404);
 }
 
 function likePostById(req, res) {
@@ -249,23 +219,6 @@ function likePostById(req, res) {
         .then(function(post){
             res.sendStatus(200);
         });
-    // for (var p in posts) {
-    //     if (posts[p]._id === parseInt(postId)) {
-    //         if (posts[p].likesBy.indexOf(userId) > -1) {
-    //             posts[p].like -= 1;
-    //             var ind = posts[p].likesBy.indexOf(userId);
-    //             posts[p].likesBy.splice(ind, 1);
-    //             res.json(posts);
-    //             return;
-    //         } else {
-    //             posts[p].like += 1;
-    //             posts[p].likesBy.push(userId);
-    //             res.json(posts);
-    //             return;
-    //         }
-    //     }
-    // }
-    // res.sendStatus(404);
 }
 
 function commentPostById(req, res) {
@@ -277,26 +230,6 @@ function commentPostById(req, res) {
         .then(function(){
             res.sendStatus(200);
         });
-    // for (var p in posts) {
-    //     if (posts[p]._id === parseInt(postId)) {
-    //         if (posts[p].comments.length >= 1) {
-    //             for (var c in posts[p].comments) {
-    //                 var id = posts[p].comments[c]._id;
-    //             }
-    //             newId = id + 11;
-    //             comment._id = newId;
-    //             posts[p].comments.push(comment);
-    //             res.json(posts);
-    //             return;
-    //         } else {
-    //             comment._id = 11;
-    //             posts[p].comments.push(comment);
-    //             res.json(posts);
-    //             return;
-    //         }
-    //     }
-    // }
-    // res.sendStatus(404);
 }
 
 function deleteCommentById(req, res) {
@@ -310,21 +243,6 @@ function deleteCommentById(req, res) {
             res.sendStatus(200);
             return;
         });
-    // for (var p in posts) {
-    //     if (posts[p]._id === parseInt(postId)) {
-    //         for (var c in posts[p].comments) {
-    //             if (posts[p].comments[c]._id === parseInt(commentId)) {
-    //                 if (posts[p].comments[c].userId === userId) {
-    //                     posts[p].comments.splice(c, 1);
-    //                     res.json(posts);
-    //                     return;
-    //                 }
-    //             }
-    //         }
-
-    //     }
-    // }
-    // res.sendStatus(404);
 }
 
 function unfollowUserById(req, res) {
@@ -336,18 +254,6 @@ function unfollowUserById(req, res) {
         .then(function(){
             res.sendStatus(200);
         });
-    // for (var u in users) {
-    //     if (users[u]._id === parseInt(userId)) {
-    //         for (var f in users[u].following) {
-    //             if (users[u].following[f].id === parseInt(followId)) {
-    //                 users[u].following.splice(f, 1);
-    //                 res.json(users[u]);
-    //                 return;
-    //             }
-    //         }
-    //     }
-    // }
-    // res.sendStatus(404);
 }
 
 function followUserById(req, res) {
@@ -378,22 +284,14 @@ function followUserById(req, res) {
                             .followUser(followId, newUser)
                             .then(function(){
                                 res.sendStatus(200);
+                                return;
                             });
                     });
 
             }
             res.sendStatus(200);
+            return;
         });
-    // for (var u in users) {
-    //     if (users[u]._id === parseInt(userId)) {
-    //         if(!users[u].following){
-    //             users[u].following = [];
-    //         }
-    //         users[u].following.push(user);
-    //         res.json(users[u]);
-    //         return;
-    //     }
-    // }
     res.sendStatus(404);
 }
 

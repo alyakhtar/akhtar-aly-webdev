@@ -3,17 +3,18 @@
 		.module('Project')
 		.controller('profileController', profileController)
 
-	function profileController($location, $routeParams, userService, teamService){
+	function profileController($location, $routeParams, userService, teamService, currentUser){
 
 		var model = this;
 
 		model.update = update;
 
-		var userId = $routeParams['userId'];
+		var userId = currentUser._id;
 		model.userId = userId;
 
 		model.unfollowUser = unfollowUser;
 		model.deleteUser = deleteUser;
+		model.logout = logout;
 
 		function init(){
 			teamService
@@ -29,6 +30,14 @@
             	});
 		}
 		init();
+
+		function logout(){
+            userService
+                .logout()
+                .then(function(){
+                    $location.url('/login');
+                });
+        }
 
 		function update(user, password, password2){
 			if(password && password2){

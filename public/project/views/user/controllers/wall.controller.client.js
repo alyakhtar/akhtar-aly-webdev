@@ -3,11 +3,11 @@
 		.module('Project')
 		.controller('wallController', wallController)
 
-		function wallController($location, $interval, $routeParams, userService, $route){
+		function wallController($location, $interval, $routeParams, userService, $route, currentUser){
 
 			var model = this;
 
-			var userId = $routeParams['userId'];
+			var userId = currentUser._id;
 			model.userId = userId;
 
 			model.addPhotoToPost = addPhotoToPost;
@@ -24,6 +24,7 @@
 			model.postQuantity = 7;
 			model.morePosts = morePosts;
 			model.postEdited = postEdited;
+			model.logout = logout;
 
 
 			function init(){
@@ -53,6 +54,14 @@
 					});
 			}	
 			init();
+
+			function logout(){
+	            userService
+	                .logout()
+	                .then(function(){
+	                    $location.url('/login');
+	                });
+	        }
 
 			function addPhotoToPost(){
 				if(!model.imageUrl){

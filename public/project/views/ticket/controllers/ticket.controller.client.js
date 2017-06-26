@@ -3,11 +3,11 @@
         .module('Project')
         .controller('ticketController', ticketController)
 
-    function ticketController($location, $routeParams, $window, $http, ticketService, userService) {
+    function ticketController($location, $routeParams, $window, $http, ticketService, userService, currentUser) {
 
         var model = this;
 
-        model.userId = $routeParams['userId'];
+        model.userId = currentUser._id;
 
         model.getTickets = getTickets;
         model.getMoreFlights = getMoreFlights;
@@ -15,6 +15,7 @@
         model.getMoreHotels = getMoreHotels;
         model.viewType = viewType;
         model.bookTicket = bookTicket;
+        model.logout = logout;
         model.init = init;
 
         var flightHomePages = {
@@ -109,6 +110,14 @@
             cr.removeClass('active');
         }
         init();
+
+        function logout(){
+            userService
+                .logout()
+                .then(function(){
+                    $location.url('/login');
+                });
+        }
 
         function getAirports() {
             $http.get('assets/cities.json')
