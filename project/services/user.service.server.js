@@ -54,6 +54,7 @@ app.post('/api/project/login', passport.authenticate('local'), login);
 app.get('/api/project/loggedin', loggedin);
 app.post('/api/project/logout', logout);
 app.post('/api/project/register', register);
+app.get('/api/project/checkAdmin', checkAdmin);
 
 app.put('/api/project/user/:userId', updateUserByUserId);
 app.delete('/api/project/user/:userId', deleteUserByUserId);
@@ -68,6 +69,9 @@ app.delete('/api/project/user/:userId/post/:postId/comment/:commentId', deleteCo
 app.get('/api/project/user/:userId/unfollow/:followId', unfollowUserById);
 app.put('/api/project/user/:userId/follow/:followId', followUserById);
 app.post('/api/project/upload', upload.single('myFile'), uploadImage);
+app.get('/api/project/admin/users', isAdmin, findAllUsers);
+app.get('/api/project/admin/posts', isAdmin, findAllPosts);
+app.delete('/api/project/admin/post/:postId', isAdmin, deletePost);
 
 app.get('/auth/google', passport.authenticate('google', { scope : ['profile', 'email'] }));
 app.get('/auth/google/callback',
@@ -203,7 +207,8 @@ function googleStrategy(token, refreshToken, profile, done) {
 
 function register(req, res) {
     var user = req.body;
-    
+
+    user .role = 'USER';
     user.password = user.password;
     user.image = 'https://openclipart.org/download/233689/north-korean-maze-mobile-casino.svg';
 
@@ -230,6 +235,14 @@ function logout(req, res) {
 
 function loggedin(req, res) {
     if(req.isAuthenticated()) {
+        res.json(req.user);
+    } else {
+        res.send('0');
+    }
+}
+
+function checkAdmin(req, res) {
+    if(req.isAuthenticated() && req.user.role == 'ADMIN') {
         res.json(req.user);
     } else {
         res.send('0');
@@ -290,6 +303,34 @@ function findUserById(req, res) {
         });
 }
 
+function findAllUsers(req, res){
+    
+    UserModel
+        .findAllUsers()
+        .then(function(users){
+            res.json(users);
+            return;
+        });
+}
+
+function findAllPosts(req, res){
+    
+    WallModel
+        .findAllPosts()
+        .then(function(posts){
+            res.json(posts);
+            return;
+        });
+}
+
+function isAdmin(req, res, next){
+    if(req.isAuthenticated() && req.user.role == 'ADMIN') {
+        next();
+    } else{
+        res.sendStatus(401);
+    }
+}
+
 function updateUserByUserId(req, res) {
     var user = req.body;
     var userId = req.params['userId'];
@@ -337,6 +378,16 @@ function findAllPostsByTeam(req, res) {
         .findPostsByTeamName(team)
         .then(function(posts){
             res.json(posts);
+            return;
+        });
+}
+
+function deletePost(req, res){
+    var postId = req.params['postId'];
+    WallModel
+        .deletePost(postId)
+        .then(function(){
+            res.sendStatus(200);
             return;
         });
 }

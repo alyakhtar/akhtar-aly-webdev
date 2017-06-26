@@ -26,6 +26,9 @@
                 <li ng-show="!model.currentUser._id">
                     <a href="#!/login">Login</a>
                 </li>
+                <li ng-show="model.currentUser.role == 'ADMIN'">
+                    <a href="#!/admin">Admin</a>
+                </li>
             </ul>
         </div>
     </div>

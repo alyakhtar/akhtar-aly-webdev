@@ -1,0 +1,10 @@
+<div class="container-fluid">
+    <ul class="list-group">
+        <li ng-repeat="post in model.posts" class="list-group-item">
+            <a href="" ng-click="model.deletePost(post._id)">
+                <span class="glyphicon glyphicon-remove pull-right"></span>
+            </a>
+            {{post.text}}
+        </li>
+    </ul>
+</div>

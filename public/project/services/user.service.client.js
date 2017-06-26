@@ -21,9 +21,53 @@
             follow: follow,
             deleteUser: deleteUser,
             loggedin: loggedin,
-            logout: logout
+            logout: logout,
+            checkAdmin: checkAdmin,
+            getAllUsers: getAllUsers,
+            getAllPosts: getAllPosts, 
+            deletePostByAdmin: deletePostByAdmin
         };
         return api;
+
+        function deletePostByAdmin(postId){
+            url='/api/project/admin/post/'+postId;
+            
+            return $http
+                    .delete(url)
+                    .then(function(response){
+                        return response.data;
+                    });
+        }
+
+        function getAllUsers(){
+            var url = '/api/project/admin/users';
+
+            return $http
+                    .get(url)
+                    .then(function(response){
+                        return response.data;
+                    });
+        }
+
+        function getAllPosts(){
+            var url = '/api/project/admin/posts';
+
+            return $http
+                    .get(url)
+                    .then(function(response){
+                        return response.data;
+                    });
+        }
+
+        function checkAdmin(){
+            var url = '/api/project/checkAdmin';
+
+            return $http
+                    .get(url)
+                    .then(function(response){
+                        return response.data;
+                    });
+        }
 
         function register(user){
             var url = "/api/project/register";

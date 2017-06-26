@@ -3,6 +3,11 @@
     <div class="container-fluid">
         <div class="navbar-text pull-right">
               <a class="wall" href="#!/wall">Wall</a>
+              <a    class="wall" 
+                    ng-show="model.currentUser.role == 'ADMIN'"
+                    href="#!/admin">
+                Admin
+                </a>
               <a class="wall" ng-click="model.logout()" href="">Logout</a>
         </div>
         <div class="navbar-header">

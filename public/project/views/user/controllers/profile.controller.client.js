@@ -11,6 +11,7 @@
 
 		var userId = currentUser._id;
 		model.userId = userId;
+		model.currentUser = currentUser;
 
 		model.unfollowUser = unfollowUser;
 		model.deleteUser = deleteUser;

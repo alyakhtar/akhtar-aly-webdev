@@ -13,6 +13,8 @@ userModel.unfollowUser = unfollowUser;
 userModel.findUserByGoogleId = findUserByGoogleId;
 userModel.findUserByFacebookId = findUserByFacebookId;
 userModel.findUserByGithubId = findUserByGithubId;
+userModel.findAllUsers = findAllUsers;
+
 
 module.exports = userModel;
 
@@ -91,5 +93,9 @@ function findUserByFacebookId(facebookid){
 }
 function findUserByGithubId(githubId){
 	return userModel.findOne({'github.id':githubId});
+}
+
+function findAllUsers(){
+	return userModel.find();
 }
 

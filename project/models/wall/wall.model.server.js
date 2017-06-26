@@ -11,8 +11,13 @@ wallModel.likePost = likePost;
 wallModel.commentPostById = commentPostById
 wallModel.deleteComment = deleteComment;
 wallModel.deleteAllPostsOfUser = deleteAllPostsOfUser;
+wallModel.findAllPosts = findAllPosts;
 
 module.exports = wallModel;
+
+function findAllPosts(){
+	return wallModel.find();
+}
 
 function createPost(post){
 	return wallModel.create(post);

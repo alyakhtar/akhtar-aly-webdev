@@ -15,7 +15,7 @@ var userSchema = mongoose.Schema({
 	team: String,
 	following: [],
 	followers: [],
-	role:[],
+	role: String,
 	google: {id: String, token: String},
 	facebook: {id: String, token: String},
 	github: {id: String, token: String},

@@ -1,0 +1,10 @@
+<div class="container-fluid">
+    <ul class="list-group">
+        <li ng-repeat="user in model.users" class="list-group-item">
+            <a href="" ng-click="model.deleteUser(user._id)">
+                <span class="glyphicon glyphicon-remove pull-right"></span>
+            </a>
+            {{user.first_name}} {{user.last_name}}
+        </li>
+    </ul>
+</div>
