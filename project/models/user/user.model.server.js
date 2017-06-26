@@ -10,6 +10,9 @@ userModel.updateUser = updateUser;
 userModel.deleteUser = deleteUser;
 userModel.followUser = followUser;
 userModel.unfollowUser = unfollowUser;
+userModel.findUserByGoogleId = findUserByGoogleId;
+userModel.findUserByFacebookId = findUserByFacebookId;
+userModel.findUserByGithubId = findUserByGithubId;
 
 module.exports = userModel;
 
@@ -76,5 +79,17 @@ function unfollowUser(userId, followId){
 									}
 								});
 				})
+}
+
+
+function findUserByGoogleId(googleId){
+	return userModel.findOne({'google.id':googleId});
+}
+
+function findUserByFacebookId(facebookid){
+	return userModel.findOne({'facebook.id':facebookid});
+}
+function findUserByGithubId(githubId){
+	return userModel.findOne({'github.id':githubId});
 }
 

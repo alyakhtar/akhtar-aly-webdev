@@ -12,12 +12,14 @@ body {
     display: table-cell;
     text-align: center;
     /*vertical-align: middle;*/
+    color: white;
     padding-top: 15%;
 }
 
 .text-vertical-center2 {
     display: table-cell;
     text-align: center;
+    color: white;
     /*vertical-align: middle;*/
     padding-top: 25%;
 }
@@ -168,6 +170,11 @@ hr.small {
     -moz-background-size: cover;
     background-size: cover;
     -o-background-size: cover;
+}
+
+.my-image{
+    /*margin-top: -600px;*/
+    z-index: 9999999;
 }
 
 /* About */
