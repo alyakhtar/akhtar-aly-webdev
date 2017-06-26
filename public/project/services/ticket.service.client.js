@@ -17,7 +17,7 @@
         return api;
 
         function getMatchTicket(){
-            var key = 'Y8CUMTdtH8ryvRTDvpGWNFhFQ6WyDOHF';
+            var key = process.env.TICKETMASTER_CLIENT_ID;
             var url = 'https://app.ticketmaster.com/discovery/v2/events.json?apikey='+ key + '&keyword=international champions cup';
             return $http
                 .get(url)
@@ -57,7 +57,7 @@
                 }
             }
 
-            var api = 'AIzaSyBJoisTMUjUlY6JRMmr0EJjmaZnM1WduJs';
+            var api = process.env.QPX_CLIENT_ID;
             var url = 'https://www.googleapis.com/qpxExpress/v1/trips/search?key=' + api;
             return $http
                 .post(url, flight)
@@ -74,7 +74,7 @@
             } else {
                 count = size + 20;
             }
-            var key = 'PsCw2ApzCs1YyuyiQmGyAh39fFTGzhMU';
+            var key = process.env.AMADEUS_CLIENT_ID;
             var url = 'https://api.sandbox.amadeus.com/v1.2/hotels/search-airport?apikey=' + key + '&location=' + trip.destination + '&check_in=' + trip.date + '&check_out=' + trip.return +'&radius=50&number_of_results=' + count;
 
             return $http
@@ -88,7 +88,7 @@
         }
 
         function getCars(trip) {
-            var key = 'PsCw2ApzCs1YyuyiQmGyAh39fFTGzhMU';
+            var key = process.env.AMADEUS_CLIENT_ID;
             var url = 'https://api.sandbox.amadeus.com//v1.2/cars/search-airport?apikey=' + key + '&location=' + trip.destination + '&pick_up=' + trip.date + '&drop_off=' + trip.return;
 
             return $http

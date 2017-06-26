@@ -16,7 +16,7 @@ function findTeam(req, res) {
 
 
 function getTeamDetails(teamId){
-    var key = "6wsgf62ddhacehmnp3dwaq6a";
+    var key = process.env.SPORTSRADAR_CLIENT_ID;
     var urlBase = "https://api.sportradar.us/nfl-ot1/teams/"+teamId+"/profile.json?api_key="+key;
     var deferred = q.defer();
     https.get(urlBase, function(response) {
