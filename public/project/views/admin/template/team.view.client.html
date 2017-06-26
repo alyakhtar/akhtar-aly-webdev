@@ -1,0 +1,81 @@
+<div class="container-fluid">
+    <div class="alert alert-info" ng-show="model.message">
+        {{model.message}}
+    </div>
+    <ul class="list-group">
+    	<li class="list-group-item active">
+    		<div class="row">
+    			<div class="col-sm-4">
+    				<center>CURRENT TEAM</center>
+    			</div>
+    			<div class="col-sm-4">
+                    <center>CHANGE TEAM</center>
+                </div>
+    			<div class="col-sm-1"></div>
+                <div class="col-sm-3"></div>
+    		</div>
+    	</li>
+
+        <li class="list-group-item">
+            <div class="row">
+                <div class="col-sm-4">
+                    <center>{{model.homeTeams[0].name}}</center>
+                </div>
+                <div class="col-sm-4">
+                    <select 
+                            ng-model="model.newTeam1"
+                            type="text"
+                            id="team"
+                            class="form-control">
+                            <option   value="1">----Select----</option>
+                            <option   ng-repeat="team in model.teams | orderBy : 'name'"
+                                        value="{{team.name}},{{team.id}},{{team.url.big}}">
+                                            {{team.name}}
+                            </option>
+                    </select>
+                </div>
+                <div class="col-sm-1"></div>
+                <div class="col-sm-3">
+                    <center>
+                            <a  href="" 
+                                class="btn btn-success" 
+                                ng-click="model.updateTeam(model.homeTeams[0]._id, model.newTeam1)">
+                                Update Team
+                            </a>
+                    </center>
+                </div>
+            </div>
+        </li>
+
+        <li class="list-group-item">
+        	<div class="row">
+    			<div class="col-sm-4">
+    				<center>{{model.homeTeams[1].name}}</center>
+    			</div>
+    			<div class="col-sm-4">
+                    <select 
+                            ng-model="model.newTeam2"
+                            type="text"
+                            id="team"
+                            class="form-control">
+                            <option   value="1">----Select----</option>
+                            <option   ng-repeat="team in model.teams | orderBy : 'name'"
+                                        value="{{team.name}},{{team.id}},{{team.url.big}}">
+                                            {{team.name}}
+                            </option>
+                    </select>
+                </div>
+                <div class="col-sm-1"></div>
+    			<div class="col-sm-3">
+                    <center>
+        				<a  href="" 
+                            class="btn btn-success" 
+                            ng-click="model.updateTeam(model.homeTeams[1]._id, model.newTeam2)">
+                            Update Team
+    		            </a>
+                    </center>
+    			</div>
+    		</div>
+        </li>
+    </ul>
+</div>

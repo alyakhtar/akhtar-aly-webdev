@@ -3,7 +3,7 @@
 		.module('Project')
 		.controller('adminController', adminController)
 
-		function adminController($location, $routeParams, userService, currentUser){
+		function adminController($location, $routeParams, userService, currentUser, teamService){
 
 			var model = this;
 
@@ -15,6 +15,7 @@
 			model.createUser = createUser;
 			model.updateUser = updateUser;
 			model.editUser = editUser;
+			model.updateTeam = updateTeam;
 
 			model.logout = logout;
 
@@ -29,6 +30,18 @@
 	        		.getAllPosts()
 	        		.then(function(posts){
 	        			model.posts = posts;
+	        		})
+
+	        	teamService
+	        		.getTeams()
+	        		.then(function(teams){
+	        			model.teams = teams;
+	        		})
+
+	        	teamService
+	        		.getHomepageTeams()
+	        		.then(function(teams){
+	        			model.homeTeams = teams;
 	        		})
 			}
 			init();
@@ -96,6 +109,28 @@
 	        		model.View = 'views/admin/template/users.view.client.html';
 	        	} else if(type === 'posts'){
 	        		model.View = 'views/admin/template/posts.view.client.html';
+	        	} else if(type === 'teams'){
+	        		model.View = 'views/admin/template/team.view.client.html';
+	        	}
+	        }
+
+	        function updateTeam(teamId, newTeam){
+	        	if(typeof newTeam !== 'undefined'){
+	        		teamDetails = newTeam.split(',');
+	        		newTeam = {
+	        			name: teamDetails[0],
+	        			teamId: teamDetails[1],
+	        			url: teamDetails[2]
+	        		}
+	        		
+	        		teamService
+	        			.updateHomepageTeams(teamId, newTeam)
+	        			.then(function(){
+	        				init();
+	        				model.message = 'Team updated!';
+	        				model.newTeam1 = '';
+	        				model.newTeam2 = '';
+	        			});
 	        	}
 	        }
 		}

@@ -3,15 +3,24 @@
 		.module('Project')
 		.controller('homeController', homeController)
 
-		function homeController($location, $routeParams, userService, currentUser){
+		function homeController($location, $routeParams, userService, currentUser, teamService){
 
 			var model = this;
 
 			model.currentUser = currentUser;
 
 			model.logout = logout;
-
 			model.bookTickets = bookTickets;
+			model.getTeamDetails = getTeamDetails;
+
+			function init(){
+				teamService
+	        		.getHomepageTeams()
+	        		.then(function(teams){
+	        			model.homeTeams = teams;
+	        		})
+			}
+			init();
 
 	        function logout(){
 	            userService
@@ -28,6 +37,10 @@
 	        	} else{
 	        		$location.url('/login');
 	        	}
+	        }
+
+	        function getTeamDetails(teamId){
+	            $location.url('/team/'+teamId);
 	        }
 		}
 })();

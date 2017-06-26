@@ -1,6 +1,7 @@
 var app = require('../../express.js');
 var UserModel = require('../models/user/user.model.server.js');
 var WallModel = require('../models/wall/wall.model.server.js');
+var TeamModel = require('../models/team/team.model.server.js');
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 passport.use(new LocalStrategy(localStrategy));
@@ -72,7 +73,9 @@ app.post('/api/project/upload', upload.single('myFile'), uploadImage);
 app.get('/api/project/admin/users', isAdmin, findAllUsers);
 app.get('/api/project/admin/posts', isAdmin, findAllPosts);
 app.delete('/api/project/admin/post/:postId', isAdmin, deletePost);
-app.post('/api/project/admin/createUser', isAdmin, createUser)
+app.post('/api/project/admin/createUser', isAdmin, createUser);
+app.get('/api/project/admin/teams', getTeams);
+app.post('/api/project/admin/team/:teamId', isAdmin, updateTeam);
 
 app.get('/auth/google', passport.authenticate('google', { scope : ['profile', 'email'] }));
 app.get('/auth/google/callback',
@@ -527,6 +530,25 @@ function followUserById(req, res) {
             return;
         });
     res.sendStatus(404);
+}
+
+function getTeams(req, res){
+    TeamModel
+        .getTeams()
+        .then(function(teams){
+            res.json(teams);
+        });
+}
+
+function updateTeam(req, res){
+    var team = req.body;
+    var teamId = req.params['teamId'];
+
+    TeamModel
+        .updateTeam(teamId, team)
+        .then(function(teams){
+            res.sendStatus(200);
+        });
 }
 
 

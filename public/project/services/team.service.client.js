@@ -8,7 +8,9 @@
         var api = {
             getTeams: getTeams,
             getTeamDetails: getTeamDetails,
-            getTeamImage: getTeamImage
+            getTeamImage: getTeamImage,
+            getHomepageTeams: getHomepageTeams,
+            updateHomepageTeams: updateHomepageTeams
         };
         return api;
 
@@ -36,6 +38,25 @@
                     .then(function(response){
                         return response.data;
                     });
+        }
+
+        function getHomepageTeams(){
+            var url = '/api/project/admin/teams';
+            return $http
+                    .get(url)
+                    .then(function(response){
+                        return response.data;
+                    });
+        }
+
+        function updateHomepageTeams(teamId, newTeam){
+            var url = '/api/project/admin/team/'+teamId;
+
+            return $http
+                    .post(url, newTeam)
+                    .then(function(response){
+                        return response.data;
+                    })
         }
     }
 })();
