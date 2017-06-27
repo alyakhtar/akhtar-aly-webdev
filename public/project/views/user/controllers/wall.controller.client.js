@@ -132,7 +132,9 @@
 			function editPost(post){
 				if(post.userId === userId){
 					model.edit = true;
-					model.post = post;	
+					hashtags = post.hashtags.join(" ");
+					post.text += " " + hashtags;
+					model.post = post;
 				}
 			}
 
@@ -219,8 +221,15 @@
 				var minutes = seconds/60;
 				var hours = minutes/60;
 				var days = hours/24;
+				var months = days/30;
 
-				if(parseInt(days) > 0){
+				if(parseInt(months) > 0){
+					if(parseInt(months) == 1){
+						return parseInt(months).toString() + ' month ago';
+					} else{
+						return parseInt(months).toString() + ' months ago';
+					}
+				} else if(parseInt(days) > 0){
 					if(parseInt(days) == 1){
 						return parseInt(days).toString() + ' day ago';
 					} else{
