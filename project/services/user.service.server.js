@@ -21,34 +21,34 @@ var storage = multer.diskStorage({
 });
 var upload = multer({storage: storage});
 
-var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
-var FacebookStrategy = require('passport-facebook').Strategy;
-var GitHubStrategy = require('passport-github2').Strategy;
+// var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
+// var FacebookStrategy = require('passport-facebook').Strategy;
+// var GitHubStrategy = require('passport-github2').Strategy;
 
-var bcrypt = require("bcrypt-nodejs");
+// var bcrypt = require("bcrypt-nodejs");
 
-var googleConfig = {
-    clientID     : process.env.GOOGLE_CLIENT_ID,
-    clientSecret : process.env.GOOGLE_CLIENT_SECRET,
-    callbackURL  : process.env.GOOGLE_CALLBACK_URL
-};
+// var googleConfig = {
+//     clientID     : process.env.GOOGLE_CLIENT_ID,
+//     clientSecret : process.env.GOOGLE_CLIENT_SECRET,
+//     callbackURL  : process.env.GOOGLE_CALLBACK_URL
+// };
 
-var facebookConfig = {
-    clientID     : process.env.FACEBOOK_CLIENT_ID,
-    clientSecret : process.env.FACEBOOK_CLIENT_SECRET,
-    callbackURL  : process.env.FACEBOOK_CALLBACK_URL,
-    profileFields: ['id', 'email', 'gender', 'link', 'locale', 'name']
-};
+// var facebookConfig = {
+//     clientID     : process.env.FACEBOOK_CLIENT_ID,
+//     clientSecret : process.env.FACEBOOK_CLIENT_SECRET,
+//     callbackURL  : process.env.FACEBOOK_CALLBACK_URL,
+//     profileFields: ['id', 'email', 'gender', 'link', 'locale', 'name']
+// };
 
-var githubConfig = {
-    clientID     : process.env.GITHUB_CLIENT_ID,
-    clientSecret : process.env.GITHUB_CLIENT_SECRET,
-    callbackURL  : process.env.GITHUB_CALLBACK_URL,
-};
+// var githubConfig = {
+//     clientID     : process.env.GITHUB_CLIENT_ID,
+//     clientSecret : process.env.GITHUB_CLIENT_SECRET,
+//     callbackURL  : process.env.GITHUB_CALLBACK_URL,
+// };
 
-passport.use(new GoogleStrategy(googleConfig, googleStrategy));
-passport.use(new FacebookStrategy(facebookConfig, facebookStrategy));
-passport.use(new GitHubStrategy(githubConfig, githubStrategy));
+// passport.use(new GoogleStrategy(googleConfig, googleStrategy));
+// passport.use(new FacebookStrategy(facebookConfig, facebookStrategy));
+// passport.use(new GitHubStrategy(githubConfig, githubStrategy));
 
 
 app.post('/api/project/login', passport.authenticate('local'), login);
