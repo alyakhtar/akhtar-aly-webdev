@@ -2,10 +2,12 @@
     <ul class="list-group">
     	<li class="list-group-item active">
     		<div class="row">
-    			<div class="col-sm-2">
-    				<center>POST</center>
+    			<div class="col-sm-6">
+    				POST
     			</div>
-    			<div class="col-sm-8"></div>
+    			<div class="col-sm-4">
+                    <center>POSTED BY</center>      
+                </div>
     			<div class="col-sm-2"></div>
     		</div>
     	</li>
@@ -14,7 +16,9 @@
     			<div class="col-sm-6">
     				{{post.text}}
     			</div>
-    			<div class="col-sm-4"></div>
+    			<div class="col-sm-4">
+                    <center>{{post.name}}</center>         
+                </div>
     			<div class="col-sm-2">
     				<a href="" ng-click="model.deletePost(post._id)">
 		                <span class="glyphicon glyphicon-remove pull-right"></span>

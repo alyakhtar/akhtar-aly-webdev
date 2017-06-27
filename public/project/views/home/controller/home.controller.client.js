@@ -3,7 +3,7 @@
 		.module('Project')
 		.controller('homeController', homeController)
 
-		function homeController($location, $routeParams, userService, currentUser, teamService){
+		function homeController($location, $route, userService, currentUser, teamService){
 
 			var model = this;
 

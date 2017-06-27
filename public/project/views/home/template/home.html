@@ -29,6 +29,9 @@
                 <li ng-show="model.currentUser.roles.indexOf('ADMIN') > -1">
                     <a href="#!/admin">Admin</a>
                 </li>
+                <li ng-show="model.currentUser._id">
+                    <a ng-click="model.logout()" href="">Logout</a>
+                </li>
             </ul>
         </div>
     </div>

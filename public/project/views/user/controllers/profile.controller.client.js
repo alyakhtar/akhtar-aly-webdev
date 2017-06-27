@@ -11,6 +11,7 @@
 
 		var userId = currentUser._id;
 		model.userId = userId;
+		model.user = currentUser;
 		model.currentUser = currentUser;
 
 		model.unfollowUser = unfollowUser;
@@ -24,11 +25,10 @@
                     model.teams = teams;
                 });
 
-            userService
-            	.findUserById(userId)
-            	.then(function(user){
-            		model.user = user;
-            	});
+            if(!model.user.teamSelected){
+	            var pt = angular.element(document.querySelector('#profileTeam'));
+	            pt.removeAttr('disabled');
+            }
 		}
 		init();
 
@@ -44,6 +44,9 @@
 			if(password && password2){
 				if(password === password2){
 					user.password = password;
+					if(typeof user.team !== 'undefined' && user.team !== '1'){
+						user.teamSelected = true;
+					}
 					userService
 						.update(userId, user)
 						.then(function(user){
@@ -53,6 +56,9 @@
 					model.error = 'Passwords do not match!';
 				}
 			} else{
+				if(typeof user.team !== 'undefined' && user.team !== '1'){
+					user.teamSelected = true;
+				} 
 				userService
 					.update(userId, user)
 					.then(function(user){

@@ -161,8 +161,9 @@
               <select 
                       ng-model="model.user.team"
                       type="text"
-                      id="team"
-                      class="form-control">
+                      id="profileTeam"
+                      class="form-control"
+                      disabled>
                       <option   value="1">----Select----</option>
                       <option   ng-repeat="team in model.teams | orderBy : 'name'"
                                 value="{{team.name}}">

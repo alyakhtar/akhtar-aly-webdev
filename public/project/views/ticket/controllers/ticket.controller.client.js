@@ -3,7 +3,7 @@
         .module('Project')
         .controller('ticketController', ticketController)
 
-    function ticketController($location, $routeParams, $window, $http, ticketService, userService, currentUser) {
+    function ticketController($location, $window, $http, ticketService, userService, currentUser) {
 
         var model = this;
 
@@ -167,6 +167,8 @@
 
             if (!trip.source || !trip.destination || !trip.date || !trip.return || !trip.passengers) {
                 model.message = 'Please fill all details!';
+            } else if(!authenticateDetails(trip)){
+                return;
             } else {
                 model.trip = trip;
                 ticketService
@@ -211,7 +213,20 @@
             }
         }
 
-        
+        function authenticateDetails(trip){
+            currentDate = new Date();
+            travelDate = new Date(trip.date);
+            returnDate = new Date(trip.return);
+            if(travelDate - currentDate < 0){
+                model.message = 'Cannot Travel on this Date!';
+                return false;
+            } else if(returnDate - travelDate < 0){
+                model.message = 'Return date cannot be before travel date';
+                return false;
+            } else{
+                return true;
+            }
+        }
 
         function matchTicketDetails(event) {
             model.match = {}
