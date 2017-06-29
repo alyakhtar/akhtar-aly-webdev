@@ -1,59 +1,71 @@
 <!DOCTYPE html>
-
-<html lang="en">
-
+<html>
 <head>
     <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <title>HOMEPAGE</title>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>WEB DEV - CS5610</title>
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/stylish-portfolio.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="css/homepage.css">
 </head>
-
 <body>
-    <a id="menu-toggle" href="#" class="btn btn-dark btn-lg toggle"><i class="glyphicon glyphicon-align-justify"></i></a>
-    <nav id="sidebar-wrapper">
-        <ul class="sidebar-nav">
-            <a id="menu-close" href="#" class="btn btn-light btn-lg pull-right toggle"><i class="glyphicon glyphicon-remove"></i></a>
-            <li class="sidebar-brand">
-                <a href="#top">Links</a>
-            </li>
-            <li>
-                <a href="project/index.html">Project</a>
-            </li>
-            <li>
-                <a href="assignment/index.html">Assignment</a>
-            </li>
-            <li>
-                <a href="test/index.html">Test MongoDB</a>
-            </li>
-            <li>
-                <a href="https://github.com/alyakhtar/akhtar-aly-webdev">GitHub</a>
-            </li>
-        </ul>
+    <nav class="w3-sidebar w3-hide-medium w3-hide-small">
+        <div class="bgimg"></div>
     </nav>
-    <header id="top" class="header">
-        <img src="me.jpg" class="img-responsive img-circle my-image" height="100" width="300">
-        <div class="text-vertical-center hidden-xs">
-            <h1>Web Dev Course Home Page</h1>
+    <nav    class="w3-sidebar w3-black w3-animate-right w3-xxlarge" 
+            id="mySidebar">
+
+        <a href="" onclick="closeNav()" class="w3-button w3-black w3-xxxlarge w3-display-topright">
+            <i class="fa fa-remove"></i>
+        </a>
+        <div class="w3-bar-block w3-center">
+            <a href="project/index.html" class="w3-bar-item w3-button w3-text-grey w3-hover-black">Project</a>
+            <a href="assignment/index.html" class="w3-bar-item w3-button w3-text-grey w3-hover-black">Assignment</a>
+            <a href="test/index.html" class="w3-bar-item w3-button w3-text-grey w3-hover-black">Test MongoDB</a>
+            <a href="https://github.com/alyakhtar/akhtar-aly-webdev" class="w3-bar-item w3-button w3-text-grey w3-hover-black">GitHub</a>
         </div>
-        <div class="text-vertical-center2 hidden-lg">
-            <h1>Web Dev Course Home Page</h1>
-        </div>
-    </header>
+    </nav>
     
-    <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <div class="w3-main w3-padding-large" style="">
+
+        <span class="w3-button w3-top w3-white w3-xxlarge w3-text-grey w3-hover-text-black" onclick="openNav()">
+            <i class="fa fa-bars"></i>
+        </span>
+
+        <header class="w3-container w3-center" id="home">
+            <h1 class="w3-jumbo"><b>Aly Akhtar</b></h1>
+            <p>WEBDEV COURSE HOMEPAGE</p>
+            <p>CS 5610</p>
+            <img src="me.jpg" 
+                class="w3-image w3-hide-large w3-hide-small w3-round">
+            <img src="me.jpg" class="w3-image w3-hide-large w3-hide-medium w3-round" width="1000" height="1333">
+        </header>
+
+        <div class="w3-padding-32 w3-content" id="portfolio"></div>
+
+        <footer class="w3-container w3-padding-64 w3-light-grey w3-center w3-opacity w3-xlarge">
+            <i class="fa fa-facebook-official w3-hover-opacity"></i>
+            <i class="fa fa-instagram w3-hover-opacity"></i>
+            <i class="fa fa-github w3-hover-opacity"></i>
+            <i class="fa fa-google-plus w3-hover-opacity"></i>
+            <i class="fa fa-envelope w3-hover-opacity"></i>
+            <i class="fa fa-linkedin w3-hover-opacity"></i>
+            <p class="w3-medium">&copy; 2017 Aly Akhtar</p>
+        </footer>
+    </div>
     <script>
-    $("#menu-close").click(function(e) {
-        e.preventDefault();
-        $("#sidebar-wrapper").toggleClass("active");
-    });
-    $("#menu-toggle").click(function(e) {
-        e.preventDefault();
-        $("#sidebar-wrapper").toggleClass("active");
-    });
+    function openNav() {
+        document.getElementById("mySidebar").style.width = "60%";
+        document.getElementById("mySidebar").style.display = "block";
+    }
+
+    function closeNav() {
+        document.getElementById("mySidebar").style.display = "none";
+    }
     </script>
 </body>
 
