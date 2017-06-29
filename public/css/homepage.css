@@ -48,6 +48,10 @@ h6 {
     padding:128px 16px;
 }
 
+.anchorDec{
+    text-decoration: none;
+}
+
 .w3-image.w3-hide-large.w3-hide-small.w3-round{
     display:block;
     width:60%;
