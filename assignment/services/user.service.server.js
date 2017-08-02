@@ -2,15 +2,15 @@ var app = require('../../express.js');
 var UserModel = require('../models/user/user.model.server.js');
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
-passport.use(new LocalStrategy(localStrategy));
-passport.serializeUser(serializeUser);
-passport.deserializeUser(deserializeUser);
+passport.use('assignment',new LocalStrategy(localStrategy));
+// passport.serializeUser(serializeUser);
+// passport.deserializeUser(deserializeUser);
+
+var bcrypt = require("bcrypt-nodejs");
 
 var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
 var FacebookStrategy = require('passport-facebook').Strategy;
 var GitHubStrategy = require('passport-github2').Strategy;
-
-var bcrypt = require("bcrypt-nodejs");
 
 var googleConfig = {
     clientID     : process.env.GOOGLE_CLIENT_ID,
@@ -38,7 +38,7 @@ passport.use(new GitHubStrategy(githubConfig, githubStrategy));
 app.get('/api/user', findUserByUsername);
 app.put('/api/user/:userId', updateUser);
 app.delete('/api/user/:userId', deleteUser);
-app.post('/api/login', passport.authenticate('local'), login);
+app.post('/api/login', passport.authenticate('assignment'), login);
 app.get('/api/loggedin', loggedin);
 app.post('/api/logout', logout);
 app.post('/api/register', register);
@@ -177,6 +177,7 @@ function googleStrategy(token, refreshToken, profile, done) {
 
 function register(req, res){
     var user = req.body;
+    user.ProjectType = 'Asssignment';
     user.password = bcrypt.hashSync(user.password);
     UserModel
         .createUser(user)

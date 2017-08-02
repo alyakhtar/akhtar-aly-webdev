@@ -21,7 +21,7 @@ app.use(passport.session());
 app.use(app.express.static(__dirname + '/public'));
 
 require ("./test/app.js")(app);
-// require("./assignment/app.js");
+require("./assignment/app.js");
 require("./project/app.js");
 
 var port = process.env.PORT || 3000;

@@ -2,9 +2,10 @@ var app = require('../../express.js');
 var UserModel = require('../models/user/user.model.server.js');
 var WallModel = require('../models/wall/wall.model.server.js');
 var TeamModel = require('../models/team/team.model.server.js');
+var AssignmentUserModel = require('../../assignment/models/user/user.model.server.js')
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
-passport.use(new LocalStrategy(localStrategy));
+passport.use('project',new LocalStrategy(localStrategy));
 passport.serializeUser(serializeUser);
 passport.deserializeUser(deserializeUser);
 
@@ -51,7 +52,7 @@ passport.use(new FacebookStrategy(facebookConfig, facebookStrategy));
 passport.use(new GitHubStrategy(githubConfig, githubStrategy));
 
 
-app.post('/api/project/login', passport.authenticate('local'), login);
+app.post('/api/project/login', passport.authenticate('project'), login);
 app.get('/api/project/loggedin', loggedin);
 app.post('/api/project/logout', logout);
 app.post('/api/project/register', register);
@@ -301,16 +302,29 @@ function serializeUser(user, done) {
 }
 
 function deserializeUser(user, done) {
-    UserModel
-        .findUserById(user._id)
-        .then(
-            function(user){
-                done(null, user);
-            },
-            function(err){
-                done(err, null);
-            }
-        );
+    if(user.ProjectType === 'Asssignment'){
+        AssignmentUserModel
+            .findUserById(user._id)
+            .then(
+                function(user){
+                    done(null, user);
+                },
+                function(err){
+                    done(err, null);
+                }
+            );
+    } else{
+        UserModel
+            .findUserById(user._id)
+            .then(
+                function(user){
+                    done(null, user);
+                },
+                function(err){
+                    done(err, null);
+                }
+            );
+    }
 }
 
 
