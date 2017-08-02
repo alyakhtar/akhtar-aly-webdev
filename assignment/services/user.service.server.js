@@ -177,7 +177,7 @@ function googleStrategy(token, refreshToken, profile, done) {
 
 function register(req, res){
     var user = req.body;
-    user.ProjectType = 'Asssignment';
+    user.ProjectType = 'Assignment';
     user.password = bcrypt.hashSync(user.password);
     UserModel
         .createUser(user)

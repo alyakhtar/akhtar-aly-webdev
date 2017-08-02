@@ -302,7 +302,7 @@ function serializeUser(user, done) {
 }
 
 function deserializeUser(user, done) {
-    if(user.ProjectType === 'Asssignment'){
+    if(user.ProjectType === 'Assignment'){
         AssignmentUserModel
             .findUserById(user._id)
             .then(
