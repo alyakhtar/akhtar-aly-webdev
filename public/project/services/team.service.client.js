@@ -51,7 +51,7 @@
 
         function updateHomepageTeams(teamId, newTeam){
             var url = '/api/project/admin/team/'+teamId;
-
+            
             return $http
                     .post(url, newTeam)
                     .then(function(response){

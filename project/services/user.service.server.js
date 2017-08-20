@@ -77,6 +77,8 @@ app.delete('/api/project/admin/post/:postId', isAdmin, deletePost);
 app.post('/api/project/admin/createUser', isAdmin, createUser);
 app.get('/api/project/admin/teams', getTeams);
 app.post('/api/project/admin/team/:teamId', isAdmin, updateTeam);
+app.get('/api/project/profile/posts/:userId', getPostsByUser);
+app.get('/api/project/search/user/:username', searchUsers);
 
 app.get('/auth/google', passport.authenticate('google', { scope : ['profile', 'email'] }));
 app.get('/auth/google/callback',
@@ -341,12 +343,38 @@ function findUserById(req, res) {
         });
 }
 
+function searchUsers(req, res){
+    var username = req.params['username']
+
+    UserModel
+        .searchUsers(username)
+        .then(function(users){
+            res.json(users);
+            return
+        }, function(){
+            res.json({'error':'user not found'})
+            return;
+        });
+
+}
+
 function findAllUsers(req, res){
     
     UserModel
         .findAllUsers()
         .then(function(users){
             res.json(users);
+            return;
+        });
+}
+
+function getPostsByUser(req, res){
+    userId = req.params['userId']
+
+    WallModel
+        .findPostsByUser(userId)
+        .then(function(posts){
+            res.json(posts)
             return;
         });
 }

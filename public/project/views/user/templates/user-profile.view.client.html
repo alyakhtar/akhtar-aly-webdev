@@ -72,40 +72,76 @@
 </div>
 <div style="padding-top:50px;"> </div>
 
-<div class="container-fluid">
+<div class="col-lg-3 col-md-3">
     <div class="alert alert-danger" ng-show="model.message">
         {{model.message}}
     </div>
-    <center>
-        <img src="{{model.profile.image}}" height="200" width="200">
-    </center>
-    <br>
-    <center>
-        <a  href="" 
-            class="btn btn-success"
-            ng-click="model.followUser()">
-            <i class="fa fa-star" aria-hidden="true"></i>
-            follow
-        </a>
-    </center>
-    <div class="col-sm-6 col-sm-offset-4">
-        <ul class="list-unstyled">
-            <li>
-                <h4>Bio :</h4>
-                <p>{{model.profile.bio}}</p>
-            </li>
-            <li>
-                <h4>Location :</h4>
-                <p>{{model.profile.location}}</p>
-            </li>
-            <li>
-                <h4>Gender :</h4>
-                <p>{{model.profile.gender}}</p>
-            </li>
-            <li>
-                <h4>Birthday :</h4>
-                <p>{{model.profile.birthday}}</p>
-            </li>
-        </ul>
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <div class="media">
+                <div align="center">
+                    <img class="thumbnail img-responsive" src="{{model.profile.image}}" width="300px" height="300px">
+                </div>
+                <div ng-if="!model.checkFollow()">
+                    <center>
+                        <a  href="" 
+                            class="btn btn-success"
+                            ng-click="model.followUser()">
+                            <i class="fa fa-star-o" aria-hidden="true"></i>
+                            follow
+                        </a>
+                    </center>
+                </div>
+                    
+                <div ng-if="model.checkFollow()">
+                    <center>
+                        <a  href="" 
+                            class="btn btn-success"
+                            ng-click="model.unfollowUser()">
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            unfollow
+                        </a>
+                    </center>
+                </div>
+                <div class="media-body">
+                    <hr>
+                    <h3><strong>Bio</strong></h3>
+                    <p>{{model.profile.bio}}</p>
+                    <hr>
+                    <h3><strong>Location</strong></h3>
+                    <p>{{model.profile.location}}</p>
+                    <hr>
+                    <h3><strong>Gender</strong></h3>
+                    <p>{{model.profile.gender}}</p>
+                    <hr>
+                    <h3><strong>Birthday</strong></h3>
+                    <p>{{model.profile.birthday | date}}</p>
+                    <hr>
+                    <h3><strong>Team</strong></h3>
+                    <p>{{model.profile.team}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
+    <center><h1>POSTS</h1></center>
+    <div ng-repeat="post in model.posts">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                {{post.text}}
+                <div class="thumbnail" ng-if="post.image">
+                    <img src="{{post.image}}">
+                </div>
+                <div style="float: right;">
+                    {{post.time | date}}
+                </div>
+            </div>
+            <div class="panel-footer" ng-if="post.hashtags.length > 0">
+                <div ng-repeat="ht in post.hashtags">
+                    {{ht}}
+                </div>
+            </div>
+        </div>
     </div>
 </div>

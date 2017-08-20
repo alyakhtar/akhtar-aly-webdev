@@ -17,9 +17,33 @@
                         </div>
                         <div class="navbar-collapse collapse">
                             <ul class="nav navbar-nav">
-                                <li><a href="#!/tickets">Book Tickets</a></li>
-                                <li><a href="#!/itinerary">Itinerary</a></li>
+                                <li>
+                                    <a href="#!/tickets">Book Tickets</a>
+                                </li>
+                                <li>
+                                    <a href="#!/itinerary">Itinerary</a>
+                                </li>
                             </ul>
+                            <div class="col-sm-3 col-md-3">
+                                <form class="navbar-form">
+                                    <div class="input-group">
+                                        <input  type="text" 
+                                                class="form-control" placeholder="Search User"
+                                                ng-model="username"
+                                                ng-keyup="model.searchUsers(username)">
+                                        <div class="search-suggest">
+                                            <ul class="list-group">
+                                                  <li class="list-group-item"
+                                                  ng-repeat="user in model.users">
+                                                  <a href="#!/profile/{{user._id}}">
+                                                      {{user.first_name}} {{user.last_name}}
+                                                  </a>
+                                                  </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
                             <ul class="nav navbar-nav navbar-right">
                                 <li class="dropdown">
                                     <a href="" class="dropdown-toggle" data-toggle="dropdown">

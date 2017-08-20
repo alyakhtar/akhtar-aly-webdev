@@ -26,9 +26,31 @@
             getAllUsers: getAllUsers,
             getAllPosts: getAllPosts, 
             deletePostByAdmin: deletePostByAdmin,
-            createUser: createUser
+            createUser: createUser,
+            findPostsByUser: findPostsByUser,
+            searchUsers: searchUsers
         };
         return api;
+
+        function searchUsers(username){
+            url = '/api/project/search/user/'+username;
+
+            return $http
+                    .get(url)
+                    .then(function(response){
+                        return response.data;
+                    });
+        }
+
+        function findPostsByUser(userId){
+            url = '/api/project/profile/posts/'+userId;
+
+            return $http
+                    .get(url)
+                    .then(function(response){
+                        return response.data;
+                    });
+        }
 
         function deletePostByAdmin(postId){
             url='/api/project/admin/post/'+postId;
@@ -204,6 +226,7 @@
 
         function unfollow(userId, followId){
             var url ='/api/project/user/'+userId+'/unfollow/'+followId;
+            console.log(userId, followId)
             return $http
                     .get(url)
                     .then(function(response){

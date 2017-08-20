@@ -14,9 +14,17 @@ userModel.findUserByGoogleId = findUserByGoogleId;
 userModel.findUserByFacebookId = findUserByFacebookId;
 userModel.findUserByGithubId = findUserByGithubId;
 userModel.findAllUsers = findAllUsers;
+userModel.searchUsers = searchUsers;
 
 
 module.exports = userModel;
+
+function searchUsers(username){
+	return userModel.find({'$or':[
+		{first_name: {$regex : ".*"+username+".*", $options: "i"}},
+		{last_name: {$regex : ".*"+username+".*", $options: "i"}}
+	]})
+}
 
 function createUser(user){
 	return userModel.create(user);

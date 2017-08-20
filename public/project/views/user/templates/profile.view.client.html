@@ -246,7 +246,11 @@
                                 ng-repeat="following in model.user.following">
                             <ul class="title-content-list">
                                 <li>
-                                    <div class="title">{{following.name}}</div>
+                                    <div class="title">
+                                        <a href="#!/profile/{{following.id}}">
+                                            {{following.name}}
+                                        </a>
+                                    </div>
                                     <div class="content">
                                         <a  href="" 
                                             class="btn btn-success"

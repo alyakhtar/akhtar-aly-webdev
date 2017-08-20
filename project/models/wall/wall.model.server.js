@@ -12,8 +12,13 @@ wallModel.commentPostById = commentPostById
 wallModel.deleteComment = deleteComment;
 wallModel.deleteAllPostsOfUser = deleteAllPostsOfUser;
 wallModel.findAllPosts = findAllPosts;
+wallModel.findPostsByUser = findPostsByUser;
 
 module.exports = wallModel;
+
+function findPostsByUser(userId){
+	return wallModel.find({userId:userId})
+}
 
 function findAllPosts(){
 	return wallModel.find();

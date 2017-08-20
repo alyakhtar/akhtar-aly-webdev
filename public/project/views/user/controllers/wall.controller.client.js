@@ -25,6 +25,7 @@
 			model.morePosts = morePosts;
 			model.postEdited = postEdited;
 			model.logout = logout;
+			model.searchUsers = searchUsers;
 
 
 			function init(){
@@ -54,6 +55,30 @@
 					});
 			}	
 			init();
+
+			function searchUsers(username){
+				if(username !== ""){
+					userService
+						.searchUsers(username)
+						.then(function(users){
+							checkUsers(users)
+						});
+				} else{
+					model.users = [];
+				}
+			}
+
+			function checkUsers(users){
+				for(var u in users){
+					if(users[u].username === 'admin'){
+						users.splice(u,1)
+					}
+					if(users[u].username === model.user.username){
+						users.splice(u,1)
+					}
+				}
+				model.users = users;
+			}
 
 			function logout(){
 	            userService
