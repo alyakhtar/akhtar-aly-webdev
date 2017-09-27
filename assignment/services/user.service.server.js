@@ -8,32 +8,32 @@ passport.use('assignment',new LocalStrategy(localStrategy));
 
 var bcrypt = require("bcrypt-nodejs");
 
-var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
-var FacebookStrategy = require('passport-facebook').Strategy;
-var GitHubStrategy = require('passport-github2').Strategy;
+// var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
+// var FacebookStrategy = require('passport-facebook').Strategy;
+// var GitHubStrategy = require('passport-github2').Strategy;
 
-var googleConfig = {
-    clientID     : process.env.GOOGLE_CLIENT_ID,
-    clientSecret : process.env.GOOGLE_CLIENT_SECRET,
-    callbackURL  : process.env.GOOGLE_CALLBACK_URL
-};
+// var googleConfig = {
+//     clientID     : process.env.GOOGLE_CLIENT_ID,
+//     clientSecret : process.env.GOOGLE_CLIENT_SECRET,
+//     callbackURL  : process.env.GOOGLE_CALLBACK_URL
+// };
 
-var facebookConfig = {
-    clientID     : process.env.FACEBOOK_CLIENT_ID,
-    clientSecret : process.env.FACEBOOK_CLIENT_SECRET,
-    callbackURL  : process.env.FACEBOOK_CALLBACK_URL,
-    profileFields: ['id', 'email', 'gender', 'link', 'locale', 'name']
-};
+// var facebookConfig = {
+//     clientID     : process.env.FACEBOOK_CLIENT_ID,
+//     clientSecret : process.env.FACEBOOK_CLIENT_SECRET,
+//     callbackURL  : process.env.FACEBOOK_CALLBACK_URL,
+//     profileFields: ['id', 'email', 'gender', 'link', 'locale', 'name']
+// };
 
-var githubConfig = {
-    clientID     : process.env.GITHUB_CLIENT_ID,
-    clientSecret : process.env.GITHUB_CLIENT_SECRET,
-    callbackURL  : process.env.GITHUB_CALLBACK_URL,
-};
+// var githubConfig = {
+//     clientID     : process.env.GITHUB_CLIENT_ID,
+//     clientSecret : process.env.GITHUB_CLIENT_SECRET,
+//     callbackURL  : process.env.GITHUB_CALLBACK_URL,
+// };
 
-passport.use(new GoogleStrategy(googleConfig, googleStrategy));
-passport.use(new FacebookStrategy(facebookConfig, facebookStrategy));
-passport.use(new GitHubStrategy(githubConfig, githubStrategy));
+// passport.use(new GoogleStrategy(googleConfig, googleStrategy));
+// passport.use(new FacebookStrategy(facebookConfig, facebookStrategy));
+// passport.use(new GitHubStrategy(githubConfig, githubStrategy));
 
 app.get('/api/user', findUserByUsername);
 app.put('/api/user/:userId', updateUser);
@@ -46,21 +46,34 @@ app.post('/api/register', register);
 app.get('/auth/google', passport.authenticate('google', { scope : ['profile', 'email'] }));
 app.get('/auth/google/callback',
     passport.authenticate('google', {
-        successRedirect: '/assignment/index.html#!/profile',
-        failureRedirect: '/assignment/index.html#!/login'
+        successRedirect: '/project/index.html#!/profile',
+        failureRedirect: '/project/index.html#!/login'
     }));
+
 app.get ('/auth/facebook', passport.authenticate('facebook', { scope : 'email' }));
 app.get('/auth/facebook/callback',
     passport.authenticate('facebook', {
-        successRedirect: '/assignment/index.html#!/profile',
-        failureRedirect: '/assignment/index.html#!/login'
+        successRedirect: '/project/index.html#!/profile',
+        failureRedirect: '/project/index.html#!/login'
 }));
-app.get ('/auth/github', passport.authenticate('github', { scope : [ 'user:email' ] }));
-app.get('/auth/github/callback',
-    passport.authenticate('github', {
-        successRedirect: '/assignment/index.html#!/profile',
-        failureRedirect: '/assignment/index.html#!/login'
-}));
+// app.get('/auth/google', passport.authenticate('google', { scope : ['profile', 'email'] }));
+// app.get('/auth/google/callback',
+//     passport.authenticate('google', {
+//         successRedirect: '/assignment/index.html#!/profile',
+//         failureRedirect: '/assignment/index.html#!/login'
+//     }));
+// app.get ('/auth/facebook', passport.authenticate('facebook', { scope : 'email' }));
+// app.get('/auth/facebook/callback',
+//     passport.authenticate('facebook', {
+//         successRedirect: '/assignment/index.html#!/profile',
+//         failureRedirect: '/assignment/index.html#!/login'
+// }));
+// app.get ('/auth/github', passport.authenticate('github', { scope : [ 'user:email' ] }));
+// app.get('/auth/github/callback',
+//     passport.authenticate('github', {
+//         successRedirect: '/assignment/index.html#!/profile',
+//         failureRedirect: '/assignment/index.html#!/login'
+// }));
 
 function githubStrategy(token, refreshToken, profile, done) {
     UserModel

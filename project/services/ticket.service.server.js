@@ -10,6 +10,7 @@ app.delete('/api/project/user/:userId/cancelTicket/:bookingId', cancelBookingByI
 
 function bookTicket(req, res){
 	var ticket = req.body;
+	// console.log(ticket)
 	TicketModel
 		.bookTicket(ticket)
 		.then(function(){
