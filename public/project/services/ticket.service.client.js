@@ -19,7 +19,7 @@
         function getMatchTicket(){
             // var key = process.env.TICKETMASTER_CLIENT_ID;
             var key = 'Y8CUMTdtH8ryvRTDvpGWNFhFQ6WyDOHF';
-            var url = 'https://app.ticketmaster.com/discovery/v2/events.json?apikey='+ key + '&keyword=international champions cup';
+            var url = 'https://app.ticketmaster.com/discovery/v2/events.json?apikey='+ key + '&keyword=new england patriots';
             return $http
                 .get(url)
                 .then(function(response){

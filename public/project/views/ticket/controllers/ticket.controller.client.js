@@ -204,7 +204,7 @@
                 ticketService
                     .getCars(model.trip)
                     .then(function(cars){
-                       carDetails(cars); 
+                       carDetails(cars);
                     })
                     .then(function(){
                         var cb = angular.element(document.querySelector('#carBut'));
